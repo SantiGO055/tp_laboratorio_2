@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ins03\\Desktop\\pruebatp1\\Entidades\\Entidades.csproj",
+      "projectUniqueName": "C:\\Users\\ins03\\Desktop\\prueba\\tp_laboratorio_2\\TP1_Calculadora\\Entidades\\Entidades.csproj",
       "projectName": "Entidades",
-      "projectPath": "C:\\Users\\ins03\\Desktop\\pruebatp1\\Entidades\\Entidades.csproj",
+      "projectPath": "C:\\Users\\ins03\\Desktop\\prueba\\tp_laboratorio_2\\TP1_Calculadora\\Entidades\\Entidades.csproj",
       "packagesPath": "C:\\Users\\ins03\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ins03\\Desktop\\pruebatp1\\Entidades\\obj\\",
+      "outputPath": "C:\\Users\\ins03\\Desktop\\prueba\\tp_laboratorio_2\\TP1_Calculadora\\Entidades\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ins03\\AppData\\Roaming\\NuGet\\NuGet.Config",
