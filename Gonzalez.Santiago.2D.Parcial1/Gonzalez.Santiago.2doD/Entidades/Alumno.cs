@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,9 +14,11 @@ namespace Entidades
         protected float precioCuota;
         protected Responsable responsable;
 
-        public Alumno(string nombre, string apellido, int dni, bool femenino, float precioCuota) : base(nombre,apellido,dni,femenino)
+        public Alumno(string nombre, string apellido, int dni, bool femenino, float precioCuota, Responsable responsable,int legajo) : base(nombre, apellido, dni, femenino)
         {
             this.PrecioCuota = precioCuota;
+            this.Responsable = responsable;
+            this.Legajo = legajo;
         }
 
 
@@ -48,19 +51,24 @@ namespace Entidades
         public static bool operator ==(Alumno a1, Alumno a2)
         {
             return (a1.Legajo == a2.Legajo);
-            
+
         }
         public static bool operator !=(Alumno a1, Alumno a2)
         {
             return (!(a1 == a2));
         }
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(base.ToString());
+            sb.AppendLine("Legajo: " + this.Legajo);
+            sb.AppendLine("Color de la sala: " + this.ColorSala);
+            sb.AppendLine("Responsable: " + this.Responsable);
+            sb.AppendLine("Precio de la cuota: " + this.PrecioCuota);
 
-        //public Responsable Prueba()
-        //{
-        //    Alumno al = new Alumno("Jaimito", "Rivera", 789456123, false, 450);
-        //    Responsable r1 = new Responsable("Susana", "Rivera", 123456789, true, EParentesco.Madre);
-        //    r1 = al;
-        //    return r1;
-        //}
+            return sb.ToString();
+        }
+
+
     }
 }

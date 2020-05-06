@@ -41,12 +41,28 @@ namespace Entidades
             this.Apellido = apellido;
             this.Dni = dni;
         }
-        public Persona(string nombre, string apellido, int dni, bool femenino):this(nombre,apellido,dni)
+        public Persona(string nombre, string apellido, int dni, bool femenino) : this(nombre, apellido, dni)
         {
             this.Femenino = femenino;
         }
 
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Nombre: " + this.Nombre);
+            sb.AppendLine("Apellido: " + this.Apellido);
+            sb.AppendLine("Dni: " + this.Dni);
+            if (this.femenino)
+            {
+                sb.AppendLine("Genero: Femenino");
+            }
+            else
+            {
+                sb.AppendLine("Genero: Masculino");
+            }
 
+            return sb.ToString();
+        }
 
     }
 }

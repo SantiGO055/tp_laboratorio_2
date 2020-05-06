@@ -19,9 +19,9 @@ namespace Entidades
         {
             SalarioBase = 30000;
         }
-        public Administrativo(string nombre, string apellido, int dni, bool femenino) :base(nombre,apellido,dni,femenino)
+        public Administrativo(string nombre, string apellido, int dni, bool femenino, ECargo cargo) : base(nombre, apellido, dni, femenino)
         {
-
+            this.Cargo = cargo;
         }
 
         public ECargo Cargo
@@ -37,7 +37,16 @@ namespace Entidades
         /// <returns>retorna valor double del sueldo calculado</returns>
         protected override double CalcularSalario()
         {
-            return ((SalarioBase * (int)this.cargo)/100);
+            return ((SalarioBase * (int)this.cargo) / 100); //chequear que realice bien la cuenta
+        }
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Nombre " + this.Nombre);
+            sb.AppendLine("Apellido: " + this.Apellido);
+            sb.AppendLine("Dni: " + this.Dni);
+            sb.AppendLine("Horas Mensuales: " + this.CalcularSalario());
+            return sb.ToString();
         }
     }
 }

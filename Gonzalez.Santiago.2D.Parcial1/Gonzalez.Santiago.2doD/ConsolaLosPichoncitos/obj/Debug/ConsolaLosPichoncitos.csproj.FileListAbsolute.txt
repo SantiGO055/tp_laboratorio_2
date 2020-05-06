@@ -1,0 +1,10 @@
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\ConsolaLosPichoncitos\bin\Debug\ConsolaLosPichoncitos.exe.config
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\ConsolaLosPichoncitos\bin\Debug\ConsolaLosPichoncitos.exe
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\ConsolaLosPichoncitos\bin\Debug\ConsolaLosPichoncitos.pdb
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\ConsolaLosPichoncitos\bin\Debug\Entidades.dll
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\ConsolaLosPichoncitos\bin\Debug\Entidades.pdb
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\ConsolaLosPichoncitos\obj\Debug\ConsolaLosPichoncitos.csprojAssemblyReference.cache
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\ConsolaLosPichoncitos\obj\Debug\ConsolaLosPichoncitos.csproj.CoreCompileInputs.cache
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\ConsolaLosPichoncitos\obj\Debug\ConsolaLosPichoncitos.csproj.CopyComplete
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\ConsolaLosPichoncitos\obj\Debug\ConsolaLosPichoncitos.exe
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\ConsolaLosPichoncitos\obj\Debug\ConsolaLosPichoncitos.pdb

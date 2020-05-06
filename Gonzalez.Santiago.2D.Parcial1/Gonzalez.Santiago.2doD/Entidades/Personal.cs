@@ -11,21 +11,20 @@ namespace Entidades
         protected DateTime horaEntrada;
         protected DateTime horaSalida;
 
-        public Personal(string nombre, string apellido, int dni, bool femenino) : base(nombre,apellido,dni,femenino)
+        public Personal(string nombre, string apellido, int dni, bool femenino) : base(nombre, apellido, dni, femenino)
         {
 
         }
 
-        public Personal(string nombre, string apellido, int dni) :base(nombre,apellido,dni)
+        public Personal(string nombre, string apellido, int dni) : base(nombre, apellido, dni)
         {
 
         }
-        public Personal(string nombre, string apellido, int dni, bool femenino,DateTime horaEntrada, DateTime horaSalida) :this(nombre,apellido,dni,femenino)
+        public Personal(string nombre, string apellido, int dni, bool femenino, DateTime horaEntrada, DateTime horaSalida) : this(nombre, apellido, dni, femenino)
         {
             this.HoraEntrada = horaEntrada;
             this.HoraSalida = horaSalida;
-            //DateTime d = new DateTime(01, 01, 01, horaEntrada, 00, 00);
-            //DateTime a = new DateTime(01, 01, 01, horaSalida, 00, 00);
+
         }
 
 
@@ -50,6 +49,14 @@ namespace Entidades
 
         protected abstract double CalcularSalario();
 
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(base.ToString());
+            sb.AppendLine("Hora Entrada: " + this.HoraEntrada);
+            sb.AppendLine("Hora Salida: " + this.HoraSalida);
+            return sb.ToString();
+        }
 
     }
 }
