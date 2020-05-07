@@ -1,0 +1,14 @@
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\bin\Debug\FormularioLosPichoncitos.exe.config
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\bin\Debug\FormularioLosPichoncitos.exe
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\bin\Debug\FormularioLosPichoncitos.pdb
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\bin\Debug\Entidades.dll
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\bin\Debug\Entidades.pdb
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormLosPichoncitos.csprojAssemblyReference.cache
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.Properties.Resources.resources
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormLosPichoncitos.csproj.GenerateResource.cache
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormLosPichoncitos.csproj.CoreCompileInputs.cache
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormLosPichoncitos.csproj.CopyComplete
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.exe
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.pdb
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.MenuPrincipal.resources
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.AltaDocente.resources
