@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
 using System.Media;
+using System.Security.Cryptography;
+
 namespace FormularioLosPichoncitos
 {
     public partial class MenuPrincipal : Form
@@ -42,6 +44,13 @@ namespace FormularioLosPichoncitos
             altaDocente.Show();
             SoundPlayer simpleSound = new SoundPlayer(@"Sonido\welcometothejungle.wav");
             simpleSound.Play();
+            
+            if (altaDocente.DialogResult == DialogResult.OK)
+            {
+                altaDocente.Visible = false;
+                altaDocente.Dispose();
+                this.IsMdiContainer = false;
+            }
         }
     }
 }

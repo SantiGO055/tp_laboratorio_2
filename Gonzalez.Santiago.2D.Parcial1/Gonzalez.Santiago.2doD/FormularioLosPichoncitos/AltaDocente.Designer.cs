@@ -41,10 +41,11 @@
             this.dtpHoraSalida = new System.Windows.Forms.DateTimePicker();
             this.lblHoraIngreso = new System.Windows.Forms.Label();
             this.lblHoraSalida = new System.Windows.Forms.Label();
-            this.txtValorHora = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAltaDocente = new System.Windows.Forms.Button();
+            this.numValorHora = new System.Windows.Forms.NumericUpDown();
             this.gbxSexo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numValorHora)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNombre
@@ -172,14 +173,6 @@
             this.lblHoraSalida.TabIndex = 13;
             this.lblHoraSalida.Text = "Horario de salida";
             // 
-            // txtValorHora
-            // 
-            this.txtValorHora.BackColor = System.Drawing.Color.PaleGreen;
-            this.txtValorHora.Location = new System.Drawing.Point(411, 170);
-            this.txtValorHora.Name = "txtValorHora";
-            this.txtValorHora.Size = new System.Drawing.Size(92, 20);
-            this.txtValorHora.TabIndex = 14;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -203,6 +196,15 @@
             this.btnAltaDocente.UseVisualStyleBackColor = false;
             this.btnAltaDocente.Click += new System.EventHandler(this.btnAltaDocente_Click);
             // 
+            // numValorHora
+            // 
+            this.numValorHora.BackColor = System.Drawing.Color.PaleGreen;
+            this.numValorHora.DecimalPlaces = 2;
+            this.numValorHora.Location = new System.Drawing.Point(411, 172);
+            this.numValorHora.Name = "numValorHora";
+            this.numValorHora.Size = new System.Drawing.Size(92, 20);
+            this.numValorHora.TabIndex = 17;
+            // 
             // AltaDocente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -210,9 +212,9 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(542, 368);
+            this.Controls.Add(this.numValorHora);
             this.Controls.Add(this.btnAltaDocente);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtValorHora);
             this.Controls.Add(this.lblHoraSalida);
             this.Controls.Add(this.lblHoraIngreso);
             this.Controls.Add(this.dtpHoraSalida);
@@ -224,11 +226,15 @@
             this.Controls.Add(this.txtDni);
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.txtNombre);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "AltaDocente";
-            this.Text = "c";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Alta de docente";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AltaDocente_Load);
             this.gbxSexo.ResumeLayout(false);
             this.gbxSexo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numValorHora)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,8 +255,8 @@
         private System.Windows.Forms.DateTimePicker dtpHoraSalida;
         private System.Windows.Forms.Label lblHoraIngreso;
         private System.Windows.Forms.Label lblHoraSalida;
-        private System.Windows.Forms.TextBox txtValorHora;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAltaDocente;
+        private System.Windows.Forms.NumericUpDown numValorHora;
     }
 }
