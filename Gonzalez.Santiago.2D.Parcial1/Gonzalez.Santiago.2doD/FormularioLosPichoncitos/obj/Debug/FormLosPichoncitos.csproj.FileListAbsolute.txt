@@ -10,5 +10,5 @@ C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.
 C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormLosPichoncitos.csproj.CopyComplete
 C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.exe
 C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.pdb
-C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.MenuPrincipal.resources
-C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.AltaDocente.resources
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.frmAlta.resources
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.frmMenuPrincipal.resources

@@ -53,8 +53,8 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(base.ToString());
-            sb.AppendLine("Hora Entrada: " + this.HoraEntrada);
-            sb.AppendLine("Hora Salida: " + this.HoraSalida);
+            sb.AppendLine("Hora Entrada: \n" + this.HoraEntrada);
+            sb.AppendLine("Hora Salida: \n" + this.HoraSalida);
             return sb.ToString();
         }
 
