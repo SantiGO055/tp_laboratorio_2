@@ -46,25 +46,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmAlta.cs">
+    <Compile Include="FrmAlta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAlta.Designer.cs">
-      <DependentUpon>frmAlta.cs</DependentUpon>
+    <Compile Include="FrmAlta.Designer.cs">
+      <DependentUpon>FrmAlta.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMenuPrincipal.cs">
+    <Compile Include="FrmAula.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMenuPrincipal.Designer.cs">
-      <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    <Compile Include="FrmAula.Designer.cs">
+      <DependentUpon>FrmAula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMenuPrincipal.Designer.cs">
+      <DependentUpon>FrmMenuPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmAlta.resx">
-      <DependentUpon>frmAlta.cs</DependentUpon>
+    <EmbeddedResource Include="FrmAlta.resx">
+      <DependentUpon>FrmAlta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMenuPrincipal.resx">
-      <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    <EmbeddedResource Include="FrmAula.resx">
+      <DependentUpon>FrmAula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMenuPrincipal.resx">
+      <DependentUpon>FrmMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

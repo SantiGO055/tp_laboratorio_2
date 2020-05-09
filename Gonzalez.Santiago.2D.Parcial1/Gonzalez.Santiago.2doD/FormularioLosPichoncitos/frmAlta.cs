@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace FormularioLosPichoncitos
 {
-    public partial class frmAlta : Form
+    public partial class FrmAlta : Form
     {
         public Docente docente;
         public Administrativo administrativo;
         public Alumno alumno;
         public Responsable responsable;
         string tipo;
-        public frmAlta(string tipo)
+        public FrmAlta(string tipo)
         {
             InitializeComponent();
             this.MinimizeBox = false;
@@ -123,7 +123,7 @@ namespace FormularioLosPichoncitos
 
 
                     MessageBox.Show("Alta realizada con exito. Dar de alta responsable", "Se realizo el alta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    frmAlta frmAltas = new frmAlta("responsable");
+                    FrmAlta frmAltas = new FrmAlta("responsable");
 
                     if (frmAltas.ShowDialog() == DialogResult.OK)
                     {

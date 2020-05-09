@@ -14,19 +14,19 @@ using System.Reflection;
 
 namespace FormularioLosPichoncitos
 {
-    public partial class frmMenuPrincipal : Form
+    public partial class FrmMenuPrincipal : Form
     {
-        private List<Docente> listaDocentes;
+        public List<Docente> listaDocentes;
         private List<Administrativo> listaAdministrativos;
         private List<Alumno> listaAlumnos;
         private List<Responsable> listaResponsables;
         private Docente docente;
         private Administrativo administrativo;
 
-        public frmMenuPrincipal()
+        public FrmMenuPrincipal()
         {
             InitializeComponent();
-            //this.IsMdiContainer = true;
+            this.IsMdiContainer = true;
             //this.BackColor = Color.FromArgb(255, 232, 232);
             listaDocentes = new List<Docente>();
             listaAdministrativos = new List<Administrativo>();
@@ -49,7 +49,7 @@ namespace FormularioLosPichoncitos
         private void altaDeDocenteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool open = false;
-            frmAlta altaDocente = new frmAlta("docente");
+            FrmAlta altaDocente = new FrmAlta("docente");
             
             //altaDocente.Show();
             SoundPlayer simpleSound = new SoundPlayer(@"Sonido\welcometothejungle.wav");
@@ -60,7 +60,7 @@ namespace FormularioLosPichoncitos
             if (altaDocente.ShowDialog() == DialogResult.OK)
             {
                 this.listaDocentes.Add(altaDocente.docente);
-                MostrarListaDeDocentes();
+                //MostrarListaDeDocentes();
             }
             
             
@@ -87,7 +87,7 @@ namespace FormularioLosPichoncitos
 
         private void altaDeNoDocenteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAlta frmAltas = new frmAlta("administrativo");
+            FrmAlta frmAltas = new FrmAlta("administrativo");
             if(frmAltas.ShowDialog() == DialogResult.OK)
             {
                 this.listaAdministrativos.Add(frmAltas.administrativo);
@@ -119,34 +119,41 @@ namespace FormularioLosPichoncitos
             this.listaDocentes.Add(docente);
 
         }
-        private void MostrarListaDeDocentes()
-        {
+        //private void MostrarListaDeDocentes()
+        //{
 
-            lstAulas.Items.Clear();
-            foreach (var item in this.listaDocentes)
-            {
-                StringBuilder sb = new StringBuilder();
-                if (!(listaDocentes is null) && !(item is null))
-                {
-                    sb.Append(item.ToString());
-                    sb.AppendLine("");
-                    lstAulas.Items.Add(sb.ToString());
+        //    lstAulas.Items.Clear();
+        //    foreach (var item in this.listaDocentes)
+        //    {
+        //        StringBuilder sb = new StringBuilder();
+        //        if (!(listaDocentes is null) && !(item is null))
+        //        {
+        //            sb.Append(item.ToString());
+        //            sb.AppendLine("");
+        //            lstAulas.Items.Add(sb.ToString());
 
-                }
-                this.Controls.Add(lstAulas);
+        //        }
+        //        this.Controls.Add(lstAulas);
 
-            }
-        }
+        //    }
+        //}
 
         private void altaAlumnoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //string nombre, string apellido, int dni, bool femenino, float precioCuota, Responsable responsable,int legajo
-            frmAlta frmAltas = new frmAlta("alumno");
+            FrmAlta frmAltas = new FrmAlta("alumno");
             if (frmAltas.ShowDialog() == DialogResult.OK)
             {
                 this.listaAlumnos.Add(frmAltas.alumno);
                 this.listaResponsables.Add(frmAltas.responsable);
             }
+        }
+
+        private void altaDeAulaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAula altaAula = new FrmAula(this);
+            altaAula.MdiParent = this;
+            altaAula.Show();
         }
     }
 }

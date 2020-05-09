@@ -1,6 +1,6 @@
 ﻿namespace FormularioLosPichoncitos
 {
-    partial class frmAlta
+    partial class FrmAlta
     {
         /// <summary>
         /// Required designer variable.

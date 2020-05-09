@@ -12,3 +12,4 @@ C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.
 C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.pdb
 C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.frmAlta.resources
 C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.frmMenuPrincipal.resources
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.FrmAula.resources
