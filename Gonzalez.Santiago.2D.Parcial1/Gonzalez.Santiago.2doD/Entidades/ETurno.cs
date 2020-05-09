@@ -8,7 +8,7 @@ namespace Entidades
 {
     public enum ETurno
     {
-        mañana,
-        tarde
+        Mañana,
+        Tarde
     }
 }

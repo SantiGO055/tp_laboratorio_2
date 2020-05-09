@@ -32,8 +32,8 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(base.ToString());
-            sb.AppendLine("Parentesco: " + this.Parentesco);
-            sb.AppendLine("Telefono: " + this.Telefono);
+            sb.AppendLine(". Parentesco: " + this.Parentesco);
+            sb.AppendLine(". Telefono: " + this.Telefono);
             return sb.ToString();
         }
 

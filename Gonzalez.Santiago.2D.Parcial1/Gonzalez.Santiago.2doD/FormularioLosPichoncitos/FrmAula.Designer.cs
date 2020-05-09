@@ -32,15 +32,13 @@
             this.cmbColor = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbTurno = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cmbProfesor = new System.Windows.Forms.ComboBox();
-            this.grpSinSala = new System.Windows.Forms.GroupBox();
-            this.grbEnSala = new System.Windows.Forms.GroupBox();
+            this.grpSinAula = new System.Windows.Forms.GroupBox();
+            this.lstSinAula = new System.Windows.Forms.ListBox();
+            this.grbDocenteSinAula = new System.Windows.Forms.GroupBox();
+            this.lstDocenteSinAula = new System.Windows.Forms.ListBox();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.lstSinSala = new System.Windows.Forms.ListBox();
-            this.lstConSala = new System.Windows.Forms.ListBox();
-            this.grpSinSala.SuspendLayout();
-            this.grbEnSala.SuspendLayout();
+            this.grpSinAula.SuspendLayout();
+            this.grbDocenteSinAula.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblNombre
@@ -67,7 +65,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(256, 24);
+            this.label1.Location = new System.Drawing.Point(478, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 14);
             this.label1.TabIndex = 16;
@@ -77,91 +75,75 @@
             // 
             this.cmbTurno.BackColor = System.Drawing.Color.AntiqueWhite;
             this.cmbTurno.FormattingEnabled = true;
-            this.cmbTurno.Location = new System.Drawing.Point(339, 22);
+            this.cmbTurno.Location = new System.Drawing.Point(565, 22);
             this.cmbTurno.Name = "cmbTurno";
             this.cmbTurno.Size = new System.Drawing.Size(92, 21);
             this.cmbTurno.TabIndex = 17;
+            this.cmbTurno.SelectionChangeCommitted += new System.EventHandler(this.cmbTurno_SelectionChangeCommitted_1);
             // 
-            // label2
+            // grpSinAula
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(467, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 14);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Profesor";
+            this.grpSinAula.Controls.Add(this.lstSinAula);
+            this.grpSinAula.Location = new System.Drawing.Point(22, 68);
+            this.grpSinAula.Name = "grpSinAula";
+            this.grpSinAula.Size = new System.Drawing.Size(317, 345);
+            this.grpSinAula.TabIndex = 20;
+            this.grpSinAula.TabStop = false;
+            this.grpSinAula.Text = "Alumnos sin aula";
             // 
-            // cmbProfesor
+            // lstSinAula
             // 
-            this.cmbProfesor.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.cmbProfesor.FormattingEnabled = true;
-            this.cmbProfesor.Location = new System.Drawing.Point(539, 22);
-            this.cmbProfesor.Name = "cmbProfesor";
-            this.cmbProfesor.Size = new System.Drawing.Size(92, 21);
-            this.cmbProfesor.TabIndex = 19;
+            this.lstSinAula.AllowDrop = true;
+            this.lstSinAula.FormattingEnabled = true;
+            this.lstSinAula.HorizontalScrollbar = true;
+            this.lstSinAula.Location = new System.Drawing.Point(15, 34);
+            this.lstSinAula.Name = "lstSinAula";
+            this.lstSinAula.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lstSinAula.ScrollAlwaysVisible = true;
+            this.lstSinAula.Size = new System.Drawing.Size(285, 290);
+            this.lstSinAula.TabIndex = 2;
             // 
-            // grpSinSala
+            // grbDocenteSinAula
             // 
-            this.grpSinSala.Controls.Add(this.lstSinSala);
-            this.grpSinSala.Location = new System.Drawing.Point(22, 68);
-            this.grpSinSala.Name = "grpSinSala";
-            this.grpSinSala.Size = new System.Drawing.Size(317, 345);
-            this.grpSinSala.TabIndex = 20;
-            this.grpSinSala.TabStop = false;
-            this.grpSinSala.Text = "Alumnos sin sala";
+            this.grbDocenteSinAula.Controls.Add(this.lstDocenteSinAula);
+            this.grbDocenteSinAula.Location = new System.Drawing.Point(391, 68);
+            this.grbDocenteSinAula.Name = "grbDocenteSinAula";
+            this.grbDocenteSinAula.Size = new System.Drawing.Size(319, 344);
+            this.grbDocenteSinAula.TabIndex = 21;
+            this.grbDocenteSinAula.TabStop = false;
+            this.grbDocenteSinAula.Text = "Docentes sin aula";
             // 
-            // grbEnSala
+            // lstDocenteSinAula
             // 
-            this.grbEnSala.Controls.Add(this.lstConSala);
-            this.grbEnSala.Location = new System.Drawing.Point(417, 68);
-            this.grbEnSala.Name = "grbEnSala";
-            this.grbEnSala.Size = new System.Drawing.Size(319, 344);
-            this.grbEnSala.TabIndex = 21;
-            this.grbEnSala.TabStop = false;
-            this.grbEnSala.Text = "Alumnos en sala";
+            this.lstDocenteSinAula.AllowDrop = true;
+            this.lstDocenteSinAula.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.lstDocenteSinAula.FormattingEnabled = true;
+            this.lstDocenteSinAula.HorizontalScrollbar = true;
+            this.lstDocenteSinAula.Location = new System.Drawing.Point(18, 34);
+            this.lstDocenteSinAula.Name = "lstDocenteSinAula";
+            this.lstDocenteSinAula.ScrollAlwaysVisible = true;
+            this.lstDocenteSinAula.Size = new System.Drawing.Size(285, 290);
+            this.lstDocenteSinAula.TabIndex = 3;
             // 
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(618, 430);
+            this.btnGuardar.Location = new System.Drawing.Point(391, 430);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(118, 27);
+            this.btnGuardar.Size = new System.Drawing.Size(319, 27);
             this.btnGuardar.TabIndex = 22;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // lstSinSala
-            // 
-            this.lstSinSala.AllowDrop = true;
-            this.lstSinSala.FormattingEnabled = true;
-            this.lstSinSala.Location = new System.Drawing.Point(15, 34);
-            this.lstSinSala.Name = "lstSinSala";
-            this.lstSinSala.ScrollAlwaysVisible = true;
-            this.lstSinSala.Size = new System.Drawing.Size(285, 290);
-            this.lstSinSala.TabIndex = 2;
-            // 
-            // lstConSala
-            // 
-            this.lstConSala.AllowDrop = true;
-            this.lstConSala.FormattingEnabled = true;
-            this.lstConSala.Location = new System.Drawing.Point(17, 34);
-            this.lstConSala.Name = "lstConSala";
-            this.lstConSala.ScrollAlwaysVisible = true;
-            this.lstConSala.Size = new System.Drawing.Size(285, 290);
-            this.lstConSala.TabIndex = 3;
-            // 
             // FrmAula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(807, 479);
+            this.ClientSize = new System.Drawing.Size(748, 479);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.grbEnSala);
-            this.Controls.Add(this.grpSinSala);
-            this.Controls.Add(this.cmbProfesor);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.grbDocenteSinAula);
+            this.Controls.Add(this.grpSinAula);
             this.Controls.Add(this.cmbTurno);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbColor);
@@ -169,8 +151,8 @@
             this.Name = "FrmAula";
             this.Text = "FrmAula";
             this.Load += new System.EventHandler(this.FrmAula_Load);
-            this.grpSinSala.ResumeLayout(false);
-            this.grbEnSala.ResumeLayout(false);
+            this.grpSinAula.ResumeLayout(false);
+            this.grbDocenteSinAula.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,12 +164,10 @@
         private System.Windows.Forms.ComboBox cmbColor;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbTurno;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cmbProfesor;
-        private System.Windows.Forms.GroupBox grpSinSala;
-        private System.Windows.Forms.GroupBox grbEnSala;
+        private System.Windows.Forms.GroupBox grpSinAula;
+        private System.Windows.Forms.GroupBox grbDocenteSinAula;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.ListBox lstSinSala;
-        private System.Windows.Forms.ListBox lstConSala;
+        private System.Windows.Forms.ListBox lstSinAula;
+        private System.Windows.Forms.ListBox lstDocenteSinAula;
     }
 }

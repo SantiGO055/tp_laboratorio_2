@@ -42,10 +42,8 @@ namespace Entidades
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Nombre " + this.Nombre);
-            sb.AppendLine("Apellido: " + this.Apellido);
-            sb.AppendLine("Dni: " + this.Dni);
-            sb.AppendLine("Horas Mensuales: " + this.CalcularSalario());
+            sb.AppendLine(base.ToString());
+            sb.AppendLine(". Horas Mensuales: " + this.CalcularSalario());
             return sb.ToString();
         }
     }

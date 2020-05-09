@@ -61,10 +61,10 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(base.ToString());
-            sb.AppendLine("Legajo: " + this.Legajo);
-            sb.AppendLine("Color de la sala: " + this.ColorSala);
-            sb.AppendLine("Responsable: " + this.Responsable);
-            sb.AppendLine("Precio de la cuota: " + this.PrecioCuota);
+            sb.AppendLine(".Legajo: " + this.Legajo);
+            sb.AppendLine(".Color de la sala: " + this.ColorSala);
+            sb.AppendLine(".Responsable: " + this.Responsable);
+            sb.AppendLine(".Precio de la cuota: " + this.PrecioCuota);
 
             return sb.ToString();
         }

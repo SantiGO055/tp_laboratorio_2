@@ -50,15 +50,15 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Nombre: " + this.Nombre);
-            sb.AppendLine("Apellido: " + this.Apellido);
-            sb.AppendLine("Dni: " + this.Dni);
+            sb.AppendLine(". Apellido: " + this.Apellido);
+            sb.AppendLine(". Dni: " + this.Dni);
             if (this.femenino)
             {
-                sb.AppendLine("Genero: Femenino");
+                sb.AppendLine(". Genero: Femenino");
             }
             else
             {
-                sb.AppendLine("Genero: Masculino");
+                sb.AppendLine(". Genero: Masculino");
             }
 
             return sb.ToString();

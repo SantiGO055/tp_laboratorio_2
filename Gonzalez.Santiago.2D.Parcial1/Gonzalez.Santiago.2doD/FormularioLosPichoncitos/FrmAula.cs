@@ -14,54 +14,77 @@ namespace FormularioLosPichoncitos
 {
     public partial class FrmAula : Form
     {
-        public FrmAula(FrmMenuPrincipal frmPrincipal)
+        List<Alumno> listaAlumnosSinAula;
+        List<Alumno> listaConAula;
+        public List<Aula> listaDeAulas;
+        public Aula aula;
+        EColores colorAula;
+        ETurno turnoAula;
+        List<Docente> listaDeDocentesMañana;
+        List<Docente> listaDeDocentesTarde;
+        List<Docente> listaDeDocentes;
+        BindingSource bsSinAula = new BindingSource();
+        BindingSource bsDocentesMañana = new BindingSource();
+        BindingSource bsDocentesTarde = new BindingSource();
+        Docente docenteMañana;
+        Docente docenteTarde;
+        public FrmAula(List<Aula> listaDeAulas, List<Alumno> listaAlumnos, List<Docente> listaDocentes)
         {
             InitializeComponent();
             this.cmbColor.DataSource = Enum.GetValues(typeof(EColores));
             this.cmbTurno.DataSource = Enum.GetValues(typeof(ETurno));
-            this.lstSinSala.DataSource = frmPrincipal.listaAlumnos;
-            //LlenarListaAlumnos(frmPrincipal);
-            this.LlenarCmbDocentes(frmPrincipal);
+
+            //listaAlumnosSinAula = listaAlumnos;
+            listaAlumnosSinAula = listaAlumnos;
+
+            listaDeDocentes = listaDocentes;
+            listaDeDocentesMañana = listaDocentes;
+                //new List<Docente>();
+            listaDeDocentesTarde = new List<Docente>();
+            MostrarListaAlumnosSinAula(listaAlumnosSinAula);
+
+
+        }
+
+        public void PruebaDocente(List<Aula> listaDeAulas)
+        {
+            foreach (var item in listaDeAulas)
+            {
+                if (item.Docente == docenteMañana && item.Turno == ETurno.Mañana)
+                {
+                    
+                }
+            }
             
-
-            //this.cmbProfesor.DataSource = LlenarCmbDocentes(frmPrincipal);
-
         }
-
-        private void LlenarListaAlumnos(FrmMenuPrincipal frmPrincipal)
+        private void MostrarListaAlumnosSinAula(List<Alumno> listaAlumnos)
         {
-            foreach (var item in frmPrincipal.listaAlumnos)
-            {
-                if (!(item is null))
-                {
-                }
-
-            }
+            bsSinAula.DataSource = listaAlumnos;
+            lstSinAula.DataSource = bsSinAula;
+            
         }
-
-        private void LlenarCmbDocentes(FrmMenuPrincipal frmPrincipal)
+        private void MostrarListaDocentesSinAula(List<Docente> listaDeDocentes)
         {
-            foreach (var item in frmPrincipal.listaDocentes)
-            {
-                if (!(item is null))
-                {
-                    cmbProfesor.Items.Add(item.Nombre + " " + item.Apellido);
-                }
-                
-            }
+            
+            bsDocentesMañana.DataSource = listaDeDocentes;
+            lstDocenteSinAula.DataSource = bsDocentesMañana;
         }
+
+
 
         private void FrmAula_Load(object sender, EventArgs e)
         {
             this.BackColor = Color.Orange;
         }
 
-        private void rtbSinSala_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void cmbColor_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            CambiarColorFondo();
+            
+        }
+
+        private void CambiarColorFondo()
         {
             EColores colorFondo = (EColores)cmbColor.SelectedItem;
             switch (colorFondo)
@@ -83,16 +106,104 @@ namespace FormularioLosPichoncitos
                     btnGuardar.BackColor = Color.LightSkyBlue;
                     break;
                 default:
-                    
+
                     break;
             }
-            
         }
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             SoundPlayer simpleSound = new SoundPlayer(@"Sonido\upSound.wav");
             simpleSound.Play();
+            //corroborar que se seleccione color, turno, profesor, y que la lista de alumnos con sala no sea vacia
+
+            if (ValidarCampos())
+            {
+                //public static bool operator +(Aula aula, Alumno alumno)
+                //public Aula(EColores colorSala, ETurno turno, Docente docente)
+
+                
+                colorAula = (EColores)Enum.Parse(typeof(EColores), cmbColor.SelectedValue.ToString());
+                turnoAula = (ETurno)Enum.Parse(typeof(ETurno), cmbTurno.SelectedValue.ToString());
+
+                if (this.lstDocenteSinAula.SelectedIndex != -1)
+                {
+                    if (ValidarTurnoSeleccionado().Equals(ETurno.Mañana))
+                    {
+                        Docente docenteMañana = listaDeDocentesMañana[this.lstDocenteSinAula.SelectedIndex];
+                        listaDeDocentesMañana.Remove(docenteMañana);
+                        bsDocentesMañana.ResetBindings(true);
+                        //listaDocentesConAula.Add()
+                        //listaDeDocentesTarde.Add(docenteTarde);
+                        aula = new Aula(colorAula, turnoAula, docenteMañana);
+                    }
+                    else
+                    {
+                        Docente docenteTarde = listaDeDocentesTarde[this.lstDocenteSinAula.SelectedIndex];
+                        //listaDeDocentesTarde.Remove(docenteTarde);
+                        aula = new Aula(colorAula, turnoAula, docenteTarde);
+                    }
+                    
+                }
+                Alumno alumno = listaAlumnosSinAula[this.lstSinAula.SelectedIndex];
+                listaAlumnosSinAula.Remove(alumno);
+                if(aula + alumno);
+                
+                this.DialogResult = DialogResult.OK;
+            }
+
+
+        }
+
+
+        private bool ValidarCampos()
+        {
+
+            if (cmbColor.Text == string.Empty || cmbTurno.Text == string.Empty || listaAlumnosSinAula.Count <= 0)
+            {
+                MessageBox.Show("Seleccione un color de sala, un turno, un profesor y un alumno de la lista", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+        
+
+        public ETurno ValidarTurnoSeleccionado()
+        {
+            if (ETurno.Mañana.Equals(cmbTurno.SelectedItem))
+            {
+                
+                //MostrarListaDocentesMañana(listaDeDocentesMañana);
+                
+                return ETurno.Mañana;
+                
+            }
+            else
+            {
+                //MostrarListaDocentesTarde(listaDeDocentesTarde);
+                
+                return ETurno.Tarde;
+            }
+        }
+
+        private void cmbTurno_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            //ETurno.Mañana.Equals(cmbTurno.SelectedItem);
+            ValidarTurnoSeleccionado();
+
+        }
+
+        private void cmbTurno_SelectionChangeCommitted_1(object sender, EventArgs e)
+        {
+            if (ValidarTurnoSeleccionado() == ETurno.Mañana)
+            {
+                listaDeDocentesMañana = listaDeDocentes;
+                MostrarListaDocentesSinAula(listaDeDocentesMañana);
+            }
+            else
+            {
+                listaDeDocentesTarde = listaDeDocentes;
+                MostrarListaDocentesSinAula(listaDeDocentesTarde);
+            }
         }
     }
 }

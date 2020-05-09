@@ -4,3 +4,9 @@ C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.
 C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\Entidades\obj\Debug\Entidades.dll
 C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\Entidades\obj\Debug\Entidades.pdb
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\Entidades\bin\Debug\Entidades.dll
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\Entidades\bin\Debug\Entidades.pdb
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\Entidades\obj\Debug\Entidades.dll
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\Entidades\obj\Debug\Entidades.pdb

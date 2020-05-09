@@ -37,7 +37,7 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(base.ToString());
-            sb.AppendLine("Horas Mensuales: " + this.HorasMensuales);
+            sb.AppendLine(". Horas Mensuales: " + this.HorasMensuales);
             return sb.ToString();
         }
     }

@@ -27,7 +27,7 @@ namespace ConsolaLosPichoncitos
             //devuelve el responsable de alumno1
             responsableDeAlumno1 = alumno1;
             //creo el aula
-            Aula salitaRoja = new Aula(EColores.Rojo, ETurno.mañana, docente1);
+            Aula salitaRoja = new Aula(EColores.Rojo, ETurno.Mañana, docente1);
 
             if (salitaRoja + alumno1) ;
             if (salitaRoja + alumno1) ; //chequeo si el alumno esta o no en la salita

@@ -174,8 +174,10 @@
             this.lstAulas.FormattingEnabled = true;
             this.lstAulas.Location = new System.Drawing.Point(128, 107);
             this.lstAulas.Name = "lstAulas";
+            this.lstAulas.ScrollAlwaysVisible = true;
             this.lstAulas.Size = new System.Drawing.Size(491, 225);
             this.lstAulas.TabIndex = 1;
+            this.lstAulas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lstAulas_MouseClick);
             // 
             // lblNombre
             // 

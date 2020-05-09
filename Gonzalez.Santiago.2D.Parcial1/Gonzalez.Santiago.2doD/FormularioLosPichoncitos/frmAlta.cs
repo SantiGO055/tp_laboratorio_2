@@ -131,6 +131,7 @@ namespace FormularioLosPichoncitos
                         this.DialogResult = DialogResult.OK;
                         frmAltas.DialogResult = DialogResult.OK;
                         MessageBox.Show("Alta realizada con exito", "Se realizo el alta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
 
                     }
 
