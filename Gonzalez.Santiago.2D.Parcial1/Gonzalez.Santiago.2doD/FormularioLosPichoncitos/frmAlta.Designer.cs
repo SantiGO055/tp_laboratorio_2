@@ -46,18 +46,18 @@
             this.numValorHora = new System.Windows.Forms.NumericUpDown();
             this.grbAltaDocente = new System.Windows.Forms.GroupBox();
             this.grbPrecioCuota = new System.Windows.Forms.GroupBox();
+            this.txtLegajo = new System.Windows.Forms.TextBox();
             this.numPrecioCuota = new System.Windows.Forms.NumericUpDown();
+            this.lblLegajo = new System.Windows.Forms.Label();
             this.lblPrecioCuota = new System.Windows.Forms.Label();
             this.grbAdministrativo = new System.Windows.Forms.GroupBox();
             this.cmbCargo = new System.Windows.Forms.ComboBox();
             this.lblCargo = new System.Windows.Forms.Label();
-            this.lblLegajo = new System.Windows.Forms.Label();
-            this.txtLegajo = new System.Windows.Forms.TextBox();
             this.grbResponsable = new System.Windows.Forms.GroupBox();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.lblTelefono = new System.Windows.Forms.Label();
             this.cmbParentesco = new System.Windows.Forms.ComboBox();
             this.lblParentesco = new System.Windows.Forms.Label();
-            this.lblTelefono = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.gbxSexo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numValorHora)).BeginInit();
             this.grbAltaDocente.SuspendLayout();
@@ -250,14 +250,37 @@
             this.grbPrecioCuota.TabIndex = 23;
             this.grbPrecioCuota.TabStop = false;
             // 
+            // txtLegajo
+            // 
+            this.txtLegajo.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.txtLegajo.Location = new System.Drawing.Point(161, 50);
+            this.txtLegajo.Name = "txtLegajo";
+            this.txtLegajo.Size = new System.Drawing.Size(92, 20);
+            this.txtLegajo.TabIndex = 21;
+            // 
             // numPrecioCuota
             // 
             this.numPrecioCuota.BackColor = System.Drawing.Color.PaleGreen;
             this.numPrecioCuota.DecimalPlaces = 2;
             this.numPrecioCuota.Location = new System.Drawing.Point(161, 15);
+            this.numPrecioCuota.Maximum = new decimal(new int[] {
+            1500,
+            0,
+            0,
+            0});
             this.numPrecioCuota.Name = "numPrecioCuota";
             this.numPrecioCuota.Size = new System.Drawing.Size(92, 20);
             this.numPrecioCuota.TabIndex = 22;
+            // 
+            // lblLegajo
+            // 
+            this.lblLegajo.AutoSize = true;
+            this.lblLegajo.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLegajo.Location = new System.Drawing.Point(12, 53);
+            this.lblLegajo.Name = "lblLegajo";
+            this.lblLegajo.Size = new System.Drawing.Size(52, 14);
+            this.lblLegajo.TabIndex = 22;
+            this.lblLegajo.Text = "Legajo";
             // 
             // lblPrecioCuota
             // 
@@ -298,27 +321,9 @@
             this.lblCargo.TabIndex = 13;
             this.lblCargo.Text = "Cargo";
             // 
-            // lblLegajo
-            // 
-            this.lblLegajo.AutoSize = true;
-            this.lblLegajo.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLegajo.Location = new System.Drawing.Point(12, 53);
-            this.lblLegajo.Name = "lblLegajo";
-            this.lblLegajo.Size = new System.Drawing.Size(52, 14);
-            this.lblLegajo.TabIndex = 22;
-            this.lblLegajo.Text = "Legajo";
-            // 
-            // txtLegajo
-            // 
-            this.txtLegajo.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.txtLegajo.Location = new System.Drawing.Point(161, 50);
-            this.txtLegajo.Name = "txtLegajo";
-            this.txtLegajo.Size = new System.Drawing.Size(92, 20);
-            this.txtLegajo.TabIndex = 21;
-            // 
             // grbResponsable
             // 
-            this.grbResponsable.Controls.Add(this.textBox1);
+            this.grbResponsable.Controls.Add(this.txtTelefono);
             this.grbResponsable.Controls.Add(this.lblTelefono);
             this.grbResponsable.Controls.Add(this.cmbParentesco);
             this.grbResponsable.Controls.Add(this.lblParentesco);
@@ -327,6 +332,24 @@
             this.grbResponsable.Size = new System.Drawing.Size(222, 94);
             this.grbResponsable.TabIndex = 21;
             this.grbResponsable.TabStop = false;
+            // 
+            // txtTelefono
+            // 
+            this.txtTelefono.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.txtTelefono.Location = new System.Drawing.Point(106, 56);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(92, 20);
+            this.txtTelefono.TabIndex = 22;
+            // 
+            // lblTelefono
+            // 
+            this.lblTelefono.AutoSize = true;
+            this.lblTelefono.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelefono.Location = new System.Drawing.Point(21, 58);
+            this.lblTelefono.Name = "lblTelefono";
+            this.lblTelefono.Size = new System.Drawing.Size(64, 14);
+            this.lblTelefono.TabIndex = 15;
+            this.lblTelefono.Text = "Telefono";
             // 
             // cmbParentesco
             // 
@@ -347,25 +370,7 @@
             this.lblParentesco.TabIndex = 13;
             this.lblParentesco.Text = "Parentesco";
             // 
-            // lblTelefono
-            // 
-            this.lblTelefono.AutoSize = true;
-            this.lblTelefono.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefono.Location = new System.Drawing.Point(21, 58);
-            this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(64, 14);
-            this.lblTelefono.TabIndex = 15;
-            this.lblTelefono.Text = "Telefono";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.textBox1.Location = new System.Drawing.Point(106, 56);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(92, 20);
-            this.textBox1.TabIndex = 22;
-            // 
-            // frmAlta
+            // FrmAlta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -385,7 +390,7 @@
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.txtNombre);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "frmAlta";
+            this.Name = "FrmAlta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Alta";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAlta_FormClosing);
@@ -435,7 +440,7 @@
         private System.Windows.Forms.Label lblLegajo;
         private System.Windows.Forms.TextBox txtLegajo;
         private System.Windows.Forms.GroupBox grbResponsable;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label lblTelefono;
         private System.Windows.Forms.ComboBox cmbParentesco;
         private System.Windows.Forms.Label lblParentesco;

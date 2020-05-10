@@ -14,8 +14,8 @@ namespace FormularioLosPichoncitos
 {
     public partial class FrmAula : Form
     {
-        List<Alumno> listaAlumnosSinAula;
-        List<Alumno> listaConAula;
+        public List<Alumno> listaDeAlumnos;
+
         public List<Aula> listaDeAulas;
         public Aula aula;
         EColores colorAula;
@@ -23,54 +23,109 @@ namespace FormularioLosPichoncitos
         List<Docente> listaDeDocentesMañana;
         List<Docente> listaDeDocentesTarde;
         List<Docente> listaDeDocentes;
-        BindingSource bsSinAula = new BindingSource();
-        BindingSource bsDocentesMañana = new BindingSource();
-        BindingSource bsDocentesTarde = new BindingSource();
-        Docente docenteMañana;
-        Docente docenteTarde;
-        public FrmAula(List<Aula> listaDeAulas, List<Alumno> listaAlumnos, List<Docente> listaDocentes)
+
+        public Docente docenteMañana;
+        public Docente docenteTarde;
+        public FrmAula(FrmMenuPrincipal frmPrincipal)
         {
             InitializeComponent();
             this.cmbColor.DataSource = Enum.GetValues(typeof(EColores));
             this.cmbTurno.DataSource = Enum.GetValues(typeof(ETurno));
 
             //listaAlumnosSinAula = listaAlumnos;
-            listaAlumnosSinAula = listaAlumnos;
+            listaDeAlumnos = new List<Alumno>(frmPrincipal.listaAlumnos);
+            listaDeAulas = new List<Aula>();
 
-            listaDeDocentes = listaDocentes;
-            listaDeDocentesMañana = listaDocentes;
-                //new List<Docente>();
-            listaDeDocentesTarde = new List<Docente>();
-            MostrarListaAlumnosSinAula(listaAlumnosSinAula);
+            listaDeDocentes = frmPrincipal.listaDocentes;
+            listaDeDocentesMañana = new List<Docente>(frmPrincipal.listaDocentes);
+            listaDeDocentesTarde = new List<Docente>(frmPrincipal.listaDocentes);
+
+
+            listaDeAulas = frmPrincipal.listaDeAulas;
+
+            foreach (var item in listaDeAlumnos)
+            {
+
+                MostrarListaAlumnos(item);
+            }
+
+            //listaDeDocentesMañana = listaDocentes;
+            //new List<Docente>();
+
+
 
 
         }
 
-        public void PruebaDocente(List<Aula> listaDeAulas)
+        private void MostrarListaAlumnos(Alumno alumno)
         {
+            //bsSinAula.DataSource = listaAlumnos;
+            //lstSinAula.DataSource = bsSinAula;
+            
+                lstSinAula.Items.Add(alumno.ToString());
+            
+        }
+        private void EliminarListaAlumnos(Alumno alumno)
+        {
+            
+            lstSinAula.Items.Remove(alumno.ToString());
+            
+        }
+        private void MostrarListaDocentesSinAula(Docente docentes)
+        {
+             lstDocenteSinAula.Items.Add(docentes.ToString());
+            
+        }
+
+        public bool VerificarDocenteEnListaAula(Docente docente)
+        {
+            bool retorno = false;
             foreach (var item in listaDeAulas)
             {
-                if (item.Docente == docenteMañana && item.Turno == ETurno.Mañana)
+                
+                if (item.Docente.Equals(docente))
                 {
-                    
+                    retorno = true;
                 }
+                else
+                    retorno = false;
             }
-            
-        }
-        private void MostrarListaAlumnosSinAula(List<Alumno> listaAlumnos)
-        {
-            bsSinAula.DataSource = listaAlumnos;
-            lstSinAula.DataSource = bsSinAula;
-            
-        }
-        private void MostrarListaDocentesSinAula(List<Docente> listaDeDocentes)
-        {
-            
-            bsDocentesMañana.DataSource = listaDeDocentes;
-            lstDocenteSinAula.DataSource = bsDocentesMañana;
+            return retorno;
+            //List<Aula> listaDeAulas
+            //foreach (var aula in listaDeAulas)
+            //{
+            //    foreach (var docente in listaDeDocentes)
+            //    {
+            //        if (!(aula is null) && aula.Docente.Equals(docente))
+            //        {
+            //            return true;
+            //        }
+            //        else
+            //            return false;
+            //    }
+
+            //}
+            //return false;
+
         }
 
-
+        public bool VerificarAlumnoEnListaAula(List<Aula> listaDeAulas)
+        {
+            foreach (var aula in listaDeAulas)
+            {
+                foreach (var alumno in listaDeAlumnos)
+                {
+                    if (!(aula is null) && aula.Alumnos.Contains(alumno))
+                    {
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+                
+            }
+            return false;
+        }
 
         private void FrmAula_Load(object sender, EventArgs e)
         {
@@ -129,25 +184,28 @@ namespace FormularioLosPichoncitos
                 {
                     if (ValidarTurnoSeleccionado().Equals(ETurno.Mañana))
                     {
-                        Docente docenteMañana = listaDeDocentesMañana[this.lstDocenteSinAula.SelectedIndex];
-                        listaDeDocentesMañana.Remove(docenteMañana);
-                        bsDocentesMañana.ResetBindings(true);
-                        //listaDocentesConAula.Add()
-                        //listaDeDocentesTarde.Add(docenteTarde);
+                        Docente docenteMañana = listaDeDocentes[this.lstDocenteSinAula.SelectedIndex];
+                        
+                        //listaDeDocentesMañana.Remove(docenteMañana);
+                        
+
                         aula = new Aula(colorAula, turnoAula, docenteMañana);
                     }
                     else
                     {
-                        Docente docenteTarde = listaDeDocentesTarde[this.lstDocenteSinAula.SelectedIndex];
-                        //listaDeDocentesTarde.Remove(docenteTarde);
+                        Docente docenteTarde = listaDeDocentes[this.lstDocenteSinAula.SelectedIndex];
+                        listaDeDocentesTarde.Remove(docenteTarde);
+                        
                         aula = new Aula(colorAula, turnoAula, docenteTarde);
                     }
                     
                 }
-                Alumno alumno = listaAlumnosSinAula[this.lstSinAula.SelectedIndex];
-                listaAlumnosSinAula.Remove(alumno);
-                if(aula + alumno);
+                Alumno alumno = listaDeAlumnos[this.lstSinAula.SelectedIndex];
+                EliminarListaAlumnos(alumno);
+                //listaAlumnosSinAula.Remove(alumno);
                 
+                if(aula + alumno);
+                this.listaDeAulas.Add(aula);
                 this.DialogResult = DialogResult.OK;
             }
 
@@ -158,7 +216,7 @@ namespace FormularioLosPichoncitos
         private bool ValidarCampos()
         {
 
-            if (cmbColor.Text == string.Empty || cmbTurno.Text == string.Empty || listaAlumnosSinAula.Count <= 0)
+            if (cmbColor.Text == string.Empty || cmbTurno.Text == string.Empty || listaDeAlumnos.Count <= 0)
             {
                 MessageBox.Show("Seleccione un color de sala, un turno, un profesor y un alumno de la lista", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -194,15 +252,29 @@ namespace FormularioLosPichoncitos
 
         private void cmbTurno_SelectionChangeCommitted_1(object sender, EventArgs e)
         {
+            lstDocenteSinAula.Items.Clear();
             if (ValidarTurnoSeleccionado() == ETurno.Mañana)
             {
-                listaDeDocentesMañana = listaDeDocentes;
-                MostrarListaDocentesSinAula(listaDeDocentesMañana);
+
+                foreach (var item in listaDeDocentes)
+                {
+                    if (!(VerificarDocenteEnListaAula(item)))
+                    {
+                        MostrarListaDocentesSinAula(item);
+                    }
+                    
+                }
+                
             }
             else
             {
-                listaDeDocentesTarde = listaDeDocentes;
-                MostrarListaDocentesSinAula(listaDeDocentesTarde);
+                foreach (var item in listaDeDocentes)
+                {
+                    if (!(VerificarDocenteEnListaAula(item)))
+                    {
+                        MostrarListaDocentesSinAula(item);
+                    }
+                }
             }
         }
     }

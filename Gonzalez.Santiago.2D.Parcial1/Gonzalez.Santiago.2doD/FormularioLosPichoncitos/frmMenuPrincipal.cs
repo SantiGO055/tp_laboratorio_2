@@ -20,11 +20,12 @@ namespace FormularioLosPichoncitos
         private List<Administrativo> listaAdministrativos;
         public List<Alumno> listaAlumnos;
 
+
         private List<Responsable> listaResponsables;
         private Docente docente;
         private Administrativo administrativo;
         private Responsable responsable;
-        private List<Aula> listaDeAulas;
+        public List<Aula> listaDeAulas;
         BindingSource bsAulas = new BindingSource();
 
         public FrmMenuPrincipal()
@@ -35,6 +36,7 @@ namespace FormularioLosPichoncitos
             listaDocentes = new List<Docente>();
             listaAdministrativos = new List<Administrativo>();
             listaAlumnos = new List<Alumno>();
+
             listaResponsables = new List<Responsable>();
             listaDeAulas = new List<Aula>();
         }
@@ -53,38 +55,29 @@ namespace FormularioLosPichoncitos
 
         private void altaDeDocenteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             FrmAlta altaDocente = new FrmAlta("docente");
-
-            
-
-
-
             if (altaDocente.ShowDialog() == DialogResult.OK)
             {
-
-                
                 this.listaDocentes.Add(altaDocente.docente);
             }
-
-
-
-
         }
 
         private void crearAutomaticamenteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DateTime dt = new DateTime();
+            DateTime dtIngresoMañana = new DateTime(2020, 5, 11, 8, 00, 00);
+            DateTime dtSalidaMañana = new DateTime(2020, 5, 11, 13, 00, 00);
+            DateTime dtIngresoTarde = new DateTime(2020, 5, 11, 13, 00, 00);
+            DateTime dtSalidaTarde = new DateTime(2020, 5, 11, 17, 00, 00);
 
-            docente = new Docente("Pepe", "Gonzalez", 123654872, false, dt, dt, 200);
+            docente = new Docente("Pepe", "Gonzalez", 123654872, false, dtIngresoMañana, dtSalidaMañana, 200);
             this.listaDocentes.Add(docente);
-            docente = new Docente("Maria", "Rodriguez", 123652134, true, dt, dt, 250);
+            docente = new Docente("Maria", "Rodriguez", 123652134, true, dtIngresoMañana, dtSalidaMañana, 250);
             this.listaDocentes.Add(docente);
-            docente = new Docente("Juan", "Perez", 23658749, false, dt, dt, 320);
+            docente = new Docente("Juan", "Perez", 23658749, false, dtIngresoTarde, dtSalidaTarde, 320);
             this.listaDocentes.Add(docente);
-            docente = new Docente("Rodrigo", "De la Serna", 46875123, false, dt, dt, 300);
+            docente = new Docente("Rodrigo", "De la Serna", 46875123, false, dtIngresoTarde, dtSalidaTarde, 300);
             this.listaDocentes.Add(docente);
-            docente = new Docente("Juan", "Gomez", 24879321, false, dt, dt, 200);
+            docente = new Docente("Juan", "Gomez", 24879321, false, dtIngresoTarde, dtSalidaTarde, 200);
             this.listaDocentes.Add(docente);
 
         }
@@ -139,11 +132,14 @@ namespace FormularioLosPichoncitos
         private void altaDeAulaToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            FrmAula altaAula = new FrmAula(listaDeAulas,listaAlumnos,listaDocentes);
+            FrmAula altaAula = new FrmAula(this);
+
             if (altaAula.ShowDialog() == DialogResult.OK)
             {
-                this.listaDeAulas.Add(altaAula.aula);
+                //this.listaDeAulas.Add(altaAula.aula);
                 MostrarListaAulas();
+
+
             }
         }
 
@@ -158,8 +154,8 @@ namespace FormularioLosPichoncitos
         private void crearToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
-            responsable = new Responsable("Pepe", "Gonzalez", 123654872, false, EParentesco.Padre, "11234568");
 
+            this.listaResponsables.Add(new Responsable("Pepe", "Gonzalez", 123654872, false, EParentesco.Padre, "11234568"));
             this.listaAlumnos.Add(new Alumno("Wilie", "Mensler", 569142265, false, 3395, responsable, 753));
             this.listaAlumnos.Add(new Alumno("Joshua", "Leasor", 873887298, true, 9289, responsable, 357));
             this.listaAlumnos.Add(new Alumno("Jacintha", "Findlow", 907386156, true, 5044, responsable, 789));
@@ -220,6 +216,38 @@ namespace FormularioLosPichoncitos
                 Aula a = listaDeAulas[lstAulas.SelectedIndex];
                 MessageBox.Show(a.ToString());
             }
+        }
+
+        private void informacionDePadresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmReportes frmReporte = new FrmReportes(listaResponsables);
+            frmReporte.Text = "Informacion de padres";
+            frmReporte.RealizarReporte("responsables");
+            frmReporte.ShowDialog();
+        }
+
+        private void sueldoDocenteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmReportes frmReporte = new FrmReportes(listaDocentes);
+            frmReporte.Text = "Sueldo de docentes";
+            frmReporte.RealizarReporte("docentes");
+            frmReporte.ShowDialog();
+        }
+
+        private void sueldoNoDocenteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmReportes frmReporte = new FrmReportes(listaAdministrativos);
+            frmReporte.Text = "Sueldo de administrativos";
+            frmReporte.RealizarReporte("administrativos");
+            frmReporte.ShowDialog();
+        }
+
+        private void recaudacionPorAulaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmReportes frmReporte = new FrmReportes(listaDeAulas, listaAlumnos);
+            frmReporte.Text = "Recaudacion por aula";
+            frmReporte.RealizarReporte("aulas");
+            frmReporte.ShowDialog();
         }
     }
 }

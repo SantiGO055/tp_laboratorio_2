@@ -100,6 +100,10 @@ namespace FormularioLosPichoncitos
                     DateTime dtSalida = new DateTime();
                     dtIngreso = dtpHoraIngreso.Value;
                     dtSalida = dtpHoraSalida.Value;
+                    dtpHoraIngreso.TabIndex = 6;
+                    dtpHoraSalida.TabIndex = 7;
+                    numValorHora.TabIndex = 8;
+                    btnAlta.TabIndex = 9;
 
                     docente = new Docente(txtNombre.Text, txtApellido.Text, ValidarDni(), ValidarFemenino(), dtIngreso, dtSalida, (float)numValorHora.Value);
 
@@ -110,6 +114,8 @@ namespace FormularioLosPichoncitos
 
                 case "administrativo":
                     ECargo cargo;
+                    cmbCargo.TabIndex = 6;
+                    btnAlta.TabIndex = 7;
                     cargo = (ECargo)Enum.Parse(typeof(ECargo), cmbCargo.SelectedValue.ToString());
                     administrativo = new Administrativo(txtNombre.Text, txtApellido.Text, ValidarDni(), ValidarFemenino(), cargo);
 
@@ -119,6 +125,10 @@ namespace FormularioLosPichoncitos
                     break;
                 case "alumno":
                     this.Text = "Alta de Alumno";
+                    numPrecioCuota.TabIndex = 6;
+                    txtLegajo.TabIndex = 7;
+                    btnAlta.TabIndex = 8;
+
                     alumno = new Alumno(txtNombre.Text, txtApellido.Text, ValidarDni(), ValidarFemenino(), (float)numPrecioCuota.Value, responsable, ValidarLegajo());
 
 
@@ -185,6 +195,9 @@ namespace FormularioLosPichoncitos
             else if (this.tipo == "responsable")
             {
                 this.Text = "Alta de Responsable";
+                cmbParentesco.TabIndex = 6;
+                txtTelefono.TabIndex = 7;
+                btnAlta.TabIndex = 9;
                 grbAltaDocente.Visible = false;
                 grbPrecioCuota.Visible = false;
                 grbAdministrativo.Visible = false;
