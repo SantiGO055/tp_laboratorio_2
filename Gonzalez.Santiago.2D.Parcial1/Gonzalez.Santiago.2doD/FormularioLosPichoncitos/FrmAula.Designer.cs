@@ -37,8 +37,13 @@
             this.grbDocenteSinAula = new System.Windows.Forms.GroupBox();
             this.lstDocenteSinAula = new System.Windows.Forms.ListBox();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.grbConAula = new System.Windows.Forms.GroupBox();
+            this.lstAlumnosConAula = new System.Windows.Forms.ListBox();
+            this.btnPasarAAula = new System.Windows.Forms.Button();
+            this.btnDevolverASinAula = new System.Windows.Forms.Button();
             this.grpSinAula.SuspendLayout();
             this.grbDocenteSinAula.SuspendLayout();
+            this.grbConAula.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblNombre
@@ -106,7 +111,7 @@
             // grbDocenteSinAula
             // 
             this.grbDocenteSinAula.Controls.Add(this.lstDocenteSinAula);
-            this.grbDocenteSinAula.Location = new System.Drawing.Point(391, 68);
+            this.grbDocenteSinAula.Location = new System.Drawing.Point(806, 68);
             this.grbDocenteSinAula.Name = "grbDocenteSinAula";
             this.grbDocenteSinAula.Size = new System.Drawing.Size(319, 344);
             this.grbDocenteSinAula.TabIndex = 21;
@@ -128,19 +133,63 @@
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(391, 430);
+            this.btnGuardar.Location = new System.Drawing.Point(382, 440);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(319, 27);
+            this.btnGuardar.Size = new System.Drawing.Size(317, 27);
             this.btnGuardar.TabIndex = 22;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // grbConAula
+            // 
+            this.grbConAula.Controls.Add(this.lstAlumnosConAula);
+            this.grbConAula.Location = new System.Drawing.Point(414, 68);
+            this.grbConAula.Name = "grbConAula";
+            this.grbConAula.Size = new System.Drawing.Size(317, 345);
+            this.grbConAula.TabIndex = 23;
+            this.grbConAula.TabStop = false;
+            this.grbConAula.Text = "Alumnos con aula";
+            // 
+            // lstAlumnosConAula
+            // 
+            this.lstAlumnosConAula.AllowDrop = true;
+            this.lstAlumnosConAula.FormattingEnabled = true;
+            this.lstAlumnosConAula.HorizontalScrollbar = true;
+            this.lstAlumnosConAula.Location = new System.Drawing.Point(16, 35);
+            this.lstAlumnosConAula.Name = "lstAlumnosConAula";
+            this.lstAlumnosConAula.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lstAlumnosConAula.ScrollAlwaysVisible = true;
+            this.lstAlumnosConAula.Size = new System.Drawing.Size(285, 290);
+            this.lstAlumnosConAula.TabIndex = 2;
+            // 
+            // btnPasarAAula
+            // 
+            this.btnPasarAAula.Location = new System.Drawing.Point(349, 110);
+            this.btnPasarAAula.Name = "btnPasarAAula";
+            this.btnPasarAAula.Size = new System.Drawing.Size(53, 30);
+            this.btnPasarAAula.TabIndex = 24;
+            this.btnPasarAAula.Text = "----->";
+            this.btnPasarAAula.UseVisualStyleBackColor = true;
+            this.btnPasarAAula.Click += new System.EventHandler(this.btnPasarAAula_Click);
+            // 
+            // btnDevolverASinAula
+            // 
+            this.btnDevolverASinAula.Location = new System.Drawing.Point(349, 156);
+            this.btnDevolverASinAula.Name = "btnDevolverASinAula";
+            this.btnDevolverASinAula.Size = new System.Drawing.Size(53, 30);
+            this.btnDevolverASinAula.TabIndex = 25;
+            this.btnDevolverASinAula.Text = "<-----";
+            this.btnDevolverASinAula.UseVisualStyleBackColor = true;
+            // 
             // FrmAula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(748, 479);
+            this.ClientSize = new System.Drawing.Size(1158, 479);
+            this.Controls.Add(this.btnDevolverASinAula);
+            this.Controls.Add(this.btnPasarAAula);
+            this.Controls.Add(this.grbConAula);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.grbDocenteSinAula);
             this.Controls.Add(this.grpSinAula);
@@ -153,6 +202,7 @@
             this.Load += new System.EventHandler(this.FrmAula_Load);
             this.grpSinAula.ResumeLayout(false);
             this.grbDocenteSinAula.ResumeLayout(false);
+            this.grbConAula.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,5 +219,9 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.ListBox lstSinAula;
         private System.Windows.Forms.ListBox lstDocenteSinAula;
+        private System.Windows.Forms.GroupBox grbConAula;
+        private System.Windows.Forms.ListBox lstAlumnosConAula;
+        private System.Windows.Forms.Button btnPasarAAula;
+        private System.Windows.Forms.Button btnDevolverASinAula;
     }
 }

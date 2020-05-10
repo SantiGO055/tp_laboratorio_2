@@ -20,12 +20,12 @@ namespace FormularioLosPichoncitos
         public Aula aula;
         EColores colorAula;
         ETurno turnoAula;
-        List<Docente> listaDeDocentesMañana;
-        List<Docente> listaDeDocentesTarde;
         List<Docente> listaDeDocentes;
-
         public Docente docenteMañana;
         public Docente docenteTarde;
+        DateTime horaMañana = new DateTime(2020, 5, 11, 12, 00, 00);
+        DateTime horaTarde = new DateTime(2020, 5, 11, 13, 00, 00);
+
         public FrmAula(FrmMenuPrincipal frmPrincipal)
         {
             InitializeComponent();
@@ -34,14 +34,13 @@ namespace FormularioLosPichoncitos
 
             //listaAlumnosSinAula = listaAlumnos;
             listaDeAlumnos = new List<Alumno>(frmPrincipal.listaAlumnos);
-            listaDeAulas = new List<Aula>();
-
-            listaDeDocentes = frmPrincipal.listaDocentes;
-            listaDeDocentesMañana = new List<Docente>(frmPrincipal.listaDocentes);
-            listaDeDocentesTarde = new List<Docente>(frmPrincipal.listaDocentes);
-
-
             listaDeAulas = frmPrincipal.listaDeAulas;
+            
+            listaDeDocentes = frmPrincipal.listaDocentes;
+
+
+            //listaDeAulasMañana = frmPrincipal.listaDeAulas;
+            //listaDeAulasTarde = frmPrincipal.listaDeAulas;
 
             foreach (var item in listaDeAlumnos)
             {
@@ -71,26 +70,24 @@ namespace FormularioLosPichoncitos
             lstSinAula.Items.Remove(alumno.ToString());
             
         }
-        private void MostrarListaDocentesSinAula(Docente docentes)
-        {
-             lstDocenteSinAula.Items.Add(docentes.ToString());
-            
-        }
+        
+
 
         public bool VerificarDocenteEnListaAula(Docente docente)
         {
-            bool retorno = false;
             foreach (var item in listaDeAulas)
-            {
-                
-                if (item.Docente.Equals(docente))
                 {
-                    retorno = true;
+
+                    if (item.Docente.Equals(docente))
+                    {
+                        return true;
+                    }
+                    else
+                        return false;
                 }
-                else
-                    retorno = false;
-            }
-            return retorno;
+                return false;
+            
+            
             //List<Aula> listaDeAulas
             //foreach (var aula in listaDeAulas)
             //{
@@ -179,7 +176,8 @@ namespace FormularioLosPichoncitos
                 
                 colorAula = (EColores)Enum.Parse(typeof(EColores), cmbColor.SelectedValue.ToString());
                 turnoAula = (ETurno)Enum.Parse(typeof(ETurno), cmbTurno.SelectedValue.ToString());
-
+                Alumno alumno = listaDeAlumnos[this.lstSinAula.SelectedIndex];
+                EliminarListaAlumnos(alumno);
                 if (this.lstDocenteSinAula.SelectedIndex != -1)
                 {
                     if (ValidarTurnoSeleccionado().Equals(ETurno.Mañana))
@@ -190,22 +188,28 @@ namespace FormularioLosPichoncitos
                         
 
                         aula = new Aula(colorAula, turnoAula, docenteMañana);
+                        this.listaDeAulas.Add(aula);
                     }
                     else
                     {
                         Docente docenteTarde = listaDeDocentes[this.lstDocenteSinAula.SelectedIndex];
-                        listaDeDocentesTarde.Remove(docenteTarde);
+                        //listaDeDocentesTarde.Remove(docenteTarde);
                         
                         aula = new Aula(colorAula, turnoAula, docenteTarde);
+                        if (aula + alumno) ;
+                        this.listaDeAulas.Add(aula);
+
                     }
                     
+
+
                 }
-                Alumno alumno = listaDeAlumnos[this.lstSinAula.SelectedIndex];
-                EliminarListaAlumnos(alumno);
+                
+                
                 //listaAlumnosSinAula.Remove(alumno);
                 
-                if(aula + alumno);
-                this.listaDeAulas.Add(aula);
+
+                
                 this.DialogResult = DialogResult.OK;
             }
 
@@ -249,22 +253,37 @@ namespace FormularioLosPichoncitos
             ValidarTurnoSeleccionado();
 
         }
-
+        private bool MostrarListaDocentesMañana(Docente docentes)
+        {
+            if (docentes.HoraEntrada.Hour <= horaMañana.Hour)
+            {
+                lstDocenteSinAula.Items.Add(docentes.ToString());
+                return true;
+            }
+            return false;
+        }
+        private bool MostrarListaDocentesTarde(Docente docentes)
+        {
+            if (docentes.HoraEntrada.Hour >= horaTarde.Hour)
+            {
+                lstDocenteSinAula.Items.Add(docentes.ToString());
+                return true;
+            }
+            return false;
+        }
         private void cmbTurno_SelectionChangeCommitted_1(object sender, EventArgs e)
         {
             lstDocenteSinAula.Items.Clear();
+
             if (ValidarTurnoSeleccionado() == ETurno.Mañana)
             {
-
                 foreach (var item in listaDeDocentes)
                 {
                     if (!(VerificarDocenteEnListaAula(item)))
                     {
-                        MostrarListaDocentesSinAula(item);
+                        if(MostrarListaDocentesMañana(item));
                     }
-                    
                 }
-                
             }
             else
             {
@@ -272,10 +291,17 @@ namespace FormularioLosPichoncitos
                 {
                     if (!(VerificarDocenteEnListaAula(item)))
                     {
-                        MostrarListaDocentesSinAula(item);
+                        if(MostrarListaDocentesTarde(item));
                     }
                 }
             }
+            
+        }
+
+        private void btnPasarAAula_Click(object sender, EventArgs e)
+        {
+            //listaDeAlumnos[this.lstSinAula.SelectedIndex];
+
         }
     }
 }

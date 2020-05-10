@@ -36,9 +36,9 @@ namespace FormularioLosPichoncitos
         {
             this.listaAdministrativos = listaAdministrativos;
         }
-        public FrmReportes(List<Aula> listaDeAulas, List<Alumno> listaDeAlumnos) : this()
+        public FrmReportes(List<Aula> listaDeAulasMañana, List<Alumno> listaDeAlumnos) : this()
         {
-            this.listaDeAulas = listaDeAulas;
+            this.listaDeAulas = listaDeAulasMañana;
             this.listaDeAlumnos = listaDeAlumnos;
         }
         private void FrmReportes_Load(object sender, EventArgs e)
