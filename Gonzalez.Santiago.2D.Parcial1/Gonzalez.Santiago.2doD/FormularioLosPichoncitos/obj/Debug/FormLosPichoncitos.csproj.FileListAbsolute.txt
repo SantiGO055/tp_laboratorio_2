@@ -30,3 +30,9 @@ C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\G
 C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.pdb
 C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.FrmReportes.resources
 C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.FrmLogueo.resources
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\bin\Debug\Interop.WMPLib.dll
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\Interop.WMPLib.dll
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormLosPichoncitos.csproj.ResolveComReference.cache
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.FrmVideos.resources

@@ -254,5 +254,11 @@ namespace FormularioLosPichoncitos
             frmReporte.RealizarReporte("aulasTotal");
             frmReporte.ShowDialog();
         }
+
+        private void video1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmVideos frmVideos = new FrmVideos();
+            frmVideos.ShowDialog();
+        }
     }
 }

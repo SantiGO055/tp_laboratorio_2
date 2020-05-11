@@ -199,8 +199,9 @@
             // video1ToolStripMenuItem
             // 
             this.video1ToolStripMenuItem.Name = "video1ToolStripMenuItem";
-            this.video1ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.video1ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.video1ToolStripMenuItem.Text = "Video1";
+            this.video1ToolStripMenuItem.Click += new System.EventHandler(this.video1ToolStripMenuItem_Click);
             // 
             // video2ToolStripMenuItem
             // 
