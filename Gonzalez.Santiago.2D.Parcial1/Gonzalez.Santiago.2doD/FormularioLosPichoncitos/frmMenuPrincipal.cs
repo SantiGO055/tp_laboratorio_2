@@ -26,14 +26,11 @@ namespace FormularioLosPichoncitos
         private Administrativo administrativo;
         private Responsable responsable;
         public List<Aula> listaDeAulas;
-        BindingSource bsAulas = new BindingSource();
 
-        public bool primeraVezAula = true;
+        //ListView listView = new ListView();
         public FrmMenuPrincipal()
         {
             InitializeComponent();
-            //this.IsMdiContainer = true;
-            //this.BackColor = Color.FromArgb(255, 232, 232);
             listaDocentes = new List<Docente>();
             listaAdministrativos = new List<Administrativo>();
             listaAlumnos = new List<Alumno>();
@@ -190,7 +187,7 @@ namespace FormularioLosPichoncitos
 
             if (altaAula.ShowDialog() == DialogResult.OK)
             {
-
+                
                 MostrarListaAulas();
 
             }
@@ -198,9 +195,11 @@ namespace FormularioLosPichoncitos
 
         private void MostrarListaAulas()
         {
+            
             lstAulas.Items.Clear();
             foreach (var item in listaDeAulas)
             {
+                lstvAulas.Items.Add(item.ToString());
                 lstAulas.Items.Add(item);
             }
         }

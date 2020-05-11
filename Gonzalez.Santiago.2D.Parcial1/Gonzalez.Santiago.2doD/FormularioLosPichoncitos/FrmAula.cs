@@ -41,7 +41,6 @@ namespace FormularioLosPichoncitos
             listaDeAulas = frmPrincipal.listaDeAulas;
 
             listaDeDocentes = frmPrincipal.listaDocentes;
-            primeraVez = frmPrincipal.primeraVezAula;
 
             //listaDeAulasMañana = frmPrincipal.listaDeAulas;
             //listaDeAulasTarde = frmPrincipal.listaDeAulas;
@@ -246,18 +245,19 @@ namespace FormularioLosPichoncitos
             }
             return false;
         }
-
+        /// <summary>
+        /// Valido y muestro si el docente no esta en la lista
+        /// </summary>
+        /// <param name="docente"></param>
         private void ValidarDocenteMañanaEnAula(Docente docente)
         {
             foreach (var itemAulas in listaDeAulas)
             {
-                if (!(itemAulas.Docente.Equals(docente)) && (ETurno)cmbTurno.SelectedItem == ETurno.Mañana)
+                if (!(itemAulas.Docente.Equals(docente)))
                 {
                     MostrarListaDocentesMañana(docente);
                 }
-
             }
-
         }
         private void ValidarDocenteTardeEnAula(Docente docente)
         {
@@ -290,6 +290,7 @@ namespace FormularioLosPichoncitos
                         {
                             MostrarListaDocentesMañana(itemDocentes);
                         }
+                        
                         else
                         {
                             ValidarDocenteMañanaEnAula(itemDocentes);

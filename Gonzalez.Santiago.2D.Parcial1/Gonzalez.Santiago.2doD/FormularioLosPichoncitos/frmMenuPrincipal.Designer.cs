@@ -220,7 +220,7 @@
             this.lstAulas.Location = new System.Drawing.Point(12, 52);
             this.lstAulas.Name = "lstAulas";
             this.lstAulas.ScrollAlwaysVisible = true;
-            this.lstAulas.Size = new System.Drawing.Size(776, 381);
+            this.lstAulas.Size = new System.Drawing.Size(765, 368);
             this.lstAulas.TabIndex = 1;
             this.lstAulas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lstAulas_MouseClick);
             // 
