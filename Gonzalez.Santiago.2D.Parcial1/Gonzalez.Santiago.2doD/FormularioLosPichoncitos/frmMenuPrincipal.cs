@@ -28,6 +28,7 @@ namespace FormularioLosPichoncitos
         public List<Aula> listaDeAulas;
         BindingSource bsAulas = new BindingSource();
 
+        public bool primeraVezAula = true;
         public FrmMenuPrincipal()
         {
             InitializeComponent();
@@ -62,7 +63,7 @@ namespace FormularioLosPichoncitos
             }
         }
 
-        
+
 
         private void altaDeNoDocenteToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -192,30 +193,19 @@ namespace FormularioLosPichoncitos
 
                 MostrarListaAulas();
 
-
             }
         }
 
         private void MostrarListaAulas()
         {
-            //bsAulas.Add(listaDeAulas);
-            bsAulas.DataSource = listaDeAulas;
-            lstAulas.DataSource = bsAulas;
-            //foreach (var item in listaDeAulas)
-            //{
-            //    lstAulas.Items.Add("Color: " + item.ColorSala + " Docente: " + item.Docente + " Turno: " + item.Turno);
-            //}
-            //bsAulasMañana.DataSource = listaDeAulasMañana;
-            //bsAulasTarde.DataSource = listaDeAulasTarde;
-            //lstAulas.DataSource = bsAulasMañana;
-            //lstAulas.DataSource = bsAulasTarde;
-
-            //bsAulasMañana.ResetBindings(true);
-            //bsAulasTarde.ResetBindings(true);
-
+            lstAulas.Items.Clear();
+            foreach (var item in listaDeAulas)
+            {
+                lstAulas.Items.Add(item);
+            }
         }
 
-        
+
 
         private void lstAulas_MouseClick(object sender, MouseEventArgs e)
         {
