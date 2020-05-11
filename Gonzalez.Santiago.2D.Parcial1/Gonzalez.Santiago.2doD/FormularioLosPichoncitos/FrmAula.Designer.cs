@@ -41,6 +41,8 @@
             this.lstAlumnosConAula = new System.Windows.Forms.ListBox();
             this.btnPasarAAula = new System.Windows.Forms.Button();
             this.btnDevolverASinAula = new System.Windows.Forms.Button();
+            this.cmbDocente = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.grpSinAula.SuspendLayout();
             this.grbDocenteSinAula.SuspendLayout();
             this.grbConAula.SuspendLayout();
@@ -133,7 +135,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(382, 440);
+            this.btnGuardar.Location = new System.Drawing.Point(414, 440);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(317, 27);
             this.btnGuardar.TabIndex = 22;
@@ -183,11 +185,32 @@
             this.btnDevolverASinAula.UseVisualStyleBackColor = true;
             this.btnDevolverASinAula.Click += new System.EventHandler(this.btnDevolverASinAula_Click);
             // 
+            // cmbDocente
+            // 
+            this.cmbDocente.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.cmbDocente.FormattingEnabled = true;
+            this.cmbDocente.Location = new System.Drawing.Point(949, 22);
+            this.cmbDocente.Name = "cmbDocente";
+            this.cmbDocente.Size = new System.Drawing.Size(92, 21);
+            this.cmbDocente.TabIndex = 26;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(857, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 14);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "Docente";
+            // 
             // FrmAula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1158, 479);
+            this.ClientSize = new System.Drawing.Size(1153, 479);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbDocente);
             this.Controls.Add(this.btnDevolverASinAula);
             this.Controls.Add(this.btnPasarAAula);
             this.Controls.Add(this.grbConAula);
@@ -224,5 +247,7 @@
         private System.Windows.Forms.ListBox lstAlumnosConAula;
         private System.Windows.Forms.Button btnPasarAAula;
         private System.Windows.Forms.Button btnDevolverASinAula;
+        private System.Windows.Forms.ComboBox cmbDocente;
+        private System.Windows.Forms.Label label2;
     }
 }

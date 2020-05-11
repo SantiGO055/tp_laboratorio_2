@@ -61,9 +61,12 @@ namespace FormularioLosPichoncitos
 
         private void MostrarListaAlumnosSinAula()
         {
-
-            bsSinAula.DataSource = listaDeAlumnos;
-            lstAlumnosSinAula.DataSource = bsSinAula;
+            foreach (var item in listaDeAlumnos)
+            {
+                lstAlumnosSinAula.Items.Add(item);
+            }
+            //bsSinAula.DataSource = listaDeAlumnos;
+            //lstAlumnosSinAula.DataSource = bsSinAula;
 
 
         }
@@ -324,14 +327,16 @@ namespace FormularioLosPichoncitos
                 {
                     if (item == lstAlumnosSinAula.SelectedItem)
                     {
-                        bsSinAula.Remove(item);
-                        lstAlumnosSinAula.DataSource = bsSinAula;
+                        lstAlumnosSinAula.Items.Remove(item);
+                        //bsSinAula.Remove(item);
+                        //lstAlumnosSinAula.DataSource = bsSinAula;
+                        lstAlumnosConAula.Items.Add(item);
                         break;
                     }
                 }
-                bsConAula.Add(alumno);
-
-                lstAlumnosConAula.DataSource = bsConAula;
+                //bsConAula.Add(alumno);
+                
+                //lstAlumnosConAula.DataSource = bsConAula;
             }
 
 
@@ -352,16 +357,18 @@ namespace FormularioLosPichoncitos
                 {
                     if (item == lstAlumnosConAula.SelectedItem)
                     {
-                        bsConAula.Remove(item);
-                        lstAlumnosConAula.DataSource = bsConAula;
+                        lstAlumnosSinAula.Items.Add(item);
+                        lstAlumnosConAula.Items.Remove(item);
+                        //bsConAula.Remove(item);
+                        //lstAlumnosConAula.DataSource = bsConAula;
                         break;
                     }
                 }
-                bsSinAula.Add(alumno);
+                //bsSinAula.Add(alumno);
 
 
                 //lstAlumnosSinAula.DataSource = bsSinAula;
-                lstAlumnosSinAula.DataSource = bsSinAula;
+                //lstAlumnosSinAula.DataSource = bsSinAula;
 
                 //bsConAula.DataSource = null;
                 //bsConAula.DataSource = alumno;
