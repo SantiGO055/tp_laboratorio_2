@@ -46,8 +46,6 @@
             this.recaudacionTotalDelJardinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.másToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.video1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.video2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.video3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lstAulas = new System.Windows.Forms.ListBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
@@ -82,7 +80,7 @@
             this.altaDeDocenteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.crearAutomaticamenteToolStripMenuItem});
             this.altaDeDocenteToolStripMenuItem.Name = "altaDeDocenteToolStripMenuItem";
-            this.altaDeDocenteToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.altaDeDocenteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.altaDeDocenteToolStripMenuItem.Text = "Alta de docente";
             this.altaDeDocenteToolStripMenuItem.Click += new System.EventHandler(this.altaDeDocenteToolStripMenuItem_Click);
             // 
@@ -98,7 +96,7 @@
             this.altaDeNoDocenteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.crearAutomaticamenteToolStripMenuItem1});
             this.altaDeNoDocenteToolStripMenuItem.Name = "altaDeNoDocenteToolStripMenuItem";
-            this.altaDeNoDocenteToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.altaDeNoDocenteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.altaDeNoDocenteToolStripMenuItem.Text = "Alta de no docente";
             this.altaDeNoDocenteToolStripMenuItem.Click += new System.EventHandler(this.altaDeNoDocenteToolStripMenuItem_Click);
             // 
@@ -114,7 +112,7 @@
             this.altaAlumnoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.crearToolStripMenuItem});
             this.altaAlumnoToolStripMenuItem.Name = "altaAlumnoToolStripMenuItem";
-            this.altaAlumnoToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.altaAlumnoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.altaAlumnoToolStripMenuItem.Text = "Alta alumno";
             this.altaAlumnoToolStripMenuItem.Click += new System.EventHandler(this.altaAlumnoToolStripMenuItem_Click);
             // 
@@ -128,14 +126,14 @@
             // altaDeAulaToolStripMenuItem
             // 
             this.altaDeAulaToolStripMenuItem.Name = "altaDeAulaToolStripMenuItem";
-            this.altaDeAulaToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.altaDeAulaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.altaDeAulaToolStripMenuItem.Text = "Alta de aula";
             this.altaDeAulaToolStripMenuItem.Click += new System.EventHandler(this.altaDeAulaToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click_1);
             // 
@@ -189,9 +187,7 @@
             // másToolStripMenuItem
             // 
             this.másToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.video1ToolStripMenuItem,
-            this.video2ToolStripMenuItem,
-            this.video3ToolStripMenuItem});
+            this.video1ToolStripMenuItem});
             this.másToolStripMenuItem.Name = "másToolStripMenuItem";
             this.másToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
             this.másToolStripMenuItem.Text = "Más";
@@ -200,20 +196,8 @@
             // 
             this.video1ToolStripMenuItem.Name = "video1ToolStripMenuItem";
             this.video1ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.video1ToolStripMenuItem.Text = "Video1";
+            this.video1ToolStripMenuItem.Text = "Video";
             this.video1ToolStripMenuItem.Click += new System.EventHandler(this.video1ToolStripMenuItem_Click);
-            // 
-            // video2ToolStripMenuItem
-            // 
-            this.video2ToolStripMenuItem.Name = "video2ToolStripMenuItem";
-            this.video2ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
-            this.video2ToolStripMenuItem.Text = "Video2";
-            // 
-            // video3ToolStripMenuItem
-            // 
-            this.video3ToolStripMenuItem.Name = "video3ToolStripMenuItem";
-            this.video3ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
-            this.video3ToolStripMenuItem.Text = "Video3";
             // 
             // lstAulas
             // 
@@ -247,7 +231,6 @@
             this.Controls.Add(this.menuStrip1);
             this.Name = "FrmMenuPrincipal";
             this.Text = "Menu Principal";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -268,8 +251,6 @@
         private System.Windows.Forms.ToolStripMenuItem másToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearAutomaticamenteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem video1ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem video2ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem video3ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearAutomaticamenteToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem crearToolStripMenuItem;
         private System.Windows.Forms.ListBox lstAulas;

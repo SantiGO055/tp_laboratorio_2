@@ -39,11 +39,6 @@ namespace FormularioLosPichoncitos
             listaDeAulas = new List<Aula>();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void salirToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
@@ -171,7 +166,6 @@ namespace FormularioLosPichoncitos
 
         private void altaAlumnoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //string nombre, string apellido, int dni, bool femenino, float precioCuota, Responsable responsable,int legajo
             FrmAlta frmAltas = new FrmAlta("alumno");
             if (frmAltas.ShowDialog() == DialogResult.OK)
             {

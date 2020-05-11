@@ -36,3 +36,11 @@ C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\G
 C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\AxInterop.WMPLib.dll
 C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormLosPichoncitos.csproj.ResolveComReference.cache
 C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.FrmVideos.resources
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\bin\Debug\Interop.ShockwaveFlashObjects.dll
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\bin\Debug\AxInterop.ShockwaveFlashObjects.dll
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\Interop.ShockwaveFlashObjects.dll
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\AxInterop.ShockwaveFlashObjects.dll
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\bin\Debug\Interop.SHDocVw.dll
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\bin\Debug\AxInterop.SHDocVw.dll
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\Interop.SHDocVw.dll
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\AxInterop.SHDocVw.dll
