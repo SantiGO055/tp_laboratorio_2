@@ -246,5 +246,13 @@ namespace FormularioLosPichoncitos
             frmReporte.RealizarReporte("aulas");
             frmReporte.ShowDialog();
         }
+
+        private void recaudacionTotalDelJardinToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmReportes frmReporte = new FrmReportes(listaDeAulas, listaAlumnos);
+            frmReporte.Text = "Recaudacion total";
+            frmReporte.RealizarReporte("aulasTotal");
+            frmReporte.ShowDialog();
+        }
     }
 }

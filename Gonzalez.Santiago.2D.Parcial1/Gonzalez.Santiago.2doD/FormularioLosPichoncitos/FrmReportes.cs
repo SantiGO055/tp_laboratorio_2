@@ -18,6 +18,7 @@ namespace FormularioLosPichoncitos
         List<Aula> listaDeAulas;
         List<Alumno> listaDeAlumnos;
         float precioCuota;
+        float precioTotal;
         public FrmReportes()
         {
             InitializeComponent();
@@ -86,15 +87,27 @@ namespace FormularioLosPichoncitos
                                 precioCuota += alumno.PrecioCuota;
                             }
                         }
-                        break;
                     }
-                    
                     break;
+                case "aulasTotal":
+                    foreach (var aulas in listaDeAulas)
+                    {
+                        foreach (var alumno in aulas.Alumnos)
+                        {
+                            
+                            precioTotal += alumno.PrecioCuota;
+                        }
+
+
+                    }
+                    lstReporte.Items.Add("Total recaudado: " + precioTotal);
+                    break;
+
                 default:
 
                     break;
             }
-            
+
         }
     }
 }

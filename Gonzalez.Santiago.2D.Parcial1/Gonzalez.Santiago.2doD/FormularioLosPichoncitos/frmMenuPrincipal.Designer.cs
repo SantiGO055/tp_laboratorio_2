@@ -184,6 +184,7 @@
             this.recaudacionTotalDelJardinToolStripMenuItem.Name = "recaudacionTotalDelJardinToolStripMenuItem";
             this.recaudacionTotalDelJardinToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.recaudacionTotalDelJardinToolStripMenuItem.Text = "Recaudacion total del jardin";
+            this.recaudacionTotalDelJardinToolStripMenuItem.Click += new System.EventHandler(this.recaudacionTotalDelJardinToolStripMenuItem_Click);
             // 
             // másToolStripMenuItem
             // 

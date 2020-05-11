@@ -112,16 +112,16 @@ namespace FormularioLosPichoncitos
                 List<Alumno> listaAux = new List<Alumno>(); ;
                 colorAula = (EColores)Enum.Parse(typeof(EColores), cmbColor.SelectedValue.ToString());
                 turnoAula = (ETurno)Enum.Parse(typeof(ETurno), cmbTurno.SelectedValue.ToString());
-                if (this.lstDocenteSinAula.SelectedIndex != -1)
+                if (this.cmbDocente.SelectedIndex != -1)
                 {
                     if (ValidarTurnoSeleccionado().Equals(ETurno.Mañana))
                     {
-                        Docente docenteMañana = listaDeDocentes[this.lstDocenteSinAula.SelectedIndex];
+                        Docente docenteMañana = listaDeDocentes[this.cmbDocente.SelectedIndex];
                         aula = new Aula(colorAula, turnoAula, docenteMañana);
                     }
                     else
                     {
-                        Docente docenteTarde = listaDeDocentes[this.lstDocenteSinAula.SelectedIndex];
+                        Docente docenteTarde = listaDeDocentes[this.cmbDocente.SelectedIndex];
                         aula = new Aula(colorAula, turnoAula, docenteTarde);
                     }
                     foreach (var item in lstAlumnosConAula.Items)
@@ -176,7 +176,7 @@ namespace FormularioLosPichoncitos
 
             if (docentes.HoraEntrada.Hour <= horaMañana.Hour)
             {
-                lstDocenteSinAula.Items.Add(docentes);
+                cmbDocente.Items.Add(docentes);
                 return true;
 
             }
@@ -186,7 +186,7 @@ namespace FormularioLosPichoncitos
         {
             if (docentes.HoraEntrada.Hour >= horaTarde.Hour)
             {
-                lstDocenteSinAula.Items.Add(docentes);
+                cmbDocente.Items.Add(docentes);
                 return true;
             }
             return false;
@@ -197,13 +197,7 @@ namespace FormularioLosPichoncitos
         /// <param name="docente"></param>
         private void ValidarDocenteMañanaEnAula(Docente docente)
         {
-            foreach (var itemAulas in listaDeAulas)
-            {
-                if (!(itemAulas.Docente.Equals(docente)))
-                {
-                    MostrarListaDocentesMañana(docente);
-                }
-            }
+            
         }
         /// <summary>
         /// Valido y muestro si el docente no esta en la lista
@@ -211,20 +205,12 @@ namespace FormularioLosPichoncitos
         /// <param name="docente"></param>
         private void ValidarDocenteTardeEnAula(Docente docente)
         {
-            foreach (var itemAulas in listaDeAulas)
-            {
-                if (!(itemAulas.Docente.Equals(docente)))
-                {
-                    MostrarListaDocentesTarde(docente);
-                    break;
-                }
-
-            }
+            
 
         }
         private void cmbTurno_SelectionChangeCommitted_1(object sender, EventArgs e)
         {
-            lstDocenteSinAula.Items.Clear();
+            cmbDocente.Items.Clear();
             if (ValidarTurnoSeleccionado() == ETurno.Mañana)
             {
                 foreach (var itemDocentes in listaDeDocentes)
@@ -236,7 +222,14 @@ namespace FormularioLosPichoncitos
 
                     else
                     {
-                        ValidarDocenteMañanaEnAula(itemDocentes);
+                        //ValidarDocenteMañanaEnAula(itemDocentes);
+                        foreach (var itemAulas in listaDeAulas)
+                        {
+                            if (!(itemAulas.Docente.Equals(itemDocentes)))
+                            {
+                                MostrarListaDocentesMañana(itemDocentes);
+                            }
+                        }
                     }
                 }
             }
@@ -250,7 +243,14 @@ namespace FormularioLosPichoncitos
                     }
                     else
                     {
-                        ValidarDocenteTardeEnAula(itemDocentes);
+                        foreach (var itemAulas in listaDeAulas)
+                        {
+                            if (!(itemAulas.Docente.Equals(itemDocentes)))
+                            {
+                                MostrarListaDocentesTarde(itemDocentes);
+                                break;
+                            }
+                        }
                     }
                 }
             }
