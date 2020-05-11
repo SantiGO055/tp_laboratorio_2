@@ -29,3 +29,4 @@ C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\G
 C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.exe
 C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.pdb
 C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.FrmReportes.resources
+C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2D.Parcial1\Gonzalez.Santiago.2doD\FormularioLosPichoncitos\obj\Debug\FormularioLosPichoncitos.FrmLogueo.resources

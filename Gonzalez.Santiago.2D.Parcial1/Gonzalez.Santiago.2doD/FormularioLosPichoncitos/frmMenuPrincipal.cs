@@ -26,8 +26,7 @@ namespace FormularioLosPichoncitos
         private Administrativo administrativo;
         private Responsable responsable;
         public List<Aula> listaDeAulas;
-        BindingSource bsAulasMañana = new BindingSource();
-        BindingSource bsAulasTarde = new BindingSource();
+        BindingSource bsAulas = new BindingSource();
 
         public FrmMenuPrincipal()
         {
@@ -199,10 +198,13 @@ namespace FormularioLosPichoncitos
 
         private void MostrarListaAulas()
         {
-            foreach (var item in listaDeAulas)
-            {
-                lstAulas.Items.Add("Color: " + item.ColorSala + " Docente: " + item.Docente + " Turno: " + item.Turno);
-            }
+            //bsAulas.Add(listaDeAulas);
+            bsAulas.DataSource = listaDeAulas;
+            lstAulas.DataSource = bsAulas;
+            //foreach (var item in listaDeAulas)
+            //{
+            //    lstAulas.Items.Add("Color: " + item.ColorSala + " Docente: " + item.Docente + " Turno: " + item.Turno);
+            //}
             //bsAulasMañana.DataSource = listaDeAulasMañana;
             //bsAulasTarde.DataSource = listaDeAulasTarde;
             //lstAulas.DataSource = bsAulasMañana;

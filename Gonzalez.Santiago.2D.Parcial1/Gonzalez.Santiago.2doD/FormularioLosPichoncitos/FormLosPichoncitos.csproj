@@ -58,6 +58,12 @@
     <Compile Include="FrmAula.Designer.cs">
       <DependentUpon>FrmAula.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmLogueo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogueo.Designer.cs">
+      <DependentUpon>FrmLogueo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
     <EmbeddedResource Include="FrmAula.resx">
       <DependentUpon>FrmAula.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogueo.resx">
+      <DependentUpon>FrmLogueo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMenuPrincipal.resx">
       <DependentUpon>FrmMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,6 +101,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -111,6 +121,12 @@
       <Project>{740c1e92-87d4-488e-9006-7f8bd527ac3e}</Project>
       <Name>Entidades</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\backimage.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

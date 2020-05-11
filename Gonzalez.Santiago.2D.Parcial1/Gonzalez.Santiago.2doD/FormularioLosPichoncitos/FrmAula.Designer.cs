@@ -33,7 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmbTurno = new System.Windows.Forms.ComboBox();
             this.grpSinAula = new System.Windows.Forms.GroupBox();
-            this.lstSinAula = new System.Windows.Forms.ListBox();
+            this.lstAlumnosSinAula = new System.Windows.Forms.ListBox();
             this.grbDocenteSinAula = new System.Windows.Forms.GroupBox();
             this.lstDocenteSinAula = new System.Windows.Forms.ListBox();
             this.btnGuardar = new System.Windows.Forms.Button();
@@ -88,25 +88,25 @@
             // 
             // grpSinAula
             // 
-            this.grpSinAula.Controls.Add(this.lstSinAula);
+            this.grpSinAula.Controls.Add(this.lstAlumnosSinAula);
             this.grpSinAula.Location = new System.Drawing.Point(22, 68);
             this.grpSinAula.Name = "grpSinAula";
             this.grpSinAula.Size = new System.Drawing.Size(317, 345);
             this.grpSinAula.TabIndex = 20;
             this.grpSinAula.TabStop = false;
-            this.grpSinAula.Text = "Alumnos sin aula";
+            this.grpSinAula.Text = "Total de alumnos";
             // 
-            // lstSinAula
+            // lstAlumnosSinAula
             // 
-            this.lstSinAula.AllowDrop = true;
-            this.lstSinAula.FormattingEnabled = true;
-            this.lstSinAula.HorizontalScrollbar = true;
-            this.lstSinAula.Location = new System.Drawing.Point(15, 34);
-            this.lstSinAula.Name = "lstSinAula";
-            this.lstSinAula.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lstSinAula.ScrollAlwaysVisible = true;
-            this.lstSinAula.Size = new System.Drawing.Size(285, 290);
-            this.lstSinAula.TabIndex = 2;
+            this.lstAlumnosSinAula.AllowDrop = true;
+            this.lstAlumnosSinAula.FormattingEnabled = true;
+            this.lstAlumnosSinAula.HorizontalScrollbar = true;
+            this.lstAlumnosSinAula.Location = new System.Drawing.Point(15, 34);
+            this.lstAlumnosSinAula.Name = "lstAlumnosSinAula";
+            this.lstAlumnosSinAula.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lstAlumnosSinAula.ScrollAlwaysVisible = true;
+            this.lstAlumnosSinAula.Size = new System.Drawing.Size(285, 290);
+            this.lstAlumnosSinAula.TabIndex = 2;
             // 
             // grbDocenteSinAula
             // 
@@ -149,7 +149,7 @@
             this.grbConAula.Size = new System.Drawing.Size(317, 345);
             this.grbConAula.TabIndex = 23;
             this.grbConAula.TabStop = false;
-            this.grbConAula.Text = "Alumnos con aula";
+            this.grbConAula.Text = "Alumnos a cargar";
             // 
             // lstAlumnosConAula
             // 
@@ -181,6 +181,7 @@
             this.btnDevolverASinAula.TabIndex = 25;
             this.btnDevolverASinAula.Text = "<-----";
             this.btnDevolverASinAula.UseVisualStyleBackColor = true;
+            this.btnDevolverASinAula.Click += new System.EventHandler(this.btnDevolverASinAula_Click);
             // 
             // FrmAula
             // 
@@ -217,7 +218,7 @@
         private System.Windows.Forms.GroupBox grpSinAula;
         private System.Windows.Forms.GroupBox grbDocenteSinAula;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.ListBox lstSinAula;
+        private System.Windows.Forms.ListBox lstAlumnosSinAula;
         private System.Windows.Forms.ListBox lstDocenteSinAula;
         private System.Windows.Forms.GroupBox grbConAula;
         private System.Windows.Forms.ListBox lstAlumnosConAula;

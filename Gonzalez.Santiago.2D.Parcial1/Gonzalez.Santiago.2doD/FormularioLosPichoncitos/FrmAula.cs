@@ -23,8 +23,12 @@ namespace FormularioLosPichoncitos
         List<Docente> listaDeDocentes;
         public Docente docenteMañana;
         public Docente docenteTarde;
+        BindingSource bsDocenteMañana = new BindingSource();
+        BindingSource bsDocenteTarde = new BindingSource();
         DateTime horaMañana = new DateTime(2020, 5, 11, 12, 00, 00);
         DateTime horaTarde = new DateTime(2020, 5, 11, 13, 00, 00);
+        BindingSource bsSinAula = new BindingSource();
+        BindingSource bsConAula = new BindingSource();
 
         public FrmAula(FrmMenuPrincipal frmPrincipal)
         {
@@ -33,20 +37,19 @@ namespace FormularioLosPichoncitos
             this.cmbTurno.DataSource = Enum.GetValues(typeof(ETurno));
 
             //listaAlumnosSinAula = listaAlumnos;
-            listaDeAlumnos = new List<Alumno>(frmPrincipal.listaAlumnos);
+            listaDeAlumnos = frmPrincipal.listaAlumnos;
             listaDeAulas = frmPrincipal.listaDeAulas;
-            
+
             listaDeDocentes = frmPrincipal.listaDocentes;
 
 
             //listaDeAulasMañana = frmPrincipal.listaDeAulas;
             //listaDeAulasTarde = frmPrincipal.listaDeAulas;
 
-            foreach (var item in listaDeAlumnos)
-            {
 
-                MostrarListaAlumnos(item);
-            }
+
+            MostrarListaAlumnosSinAula();
+
 
             //listaDeDocentesMañana = listaDocentes;
             //new List<Docente>();
@@ -56,54 +59,34 @@ namespace FormularioLosPichoncitos
 
         }
 
-        private void MostrarListaAlumnos(Alumno alumno)
+        private void MostrarListaAlumnosSinAula()
         {
-            //bsSinAula.DataSource = listaAlumnos;
-            //lstSinAula.DataSource = bsSinAula;
-            
-                lstSinAula.Items.Add(alumno.ToString());
-            
-        }
-        private void EliminarListaAlumnos(Alumno alumno)
-        {
-            
-            lstSinAula.Items.Remove(alumno.ToString());
-            
-        }
-        
 
+            bsSinAula.DataSource = listaDeAlumnos;
+            lstAlumnosSinAula.DataSource = bsSinAula;
+
+
+        }
+        private void MostrarListaDocentesSinAulaMañana()
+        {
+            bsDocenteMañana.DataSource = null;
+            bsDocenteMañana.DataSource = listaDeDocentes;
+            lstAlumnosSinAula.DataSource = bsDocenteMañana;
+        }
 
         public bool VerificarDocenteEnListaAula(Docente docente)
         {
             foreach (var item in listaDeAulas)
+            {
+
+                if (item.Docente.Equals(docente))
                 {
-
-                    if (item.Docente.Equals(docente))
-                    {
-                        return true;
-                    }
-                    else
-                        return false;
+                    return true;
                 }
-                return false;
-            
-            
-            //List<Aula> listaDeAulas
-            //foreach (var aula in listaDeAulas)
-            //{
-            //    foreach (var docente in listaDeDocentes)
-            //    {
-            //        if (!(aula is null) && aula.Docente.Equals(docente))
-            //        {
-            //            return true;
-            //        }
-            //        else
-            //            return false;
-            //    }
-
-            //}
-            //return false;
-
+                else
+                    return false;
+            }
+            return false;
         }
 
         public bool VerificarAlumnoEnListaAula(List<Aula> listaDeAulas)
@@ -119,7 +102,7 @@ namespace FormularioLosPichoncitos
                     else
                         return false;
                 }
-                
+
             }
             return false;
         }
@@ -133,7 +116,7 @@ namespace FormularioLosPichoncitos
         private void cmbColor_SelectionChangeCommitted(object sender, EventArgs e)
         {
             CambiarColorFondo();
-            
+
         }
 
         private void CambiarColorFondo()
@@ -173,43 +156,58 @@ namespace FormularioLosPichoncitos
                 //public static bool operator +(Aula aula, Alumno alumno)
                 //public Aula(EColores colorSala, ETurno turno, Docente docente)
 
-                
+                List<Alumno> listaAux = new List<Alumno>(); ;
                 colorAula = (EColores)Enum.Parse(typeof(EColores), cmbColor.SelectedValue.ToString());
                 turnoAula = (ETurno)Enum.Parse(typeof(ETurno), cmbTurno.SelectedValue.ToString());
-                Alumno alumno = listaDeAlumnos[this.lstSinAula.SelectedIndex];
-                EliminarListaAlumnos(alumno);
+                //Alumno alumno = listaDeAlumnos[this.lstAlumnosConAula.SelectedIndex];
+
+
                 if (this.lstDocenteSinAula.SelectedIndex != -1)
                 {
                     if (ValidarTurnoSeleccionado().Equals(ETurno.Mañana))
                     {
                         Docente docenteMañana = listaDeDocentes[this.lstDocenteSinAula.SelectedIndex];
-                        
+
                         //listaDeDocentesMañana.Remove(docenteMañana);
-                        
+
 
                         aula = new Aula(colorAula, turnoAula, docenteMañana);
-                        this.listaDeAulas.Add(aula);
+
                     }
                     else
                     {
                         Docente docenteTarde = listaDeDocentes[this.lstDocenteSinAula.SelectedIndex];
                         //listaDeDocentesTarde.Remove(docenteTarde);
-                        
-                        aula = new Aula(colorAula, turnoAula, docenteTarde);
-                        if (aula + alumno) ;
-                        this.listaDeAulas.Add(aula);
+
+                        foreach (var item in lstDocenteSinAula.Items)
+                        {
+                            if (item == lstDocenteSinAula.SelectedItem)
+                            {
+                                aula = new Aula(colorAula, turnoAula, docenteTarde);
+                                //bsDocenteTarde.Remove(docenteTarde);
+
+
+
+                                //lstAlumnosSinAula.DataSource = bsSinAula;
+                                break;
+                            }
+                        }
 
                     }
-                    
+                    foreach (var item in lstAlumnosConAula.Items)
+                    {
 
+                        if (aula + (Alumno)item) ;
+                    }
+                    this.listaDeAulas.Add(aula);
 
                 }
-                
-                
-                //listaAlumnosSinAula.Remove(alumno);
-                
 
-                
+
+                //listaAlumnosSinAula.Remove(alumno);
+
+
+
                 this.DialogResult = DialogResult.OK;
             }
 
@@ -227,22 +225,22 @@ namespace FormularioLosPichoncitos
             }
             return true;
         }
-        
+
 
         public ETurno ValidarTurnoSeleccionado()
         {
             if (ETurno.Mañana.Equals(cmbTurno.SelectedItem))
             {
-                
+
                 //MostrarListaDocentesMañana(listaDeDocentesMañana);
-                
+
                 return ETurno.Mañana;
-                
+
             }
             else
             {
                 //MostrarListaDocentesTarde(listaDeDocentesTarde);
-                
+
                 return ETurno.Tarde;
             }
         }
@@ -255,10 +253,15 @@ namespace FormularioLosPichoncitos
         }
         private bool MostrarListaDocentesMañana(Docente docentes)
         {
+
             if (docentes.HoraEntrada.Hour <= horaMañana.Hour)
             {
-                lstDocenteSinAula.Items.Add(docentes.ToString());
+                bsDocenteMañana.Add(docentes);
+
+                lstDocenteSinAula.DataSource = bsDocenteMañana;
                 return true;
+
+                //lstDocenteSinAula.Items.Add(docentes.ToString());
             }
             return false;
         }
@@ -266,22 +269,30 @@ namespace FormularioLosPichoncitos
         {
             if (docentes.HoraEntrada.Hour >= horaTarde.Hour)
             {
-                lstDocenteSinAula.Items.Add(docentes.ToString());
+                bsDocenteTarde.Add(docentes);
+                lstDocenteSinAula.DataSource = bsDocenteTarde;
+                //lstDocenteSinAula.Items.Add(docentes.ToString());
                 return true;
             }
             return false;
         }
         private void cmbTurno_SelectionChangeCommitted_1(object sender, EventArgs e)
         {
-            lstDocenteSinAula.Items.Clear();
-
+            bool primeraVez = false;
+            //lstDocenteSinAula.Items.Clear();
+            bsDocenteMañana.DataSource = null;
+            lstDocenteSinAula.DataSource = null;
             if (ValidarTurnoSeleccionado() == ETurno.Mañana)
             {
+
+                //lstDocenteSinAula.Items.Clear();
+                //bsDocenteMañana.ResetBindings(false);
                 foreach (var item in listaDeDocentes)
                 {
                     if (!(VerificarDocenteEnListaAula(item)))
                     {
-                        if(MostrarListaDocentesMañana(item));
+
+                        if (MostrarListaDocentesMañana(item)) ;
                     }
                 }
             }
@@ -291,17 +302,71 @@ namespace FormularioLosPichoncitos
                 {
                     if (!(VerificarDocenteEnListaAula(item)))
                     {
-                        if(MostrarListaDocentesTarde(item));
+                        if (MostrarListaDocentesTarde(item)) ;
                     }
                 }
             }
-            
+
         }
 
         private void btnPasarAAula_Click(object sender, EventArgs e)
         {
-            //listaDeAlumnos[this.lstSinAula.SelectedIndex];
 
+            Alumno alumno = (Alumno)lstAlumnosSinAula.SelectedItem;
+
+
+            if (this.lstAlumnosSinAula.SelectedIndex != -1)
+            {
+
+                //MostrarListaAlumnosSinAula(listaDeAlumnos);
+                //lstAlumnosConAula.Items.Add(alumno.ToString());
+                foreach (var item in lstAlumnosSinAula.Items)
+                {
+                    if (item == lstAlumnosSinAula.SelectedItem)
+                    {
+                        bsSinAula.Remove(item);
+                        lstAlumnosSinAula.DataSource = bsSinAula;
+                        break;
+                    }
+                }
+                bsConAula.Add(alumno);
+
+                lstAlumnosConAula.DataSource = bsConAula;
+            }
+
+
+        }
+
+        private void btnDevolverASinAula_Click(object sender, EventArgs e)
+        {
+
+            Alumno alumno = (Alumno)lstAlumnosConAula.SelectedItem;
+
+
+            if (this.lstAlumnosConAula.SelectedIndex != -1)
+            {
+
+                //MostrarListaAlumnosSinAula(listaDeAlumnos);
+                //lstAlumnosConAula.Items.Add(alumno.ToString());
+                foreach (var item in lstAlumnosConAula.Items)
+                {
+                    if (item == lstAlumnosConAula.SelectedItem)
+                    {
+                        bsConAula.Remove(item);
+                        lstAlumnosConAula.DataSource = bsConAula;
+                        break;
+                    }
+                }
+                bsSinAula.Add(alumno);
+
+
+                //lstAlumnosSinAula.DataSource = bsSinAula;
+                lstAlumnosSinAula.DataSource = bsSinAula;
+
+                //bsConAula.DataSource = null;
+                //bsConAula.DataSource = alumno;
+                //lstAlumnosConAula.DataSource = bsConAula;
+            }
         }
     }
 }

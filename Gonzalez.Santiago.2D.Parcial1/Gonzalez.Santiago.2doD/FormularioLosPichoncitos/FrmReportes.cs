@@ -78,16 +78,17 @@ namespace FormularioLosPichoncitos
 
                     foreach (var aulas in listaDeAulas)
                     {
-                        foreach (var alumno in listaDeAlumnos)
+                        foreach (var alumno in aulas.Alumnos)
                         {
                             if (aulas.Alumnos.Contains(alumno))
                             {
+                                lstReporte.Items.Add("Sala color: " + aulas.ColorSala.ToString() + " recaudo: " + alumno.PrecioCuota.ToString());
                                 precioCuota += alumno.PrecioCuota;
                             }
-                            
                         }
+                        break;
                     }
-                    lstReporte.Items.Add("Precio total de las cuotas recaudadas: " + precioCuota.ToString());
+                    
                     break;
                 default:
 
