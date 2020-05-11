@@ -199,7 +199,7 @@ namespace FormularioLosPichoncitos
             lstAulas.Items.Clear();
             foreach (var item in listaDeAulas)
             {
-                lstvAulas.Items.Add(item.ToString());
+                
                 lstAulas.Items.Add(item);
             }
         }
