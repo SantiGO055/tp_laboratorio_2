@@ -35,6 +35,8 @@
             this.lblUsuario = new System.Windows.Forms.Label();
             this.lblContraseña = new System.Windows.Forms.Label();
             this.grbLogin = new System.Windows.Forms.GroupBox();
+            this.lblMostrarUsuario = new System.Windows.Forms.Label();
+            this.lblMostrarContraseña = new System.Windows.Forms.Label();
             this.grbLogin.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,6 +116,26 @@
             this.grbLogin.TabIndex = 6;
             this.grbLogin.TabStop = false;
             // 
+            // lblMostrarUsuario
+            // 
+            this.lblMostrarUsuario.AutoSize = true;
+            this.lblMostrarUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.lblMostrarUsuario.Location = new System.Drawing.Point(12, 9);
+            this.lblMostrarUsuario.Name = "lblMostrarUsuario";
+            this.lblMostrarUsuario.Size = new System.Drawing.Size(77, 13);
+            this.lblMostrarUsuario.TabIndex = 7;
+            this.lblMostrarUsuario.Text = "Usuario: admin";
+            // 
+            // lblMostrarContraseña
+            // 
+            this.lblMostrarContraseña.AutoSize = true;
+            this.lblMostrarContraseña.BackColor = System.Drawing.Color.Transparent;
+            this.lblMostrarContraseña.Location = new System.Drawing.Point(12, 26);
+            this.lblMostrarContraseña.Name = "lblMostrarContraseña";
+            this.lblMostrarContraseña.Size = new System.Drawing.Size(95, 13);
+            this.lblMostrarContraseña.TabIndex = 8;
+            this.lblMostrarContraseña.Text = "Contraseña: admin";
+            // 
             // FrmLogueo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -122,6 +144,8 @@
             this.BackgroundImage = global::FormularioLosPichoncitos.Properties.Resources.backimage;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(678, 442);
+            this.Controls.Add(this.lblMostrarContraseña);
+            this.Controls.Add(this.lblMostrarUsuario);
             this.Controls.Add(this.grbLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -132,6 +156,7 @@
             this.grbLogin.ResumeLayout(false);
             this.grbLogin.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -144,5 +169,7 @@
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Label lblContraseña;
         private System.Windows.Forms.GroupBox grbLogin;
+        private System.Windows.Forms.Label lblMostrarUsuario;
+        private System.Windows.Forms.Label lblMostrarContraseña;
     }
 }
