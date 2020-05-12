@@ -53,6 +53,7 @@ namespace FormularioLosPichoncitos
             this.Close();
         }
 
+        
         public void RealizarReporte(string tipoReporte)
         {
             switch (tipoReporte)
@@ -76,7 +77,7 @@ namespace FormularioLosPichoncitos
                     }
                     break;
                 case "aulas":
-
+                    //si en la lista lo cargue de forma automatica imprime bien el valor, si cargo manualmente lo tengo en 0 al valor de cuota por que no me cargo el value
                     foreach (var aulas in listaDeAulas)
                     {
                         foreach (var alumno in aulas.Alumnos)
@@ -94,7 +95,7 @@ namespace FormularioLosPichoncitos
                     {
                         foreach (var alumno in aulas.Alumnos)
                         {
-                            
+
                             precioTotal += alumno.PrecioCuota;
                         }
 
@@ -109,5 +110,7 @@ namespace FormularioLosPichoncitos
             }
 
         }
+
+        
     }
 }

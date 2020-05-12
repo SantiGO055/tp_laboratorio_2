@@ -166,7 +166,7 @@ namespace FormularioLosPichoncitos
 
         private void altaAlumnoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmAlta frmAltas = new FrmAlta("alumno");
+            FrmAlta frmAltas = new FrmAlta("responsable");
             if (frmAltas.ShowDialog() == DialogResult.OK)
             {
                 this.listaAlumnos.Add(frmAltas.alumno);
@@ -181,7 +181,7 @@ namespace FormularioLosPichoncitos
 
             if (altaAula.ShowDialog() == DialogResult.OK)
             {
-                
+                altaAula.listaDeAulas = listaDeAulas;
                 MostrarListaAulas();
 
             }
@@ -193,7 +193,6 @@ namespace FormularioLosPichoncitos
             lstAulas.Items.Clear();
             foreach (var item in listaDeAulas)
             {
-                
                 lstAulas.Items.Add(item);
             }
         }

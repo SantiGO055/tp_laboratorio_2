@@ -30,7 +30,6 @@ namespace Entidades
             set { this.cargo = value; }
         }
 
-
         /// <summary>
         /// Calcula el salario por mes del administrativo
         /// </summary>
@@ -39,6 +38,10 @@ namespace Entidades
         {
             return ((SalarioBase * (int)this.cargo) / 100); //chequear que realice bien la cuenta
         }
+        /// <summary>
+        /// Sobrecarga del metodo ToString que publica datos del administrativo
+        /// </summary>
+        /// <returns>Retorna string con los </returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

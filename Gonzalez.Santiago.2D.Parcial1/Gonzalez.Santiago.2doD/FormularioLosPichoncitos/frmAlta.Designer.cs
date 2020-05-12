@@ -207,7 +207,7 @@
             this.btnAlta.BackColor = System.Drawing.Color.BurlyWood;
             this.btnAlta.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlta.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAlta.Location = new System.Drawing.Point(353, 211);
+            this.btnAlta.Location = new System.Drawing.Point(296, 211);
             this.btnAlta.Name = "btnAlta";
             this.btnAlta.Size = new System.Drawing.Size(136, 64);
             this.btnAlta.TabIndex = 16;
@@ -327,7 +327,7 @@
             this.grbResponsable.Controls.Add(this.lblTelefono);
             this.grbResponsable.Controls.Add(this.cmbParentesco);
             this.grbResponsable.Controls.Add(this.lblParentesco);
-            this.grbResponsable.Location = new System.Drawing.Point(267, 16);
+            this.grbResponsable.Location = new System.Drawing.Point(260, 16);
             this.grbResponsable.Name = "grbResponsable";
             this.grbResponsable.Size = new System.Drawing.Size(222, 94);
             this.grbResponsable.TabIndex = 21;
@@ -355,6 +355,8 @@
             // 
             this.cmbParentesco.BackColor = System.Drawing.Color.AntiqueWhite;
             this.cmbParentesco.FormattingEnabled = true;
+            this.cmbParentesco.Items.AddRange(new object[] {
+            " "});
             this.cmbParentesco.Location = new System.Drawing.Point(106, 22);
             this.cmbParentesco.Name = "cmbParentesco";
             this.cmbParentesco.Size = new System.Drawing.Size(92, 21);
@@ -394,7 +396,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Alta";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAlta_FormClosing);
-            this.Load += new System.EventHandler(this.AltaDocente_Load);
+            this.Load += new System.EventHandler(this.FrmAlta_Load);
             this.gbxSexo.ResumeLayout(false);
             this.gbxSexo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numValorHora)).EndInit();

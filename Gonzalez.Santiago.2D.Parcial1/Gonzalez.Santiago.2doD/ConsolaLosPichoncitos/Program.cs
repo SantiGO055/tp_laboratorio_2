@@ -76,8 +76,6 @@ namespace ConsolaLosPichoncitos
             {
                 return alumno1.PrecioCuota + alumno2.PrecioCuota;
             }
-
-            
         }
 
     }
