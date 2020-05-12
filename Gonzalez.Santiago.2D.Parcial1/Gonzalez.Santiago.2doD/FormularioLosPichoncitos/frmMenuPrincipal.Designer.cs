@@ -74,6 +74,7 @@
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.archivoToolStripMenuItem.Text = "Archivo";
+            this.archivoToolStripMenuItem.Click += new System.EventHandler(this.archivoToolStripMenuItem_Click);
             // 
             // altaDeDocenteToolStripMenuItem
             // 
@@ -195,7 +196,7 @@
             // video1ToolStripMenuItem
             // 
             this.video1ToolStripMenuItem.Name = "video1ToolStripMenuItem";
-            this.video1ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.video1ToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.video1ToolStripMenuItem.Text = "Video";
             this.video1ToolStripMenuItem.Click += new System.EventHandler(this.video1ToolStripMenuItem_Click);
             // 

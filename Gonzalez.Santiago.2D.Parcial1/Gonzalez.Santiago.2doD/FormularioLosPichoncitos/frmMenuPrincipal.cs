@@ -253,5 +253,10 @@ namespace FormularioLosPichoncitos
             FrmVideos frmVideos = new FrmVideos();
             frmVideos.ShowDialog();
         }
+
+        private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -20,6 +20,11 @@ namespace FormularioLosPichoncitos
         public List<Alumno> listaAlumnos;
         public List<Responsable> listaResponsable;
         string tipo;
+
+        public FrmAlta()
+        {
+            InitializeComponent();
+        }
         public FrmAlta(string tipo) : this()
         {
 
@@ -30,25 +35,22 @@ namespace FormularioLosPichoncitos
             //this.MdiParent = frmPrincipal;
 
         }
-        public FrmAlta()
-        {
-            InitializeComponent();
-        }
-
-
-
-
 
         private bool ValidarCampos()
         {
-            if (txtNombre.Text == string.Empty || txtApellido.Text == string.Empty || txtDni.Text == string.Empty || (!(ValidarRadioButton())))
+            if (txtNombre.Text == string.Empty || txtApellido.Text == string.Empty || txtDni.Text == string.Empty || (!(ValidarFemenino())))
             {
                 MessageBox.Show("Complete los campos Nombre, Apellido, DNI y Sexo", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+
             return true;
         }
 
+        /// <summary>
+        /// valido 
+        /// </summary>
+        /// <returns></returns>
         private bool ValidarFemenino()
         {
             if (rdbtnFemenino.Checked == true || rdbtnMasculino.Checked == true)
@@ -59,14 +61,11 @@ namespace FormularioLosPichoncitos
                 return false;
         }
 
-        private bool ValidarRadioButton()
-        {
-            if (rdbtnFemenino.Checked == true || rdbtnMasculino.Checked == true)
-            {
-                return true;
-            }
-            return false;
-        }
+
+        /// <summary>
+        /// valida que el dni ingresado sea numero y mayor a 0
+        /// </summary>
+        /// <returns></returns>
         private int ValidarDni()
         {
             int dniAux = 0;
@@ -91,6 +90,10 @@ namespace FormularioLosPichoncitos
 
             }
         }
+
+        /// <summary>
+        /// Realizo el alta de docente, responsable, administrativo segun el caso, dentro del responsable doy de alta el alumno
+        /// </summary>
         public void RealizarAlta()
         {
             switch (this.tipo)
@@ -126,7 +129,7 @@ namespace FormularioLosPichoncitos
                     break;
 
                 //case "alumno":
-                    //si meto aca el alumno dado de alta: alumno = new alumno(etc...) no me toma el responsable para el alumno
+                //si meto aca el alumno dado de alta: alumno = new alumno(etc...) no me toma el responsable para el alumno
 
                 //    break;
                 case "responsable":
@@ -135,16 +138,17 @@ namespace FormularioLosPichoncitos
                     this.Hide();
                     parentesco = (EParentesco)Enum.Parse(typeof(EParentesco), cmbParentesco.SelectedItem.ToString());
                     responsable = new Responsable(txtNombre.Text, txtApellido.Text, ValidarDni(), ValidarFemenino(), parentesco, ValidarTelefono());
-                    MessageBox.Show("Alta realizada con exito. Dar de alta alumno", "Se realizo el alta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Alta de responsable realizada con exito. Dar de alta alumno", "Se realizo el alta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //listaResponsable.Add(responsable);
                     FrmAlta frmAltaAlumno = new FrmAlta("alumno");
                     if (frmAltaAlumno.ShowDialog() == DialogResult.OK)
                     {
-                        
                         float prueba = (float)numPrecioCuota.Value;
                         //si meto aca el alumno dado de alta: alumno = new alumno(etc...) no me toma el numPrecioCuota.Vlue
+                        //intente dar de alta el alumno en FrmAltaAlumno pero tengo que redefinir todas las funciones de validar para pasar por parametro el textbox, num y radiobutton
+                        //lo dejo asi para que no rompa en otro lado
                         alumno = new Alumno(txtNombre.Text, txtApellido.Text, ValidarDni(), ValidarFemenino(), (float)numPrecioCuota.Value, responsable, ValidarLegajo());
-                        MessageBox.Show("Alta realizada con exito. Dar de alta responsable", "Se realizo el alta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Alta de alumno realizada con exito.", "Se realizo el alta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
                     break;
@@ -169,7 +173,7 @@ namespace FormularioLosPichoncitos
         /// Valida el legajo ingresado
         /// </summary>
         /// <returns></returns>
-        private int ValidarLegajo()
+        public int ValidarLegajo()
         {
             int retorno = 0;
             if (!(txtLegajo.Text == string.Empty) && (!(txtLegajo.Text is string)))
@@ -179,6 +183,10 @@ namespace FormularioLosPichoncitos
             }
             return retorno;
         }
+        /// <summary>
+        /// Realiza el muestreo de todos los campos segun el alta a realizar
+        /// </summary>
+        /// <returns></returns>
         private string AltaDeCampos()
         {
             string retorno = "";
@@ -232,18 +240,6 @@ namespace FormularioLosPichoncitos
             return retorno;
         }
 
-
-        private void frmAlta_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-
-        }
-
-
-        private void Alta_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void FrmAlta_Load(object sender, EventArgs e)
         {

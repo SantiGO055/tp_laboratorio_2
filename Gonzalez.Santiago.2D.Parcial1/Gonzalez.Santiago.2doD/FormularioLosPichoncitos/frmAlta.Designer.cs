@@ -400,7 +400,6 @@
             this.Name = "FrmAlta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Alta";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAlta_FormClosing);
             this.Load += new System.EventHandler(this.FrmAlta_Load);
             this.gbxSexo.ResumeLayout(false);
             this.gbxSexo.PerformLayout();
