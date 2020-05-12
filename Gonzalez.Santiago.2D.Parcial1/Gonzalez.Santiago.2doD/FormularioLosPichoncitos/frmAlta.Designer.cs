@@ -220,6 +220,11 @@
             this.numValorHora.BackColor = System.Drawing.Color.PaleGreen;
             this.numValorHora.DecimalPlaces = 2;
             this.numValorHora.Location = new System.Drawing.Point(167, 95);
+            this.numValorHora.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.numValorHora.Name = "numValorHora";
             this.numValorHora.Size = new System.Drawing.Size(92, 20);
             this.numValorHora.TabIndex = 17;
@@ -264,7 +269,7 @@
             this.numPrecioCuota.DecimalPlaces = 2;
             this.numPrecioCuota.Location = new System.Drawing.Point(161, 15);
             this.numPrecioCuota.Maximum = new decimal(new int[] {
-            1500,
+            10000,
             0,
             0,
             0});
