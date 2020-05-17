@@ -14,8 +14,6 @@ namespace Entidades
         protected Docente docente;
         protected ETurno turno;
 
-
-
         public Aula(EColores colorSala, ETurno turno, Docente docente)
         {
             this.ColorSala = colorSala;
