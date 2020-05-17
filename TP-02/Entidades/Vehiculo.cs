@@ -41,23 +41,24 @@ namespace Entidades
         /// <returns></returns>
         public virtual string Mostrar()
         {
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine("CHASIS: " + this.chasis);
-            sb.AppendLine("MARCA : " + this.marca);
-            sb.AppendLine("COLOR : " + this.color);
-            sb.AppendLine("---------------------");
-
-            return sb.ToString();
+            return (string)this;
         }
 
         /// <summary>
         /// Sobrecarga el casteo explicito a string retornando los datos del vehiculo
         /// </summary>
         /// <param name="p"></param>
-        public static explicit operator string(Vehiculo p)
+        public static explicit operator string(Vehiculo vehiculo)
         {
-            return p.Mostrar();
+            
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendFormat("CHASIS: {0}\r\n", vehiculo.chasis);
+            sb.AppendFormat("MARCA : {0}\r\n", vehiculo.marca);
+            sb.AppendFormat("COLOR : {0}\r\n", vehiculo.color);
+            sb.AppendLine("---------------------");
+
+            return sb.ToString();
         }
 
         /// <summary>

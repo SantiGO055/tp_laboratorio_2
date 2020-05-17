@@ -12,10 +12,6 @@ namespace Entidades
         {
         }
 
-
-
-
-
         /// <summary>
         /// Las motos son chicas
         /// </summary>

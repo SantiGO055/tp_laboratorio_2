@@ -37,10 +37,7 @@ namespace Entidades
         /// <returns></returns>
         public override string ToString()
         {
-            
-                return Mostrar(this,ETipo.Todos);
-                //return item.Mostrar(this, ETipo.Todos);
-            
+            return Mostrar(this, ETipo.Todos);
         }
         #endregion
 
@@ -54,8 +51,6 @@ namespace Entidades
         /// <param name="ETipo">Tipos de ítems de la lista a mostrar</param>
         /// <returns></returns>
         /// 
-
-
         public static string Mostrar(Estacionamiento estacionamiento, ETipo tipo)
         {
             StringBuilder sb = new StringBuilder();
@@ -67,20 +62,28 @@ namespace Entidades
                 switch (tipo)
                 {
                     case ETipo.Camioneta:
-                        sb.AppendLine(vehiculoEstacionado.Mostrar());
+                        if (vehiculoEstacionado is Camioneta)
+                        {
+                            sb.AppendLine(vehiculoEstacionado.Mostrar());
+                        }
                         break;
                     case ETipo.Moto:
-                        sb.AppendLine(vehiculoEstacionado.Mostrar());
+                        if (vehiculoEstacionado is Moto)
+                        {
+                            sb.AppendLine(vehiculoEstacionado.Mostrar());
+                        }
                         break;
                     case ETipo.Automovil:
-                        sb.AppendLine(vehiculoEstacionado.Mostrar());
+                        if (vehiculoEstacionado is Automovil)
+                        {
+                            sb.AppendLine(vehiculoEstacionado.Mostrar());
+                        }
                         break;
                     default:
                         sb.AppendLine(vehiculoEstacionado.Mostrar());
                         break;
                 }
             }
-
             return sb.ToString();
         }
         #endregion
@@ -94,26 +97,18 @@ namespace Entidades
         /// <returns></returns>
         public static Estacionamiento operator +(Estacionamiento estacionamiento, Vehiculo vehiculo)
         {
-            if (estacionamiento.vehiculos.Count < estacionamiento.espacioDisponible)
+            if (!(estacionamiento is null))
             {
-                if (!(estacionamiento is null))
+                foreach (var vehiculoEstacionado in estacionamiento.vehiculos)
                 {
-                    foreach (var vehiculoEstacionado in estacionamiento.vehiculos)
-                    {
-                        if (vehiculoEstacionado == vehiculo)
-                            return estacionamiento;
-                    }
-                    if (estacionamiento.espacioDisponible > 0)
-                    {
-                        estacionamiento.vehiculos.Add(vehiculo);
-                    }
-
+                    if (vehiculoEstacionado == vehiculo)
+                        return estacionamiento;
+                }
+                if (estacionamiento.vehiculos.Count < estacionamiento.espacioDisponible)
+                {
+                    estacionamiento.vehiculos.Add(vehiculo);
                 }
             }
-            
-            
-
-            
             return estacionamiento;
         }
         /// <summary>
@@ -128,12 +123,8 @@ namespace Entidades
             {
                 if (v == pVehiculo)
                 {
-                    if (cEstacionamiento.espacioDisponible <= 6)
-                    {
-                        cEstacionamiento.vehiculos.Remove(v);
-                        break;
-                    }
-                    
+                    cEstacionamiento.vehiculos.Remove(v);
+                    break;
                 }
             }
 
