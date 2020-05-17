@@ -186,11 +186,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ins03\\Documents\\GitHub\\tp_laboratorio_2\\TP1_Calculadora\\Entidades\\Entidades.csproj",
+      "projectUniqueName": "C:\\Users\\ins03\\Documents\\GitHub\\tp_laboratorio_2\\RecuperatoriosTP\\TP1\\Entidades\\Entidades.csproj",
       "projectName": "Entidades",
-      "projectPath": "C:\\Users\\ins03\\Documents\\GitHub\\tp_laboratorio_2\\TP1_Calculadora\\Entidades\\Entidades.csproj",
+      "projectPath": "C:\\Users\\ins03\\Documents\\GitHub\\tp_laboratorio_2\\RecuperatoriosTP\\TP1\\Entidades\\Entidades.csproj",
       "packagesPath": "C:\\Users\\ins03\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ins03\\Documents\\GitHub\\tp_laboratorio_2\\TP1_Calculadora\\Entidades\\obj\\",
+      "outputPath": "C:\\Users\\ins03\\Documents\\GitHub\\tp_laboratorio_2\\RecuperatoriosTP\\TP1\\Entidades\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"

@@ -88,6 +88,10 @@ namespace FrmCalculadora
             {
                 lblResultado.Text = ConvertirADecimal(lblResultado.Text);
             }
+            else
+            {
+                MessageBox.Show("ERROR! Sin resultado", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
@@ -105,6 +109,10 @@ namespace FrmCalculadora
             {
                 double.TryParse(lblResultado.Text, out resultado);
                 lblResultado.Text = Numero.DecimalBinario(resultado);
+            }
+            else
+            {
+                MessageBox.Show("ERROR! Sin resultado", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
