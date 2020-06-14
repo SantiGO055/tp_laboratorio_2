@@ -1,0 +1,6 @@
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2DOC.TP3\Excepciones\bin\Debug\Excepciones.dll
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2DOC.TP3\Excepciones\bin\Debug\Excepciones.pdb
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2DOC.TP3\Excepciones\obj\Debug\Excepciones.csprojAssemblyReference.cache
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2DOC.TP3\Excepciones\obj\Debug\Excepciones.csproj.CoreCompileInputs.cache
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2DOC.TP3\Excepciones\obj\Debug\Excepciones.dll
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2DOC.TP3\Excepciones\obj\Debug\Excepciones.pdb

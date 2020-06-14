@@ -1,0 +1,420 @@
+CLASE DE: Programacion TOMADA POR: NOMBRE COMPLETO: LopezJuan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+CLASES DEL DIA: 
+Laboratorio
+Laboratorio
+
+
+Alumnos: 
+NOMBRE COMPLETO: LopezJuan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+ESTADO DE LA CUENTA: Becado
+TOMA CLASE DE: Programacion
+
+
+NOMBRE COMPLETO: GonzalezCarlos
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 5
+
+ESTADO DE LA CUENTA: AlDia
+TOMA CLASE DE: Programacion
+
+
+
+CLASE DE: Laboratorio TOMADA POR: NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+CLASES DEL DIA: 
+Laboratorio
+Laboratorio
+
+
+Alumnos: 
+NOMBRE COMPLETO: Suarez, Joaquin
+NACIONALIDAD: Extranjero
+
+LEGAJO NUMERO: 7
+
+ESTADO DE LA CUENTA: AlDia
+TOMA CLASE DE: Laboratorio
+
+
+
+CLASE DE: Laboratorio TOMADA POR: NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+CLASES DEL DIA: 
+Laboratorio
+Legislacion
+
+
+Alumnos: 
+NOMBRE COMPLETO: Suarez, Joaquin
+NACIONALIDAD: Extranjero
+
+LEGAJO NUMERO: 7
+
+ESTADO DE LA CUENTA: AlDia
+TOMA CLASE DE: Laboratorio
+
+
+
+CLASE DE: Programacion TOMADA POR: NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+CLASES DEL DIA: 
+Programacion
+Programacion
+
+
+Alumnos: 
+NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+ESTADO DE LA CUENTA: Becado
+TOMA CLASE DE: Programacion
+
+
+NOMBRE COMPLETO: Gonzalez, Carlos
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 5
+
+ESTADO DE LA CUENTA: AlDia
+TOMA CLASE DE: Programacion
+
+
+
+CLASE DE: Legislacion TOMADA POR: NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+CLASES DEL DIA: 
+Legislacion
+Legislacion
+
+
+Alumnos: 
+NOMBRE COMPLETO: Hernandez, Miguel
+NACIONALIDAD: Extranjero
+
+LEGAJO NUMERO: 4
+
+ESTADO DE LA CUENTA: AlDia
+TOMA CLASE DE: Legislacion
+
+
+NOMBRE COMPLETO: Smith, Rodrigo
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 8
+
+ESTADO DE LA CUENTA: AlDia
+TOMA CLASE DE: Legislacion
+
+
+
+CLASE DE: Programacion TOMADA POR: NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+CLASES DEL DIA: 
+Programacion
+Programacion
+
+
+Alumnos: 
+NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+ESTADO DE LA CUENTA: Becado
+TOMA CLASE DE: Programacion
+
+
+NOMBRE COMPLETO: Gonzalez, Carlos
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 5
+
+ESTADO DE LA CUENTA: AlDia
+TOMA CLASE DE: Programacion
+
+
+
+CLASE DE: SPD TOMADA POR: NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+CLASES DEL DIA: 
+SPD
+SPD
+
+
+Alumnos: 
+
+CLASE DE: Legislacion TOMADA POR: NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+CLASES DEL DIA: 
+Legislacion
+Legislacion
+
+
+Alumnos: 
+NOMBRE COMPLETO: Hernandez, Miguel
+NACIONALIDAD: Extranjero
+
+LEGAJO NUMERO: 4
+
+ESTADO DE LA CUENTA: AlDia
+TOMA CLASE DE: Legislacion
+
+
+NOMBRE COMPLETO: Smith, Rodrigo
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 8
+
+ESTADO DE LA CUENTA: AlDia
+TOMA CLASE DE: Legislacion
+
+
+
+CLASE DE: Laboratorio TOMADA POR: NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+CLASES DEL DIA: 
+Laboratorio
+Laboratorio
+
+
+Alumnos: 
+NOMBRE COMPLETO: Suarez, Joaquin
+NACIONALIDAD: Extranjero
+
+LEGAJO NUMERO: 7
+
+ESTADO DE LA CUENTA: AlDia
+TOMA CLASE DE: Laboratorio
+
+
+
+CLASE DE: Programacion TOMADA POR: NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+CLASES DEL DIA: 
+Programacion
+Programacion
+
+
+Alumnos: 
+NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+ESTADO DE LA CUENTA: Becado
+TOMA CLASE DE: Programacion
+
+
+NOMBRE COMPLETO: Gonzalez, Carlos
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 5
+
+ESTADO DE LA CUENTA: AlDia
+TOMA CLASE DE: Programacion
+
+
+
+CLASE DE: Programacion TOMADA POR: NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+CLASES DEL DIA: 
+Programacion
+Programacion
+
+
+Alumnos: 
+NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+ESTADO DE LA CUENTA: Becado
+TOMA CLASE DE: Programacion
+
+
+NOMBRE COMPLETO: Gonzalez, Carlos
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 5
+
+ESTADO DE LA CUENTA: AlDia
+TOMA CLASE DE: Programacion
+
+
+
+CLASE DE: Programacion TOMADA POR: NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+CLASES DEL DIA: 
+Programacion
+Programacion
+
+
+Alumnos: 
+NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+ESTADO DE LA CUENTA: Becado
+TOMA CLASE DE: Programacion
+
+
+NOMBRE COMPLETO: Gonzalez, Carlos
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 5
+
+ESTADO DE LA CUENTA: AlDia
+TOMA CLASE DE: Programacion
+
+
+
+CLASE DE: SPD TOMADA POR: NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+CLASES DEL DIA: 
+SPD
+SPD
+
+
+Alumnos: 
+
+CLASE DE: Laboratorio TOMADA POR: NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+CLASES DEL DIA: 
+Laboratorio
+Laboratorio
+
+
+Alumnos: 
+NOMBRE COMPLETO: Suarez, Joaquin
+NACIONALIDAD: Extranjero
+
+LEGAJO NUMERO: 7
+
+ESTADO DE LA CUENTA: AlDia
+TOMA CLASE DE: Laboratorio
+
+
+
+CLASE DE: Legislacion TOMADA POR: NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+CLASES DEL DIA: 
+Legislacion
+Legislacion
+
+
+Alumnos: 
+NOMBRE COMPLETO: Hernandez, Miguel
+NACIONALIDAD: Extranjero
+
+LEGAJO NUMERO: 4
+
+ESTADO DE LA CUENTA: AlDia
+TOMA CLASE DE: Legislacion
+
+
+NOMBRE COMPLETO: Smith, Rodrigo
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 8
+
+ESTADO DE LA CUENTA: AlDia
+TOMA CLASE DE: Legislacion
+
+
+
+CLASE DE: SPD TOMADA POR: NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+CLASES DEL DIA: 
+SPD
+SPD
+
+
+Alumnos: 
+
+CLASE DE: Legislacion TOMADA POR: NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 1
+
+CLASES DEL DIA: 
+Legislacion
+Legislacion
+
+
+Alumnos: 
+NOMBRE COMPLETO: Hernandez, Miguel
+NACIONALIDAD: Extranjero
+
+LEGAJO NUMERO: 4
+
+ESTADO DE LA CUENTA: AlDia
+TOMA CLASE DE: Legislacion
+
+
+NOMBRE COMPLETO: Smith, Rodrigo
+NACIONALIDAD: Argentino
+
+LEGAJO NUMERO: 8
+
+ESTADO DE LA CUENTA: AlDia
+TOMA CLASE DE: Legislacion
+
+
+

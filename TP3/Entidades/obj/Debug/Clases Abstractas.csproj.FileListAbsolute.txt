@@ -1,0 +1,9 @@
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2DOC.TP3\Entidades\bin\Debug\Entidades.dll
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2DOC.TP3\Entidades\bin\Debug\Entidades.pdb
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2DOC.TP3\Entidades\bin\Debug\Excepciones.dll
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2DOC.TP3\Entidades\bin\Debug\Excepciones.pdb
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2DOC.TP3\Entidades\obj\Debug\Clases Abstractas.csprojAssemblyReference.cache
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2DOC.TP3\Entidades\obj\Debug\Clases Abstractas.csproj.CoreCompileInputs.cache
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2DOC.TP3\Entidades\obj\Debug\Clases Abstractas.csproj.CopyComplete
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2DOC.TP3\Entidades\obj\Debug\Entidades.dll
+C:\Users\ins03\Desktop\Facultad\PrograYLabo2\ProyectosC#Labo2\Gonzalez.Santiago.2DOC.TP3\Entidades\obj\Debug\Entidades.pdb
