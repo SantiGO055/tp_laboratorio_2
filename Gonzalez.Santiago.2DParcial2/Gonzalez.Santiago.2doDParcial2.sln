@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{FBF1194D-893A-451E-816B-9F8107E2602D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormJardin", "FormJardin\FormJardin.csproj", "{3BC441D0-0DDC-4425-AE15-3D09A6235BED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBF1194D-893A-451E-816B-9F8107E2602D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBF1194D-893A-451E-816B-9F8107E2602D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBF1194D-893A-451E-816B-9F8107E2602D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBF1194D-893A-451E-816B-9F8107E2602D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BC441D0-0DDC-4425-AE15-3D09A6235BED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BC441D0-0DDC-4425-AE15-3D09A6235BED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BC441D0-0DDC-4425-AE15-3D09A6235BED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BC441D0-0DDC-4425-AE15-3D09A6235BED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {843A5DD9-F01C-4063-A075-D9C16FA3FC67}
+	EndGlobalSection
+EndGlobal
