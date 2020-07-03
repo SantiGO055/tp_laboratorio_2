@@ -13,10 +13,19 @@ namespace Entidades
         {
 
         }
+        //string nombre, string apellido,int edad,int dni, string direccion,int id
         public Docente(string nombre, string apellido, int edad, int dni, string direccion,  int id, string sexo, string email) :
-            base(nombre, apellido, edad, dni, direccion, id, sexo)
+            base(nombre, apellido, edad, dni, direccion, id)
         {
             this.Email = email;
+            this.Sexo = sexo;
+        }
+
+
+        public string Sexo
+        {
+            get { return sexo; }
+            set { sexo = value; }
         }
 
         public string Email
@@ -25,13 +34,13 @@ namespace Entidades
             set { this.email = value; }
         }
 
-
-
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(base.ToString());
             return sb.ToString();
         }
+
+
     }
 }

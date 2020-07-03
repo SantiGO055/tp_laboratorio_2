@@ -6,67 +6,38 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Aula
+    public class Aula
     {
-        protected List<Alumno> alumnos;
-        protected Docente docente;
-
-        public Aula(Docente docente)
+        protected int id;
+        protected string salita;
+        public Aula(int id, string salita)
         {
-            this.Docente = docente;
-            this.alumnos = new List<Alumno>();
+            this.ID = id;
+            this.Salita = salita;
         }
 
 
         #region Propiedades
-        public List<Alumno> Alumnos
+
+        public int ID
         {
-            get { return this.alumnos; }
-            //verificar si rompe o no
-            set
-            {
-
-                this.alumnos = value;
-
-
-            }
+            get { return id; }
+            set { id = value; }
+        }
+        public string Salita
+        {
+            get { return salita; }
+            set { salita = value; }
         }
 
-        public Docente Docente
-        {
-            get { return this.docente; }
-            set { this.docente = value; }
-        }
+
         #endregion
 
-        public static bool operator +(Aula aula, Alumno alumno)
-        {
-            if ((!(aula is null)) && (!(alumno is null)) && (aula.alumnos.Count < 30))
-            {
-                if (!(aula.alumnos.Contains(alumno)))
-                {
-                    aula.Alumnos.Add(alumno);
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Docente: " + this.Docente);
-            foreach (var item in this.alumnos)
-            {
-                sb.AppendLine("Alumnos: ");
-                sb.AppendLine("Nombre: " + item.Nombre);
-                sb.AppendLine("Apellido: " + item.Apellido);
-                sb.AppendLine("Legajo: " + item.Legajo);
-            }
-
-
+            sb.AppendLine("ID: " + this.ID);
+            sb.AppendLine(". Salita: " + this.Salita);
             return sb.ToString();
         }
     }

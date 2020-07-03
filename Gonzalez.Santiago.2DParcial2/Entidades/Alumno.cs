@@ -8,49 +8,51 @@ namespace Entidades
 {
     public class Alumno : Persona
     {
-        protected int legajo;
-        protected float precioCuota;
 
+        protected string responsable;
         public Alumno()
         {
 
         }
-        public Alumno(string nombre, string apellido, int edad, int dni, string direccion, int id, string sexo) :
-            base(nombre, apellido, edad, dni, direccion, id, sexo)
+        //string nombre, string apellido,int edad,int dni, string direccion,int id
+        public Alumno(string nombre, string apellido, int edad, int dni, string direccion, int id, string responsable) :
+            base(nombre, apellido, edad, dni, direccion, id)
         {
-            this.PrecioCuota = precioCuota;
-            this.Legajo = legajo;
+            this.Responsable = responsable;
         }
 
-        public int Legajo
+        public string Responsable
         {
-            get { return this.legajo; }
-            set { this.legajo = value; }
-        }
-        public float PrecioCuota
-        {
-            get { return this.precioCuota; }
-            set { this.precioCuota = value; }
+            get { return responsable; }
+            set { responsable = value; }
         }
 
-
-        public static bool operator ==(Alumno a1, Alumno a2)
-        {
-            return (a1.Legajo == a2.Legajo);
-
-        }
-        public static bool operator !=(Alumno a1, Alumno a2)
-        {
-            return (!(a1 == a2));
-        }
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(base.ToString());
-            sb.AppendLine(".Legajo: " + this.Legajo);
-            sb.AppendLine(".Precio de la cuota: " + this.PrecioCuota);
 
             return sb.ToString();
         }
-    }
+
+        public void AlumnoEvaluado(bool aprobado)
+        {
+            Xml<Alumno> xmlAlumno = new Xml<Alumno>();
+            //si el 
+            //El archivo deberá tener el siguiente formato: Apellido_Nombre_Dia_Mes_Año.xml ,y
+            //En caso de aprobar deberá de guardarse en una carpeta llamada APROBADOS, y en caso
+            //que no, DESAPROBADOS.
+            DateTime fechaHora = new DateTime();
+            fechaHora = DateTime.Now;
+            string nombreArchivo = this.Apellido + this.Nombre + fechaHora.ToString("dd'_'MM'_'yyyy") + ".xml";
+            if (aprobado)
+            {
+                xmlAlumno.Guardar(ConstantePath.PATHXML + "APROBADOS",nombreArchivo,this);
+            }
+            else
+            {
+                xmlAlumno.Guardar(ConstantePath.PATHXML + "DESAPROBADOS", nombreArchivo, this);
+            }
+        }
+}
 }

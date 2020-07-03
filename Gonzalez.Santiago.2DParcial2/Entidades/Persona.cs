@@ -16,7 +16,6 @@ namespace Entidades
         protected int dni;
         protected int edad;
         protected string direccion;
-        protected string responsable;
         #endregion
 
         #region "Propiedades"
@@ -34,11 +33,6 @@ namespace Entidades
         {
             get { return this.dni; }
             set { this.dni = value; }
-        }
-        public string Sexo
-        {
-            get { return this.sexo; }
-            set { this.sexo = value; }
         }
 
         public int ID
@@ -66,12 +60,11 @@ namespace Entidades
         {
 
         }
-        public Persona(string nombre, string apellido,int edad,int dni, string direccion,int id, string sexo)
+        public Persona(string nombre, string apellido,int edad,int dni, string direccion,int id)
         {
             this.Nombre = nombre;
             this.Apellido = apellido;
             this.Dni = dni;
-            this.Sexo = sexo;
             this.ID = id;
             this.Edad = edad;
             this.Direccion = direccion;
@@ -86,7 +79,6 @@ namespace Entidades
             sb.AppendLine("Nombre: " + this.Nombre);
             sb.AppendLine(". Apellido: " + this.Apellido);
             sb.AppendLine(". Dni: " + this.Dni);
-            sb.AppendLine(". Dni: " + this.Sexo);
 
             return sb.ToString();
         }
