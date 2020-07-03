@@ -33,15 +33,28 @@ namespace FormJardin
             xmlDocente.Leer(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
                 "\\SegundoParcialUtn\\JardinUtn\\Docentes\\Docentes.xml", out listaDocentes);
         }
+
+        public void GuardarDocenteEnSQL()
+        {
+
+            foreach (var item in listaDocentes)
+            {
+                SqlManejo.InsertarDocente(item);
+            }
+            //SqlManejo.GuardarSql(@"Data Source = .\SQLEXPRESS; Initial Catalog = JardinUtn; Integrated Security = True;");
+        }
+
         public void GuardarXml()
         {
             xmlDocente.Guardar(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
                 "\\SegundoParcialUtn\\JardinUtn\\Docentes\\PepitoPruebas\\", "Docentes.xml", listaDocentes);
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             GuardarXml();
+            GuardarDocenteEnSQL();
         }
 
         /// <summary>
@@ -50,8 +63,7 @@ namespace FormJardin
         public void GuardarTexto()
         {
             Texto texto = new Texto();
-            texto.Guardar(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
-                PATHLOG.pathlog, "logs.txt", "aca va el mensaje exception");
+            texto.Guardar(ConstantePath.PATHLOG, "logs.txt", "aca va lo que deseo guardar como txt, esto es una prueba");
         }
 
         private void button2_Click(object sender, EventArgs e)

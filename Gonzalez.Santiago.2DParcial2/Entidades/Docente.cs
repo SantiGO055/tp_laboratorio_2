@@ -8,21 +8,21 @@ namespace Entidades
 {
     public class Docente : Persona
     {
-        protected string mail;
+        protected string email;
         public Docente()
         {
 
         }
-        public Docente(string nombre, string apellido, int edad, int dni, string direccion,  int id, string sexo, string mail) :
+        public Docente(string nombre, string apellido, int edad, int dni, string direccion,  int id, string sexo, string email) :
             base(nombre, apellido, edad, dni, direccion, id, sexo)
         {
-            this.Mail = mail;
+            this.Email = email;
         }
 
-        public string Mail
+        public string Email
         {
-            get { return this.mail; }
-            set { this.mail = value; }
+            get { return this.email; }
+            set { this.email = value; }
         }
 
 

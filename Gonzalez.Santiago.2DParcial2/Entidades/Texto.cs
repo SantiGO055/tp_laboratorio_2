@@ -7,8 +7,12 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    
     public class Texto : IArchivo<string>
     {
+        public DateTime fechaHora = new DateTime();
+        
+        
         //crear hora actual para ir guardando en el archivo log la hora que se produjo la excepcion
         public bool Guardar(string path, string archivo, string datos)
         {
@@ -16,26 +20,35 @@ namespace Entidades
             {
                 if (Directory.Exists(path))
                 {
-                    using (StreamWriter file = new StreamWriter(path + archivo, true))
+                    using (StreamWriter file = new StreamWriter(path + archivo, true, Encoding.UTF8))
                     {
+                        file.WriteLine("-----------------------------------------------------");
+                        fechaHora = DateTime.Now;
+                        file.WriteLine(fechaHora.ToString("dd'/'MM'/'yyyy HH:mm:ss"));
                         file.WriteLine(datos);
+                        
                     }
                     return true;
                 }
                 else
                 {
+                    //verificar si no existe la ruta, no esta guardando el texo en las excepciones
                     Directory.CreateDirectory(path);
                     
-                    using (StreamWriter file = new StreamWriter(path + archivo, true))
+                    using (StreamWriter fileNotDirectory = new StreamWriter(path + archivo, true,Encoding.UTF8))
+                        
                     {
-                        file.WriteLine(datos);
+                        fileNotDirectory.WriteLine("-----------------------------------------------------");
+                        fechaHora = DateTime.Now;
+                        fileNotDirectory.WriteLine(fechaHora.ToString("dd'/'MM'/'yyyy HH:mm:ss"));
+                        fileNotDirectory.WriteLine(datos);
                     }
-                    throw new ArchivosException("Ruta del archivo inexistente, se crearon las carpetas: " + path+archivo);
+                    throw new ArchivosException("Ruta del archivo inexistente, se creo la ruta: " + path);
                 }
             }
             catch (ArchivosException ex)
             {
-                Guardar(PATHLOG.pathlog, archivo,ex.Message);
+                Guardar(ConstantePath.PATHLOG, archivo,ex.ToString());
                 return false;
             }
         }

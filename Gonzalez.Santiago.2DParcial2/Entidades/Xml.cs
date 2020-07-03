@@ -43,13 +43,13 @@ namespace Entidades
                     }
                     //llamar a guardar de txt
                     
-                    throw new ArchivosException();
+                    throw new ArchivosException("Ruta del archivo inexistente, se creo la ruta: " + path + archivo);
                 }
                 return true;
             }
             catch (ArchivosException ex)
             {
-                texto.Guardar(PATHLOG.pathlog, archivo, ex.Message);
+                texto.Guardar(ConstantePath.PATHLOG, "logs.txt", ex.Message);
                 return false;
             }
         }
