@@ -75,6 +75,13 @@ namespace Entidades
             {
                 throw new ArchivosException(ex.Message, ex);
             }
+            catch(Exception e)
+            {
+                datos = default(T);
+                texto.Guardar(ConstantePath.PATHLOG, "logs.txt", e.Message);
+                return false;
+            }
+
             
         }
     }

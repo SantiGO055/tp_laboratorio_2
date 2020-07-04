@@ -56,23 +56,55 @@ namespace Entidades
             {
                 conexion.Close();
             }
-            
+
         }
-        public static List<Alumno> LeerAlumnos(string conectionString)
+        public static DataTable LeerAlumnosDataTable(string conectionString)
         {
             try
             {
+                DataTable dt = new DataTable();
                 conexion.Open();
+                SqlDataAdapter adaptador = new SqlDataAdapter();
 
+                comando.Connection = conexion;
+                comando.CommandText = conectionString;
+                adaptador.SelectCommand = comando;
+                adaptador.Fill(dt);
+
+                return dt;
+
+            }
+            catch (Exception ex)
+            {
+                Texto texto = new Texto();
+                texto.Guardar(ConstantePath.PATHLOG, "logs.txt", ex.Message);
+                return null;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+        public static List<Alumno> LeerAlumnosALista(string conectionString)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                conexion.Open();
+                //SqlDataAdapter adaptador = new SqlDataAdapter();
                 comando.Connection = conexion;
 
                 comando.CommandText = conectionString;
                 SqlDataReader read = comando.ExecuteReader();
                 while (read.Read())
                 {
-                    alumnosAux.Add(new Alumno((read["Nombre"].ToString()), (read["Apellido"].ToString()), (int.Parse(read["Edad"].ToString())),
-                    (int.Parse(read["Dni"].ToString())), (read["Direccion"].ToString()), (int.Parse(read["idAlumnos"].ToString())), (read["Responsable"].ToString())));
+                    alumnosAux.Add(new Alumno((read["nombre"].ToString()), (read["apellido"].ToString()), (int.Parse(read["edad"].ToString())),
+                    (int.Parse(read["dni"].ToString())), (read["direccion"].ToString()), (int.Parse(read["idalumnos"].ToString())), (read["responsable"].ToString())));
                 }
+                //adaptador.SelectCommand = comando;
+                //adaptador.Fill(dt);
+                dt.Load(read);
+
                 return alumnosAux;
                 //DataTable dt = new DataTable();
                 //dt.Load(dr);

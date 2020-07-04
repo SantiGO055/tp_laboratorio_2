@@ -11,3 +11,16 @@ C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\Fo
 C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\FormJardin\obj\Debug\FormJardin.csproj.CopyComplete
 C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\FormJardin\obj\Debug\FormJardin.exe
 C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\FormJardin\obj\Debug\FormJardin.pdb
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\FormJardin\obj\Debug\FormJardin.csprojAssemblyReference.cache
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\FormJardin\obj\Debug\FormJardin.FormAlumnos.resources
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\FormJardin\obj\Debug\FormJardin.Properties.Resources.resources
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\FormJardin\obj\Debug\FormJardin.csproj.GenerateResource.cache
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\FormJardin\obj\Debug\FormJardin.csproj.CoreCompileInputs.cache
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\FormJardin\obj\Debug\FormJardin.exe
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\FormJardin\obj\Debug\FormJardin.pdb
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\FormJardin\bin\Debug\FormJardin.exe.config
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\FormJardin\bin\Debug\FormJardin.exe
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\FormJardin\bin\Debug\FormJardin.pdb
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\FormJardin\bin\Debug\Entidades.dll
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\FormJardin\bin\Debug\Entidades.pdb
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\FormJardin\obj\Debug\FormJardin.csproj.CopyComplete
