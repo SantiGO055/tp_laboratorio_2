@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.lblAlumno = new System.Windows.Forms.Label();
-            this.txtAlumno = new System.Windows.Forms.TextBox();
+            this.txtAlumnoSiendoEvaluado = new System.Windows.Forms.TextBox();
             this.txtDocente = new System.Windows.Forms.TextBox();
             this.lblDocente = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -43,13 +43,13 @@
             this.lblAlumno.TabIndex = 0;
             this.lblAlumno.Text = "Alumno";
             // 
-            // txtAlumno
+            // txtAlumnoSiendoEvaluado
             // 
-            this.txtAlumno.Location = new System.Drawing.Point(38, 47);
-            this.txtAlumno.Name = "txtAlumno";
-            this.txtAlumno.ReadOnly = true;
-            this.txtAlumno.Size = new System.Drawing.Size(500, 20);
-            this.txtAlumno.TabIndex = 1;
+            this.txtAlumnoSiendoEvaluado.Location = new System.Drawing.Point(38, 47);
+            this.txtAlumnoSiendoEvaluado.Name = "txtAlumnoSiendoEvaluado";
+            this.txtAlumnoSiendoEvaluado.ReadOnly = true;
+            this.txtAlumnoSiendoEvaluado.Size = new System.Drawing.Size(500, 20);
+            this.txtAlumnoSiendoEvaluado.TabIndex = 1;
             // 
             // txtDocente
             // 
@@ -75,7 +75,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblDocente);
             this.Controls.Add(this.txtDocente);
-            this.Controls.Add(this.txtAlumno);
+            this.Controls.Add(this.txtAlumnoSiendoEvaluado);
             this.Controls.Add(this.lblAlumno);
             this.Name = "FormEvaluaciones";
             this.Text = "FormEvaluaciones";
@@ -89,7 +89,7 @@
 
         private System.Windows.Forms.Label lblAlumno;
         private System.Windows.Forms.Label lblDocente;
-        public System.Windows.Forms.TextBox txtAlumno;
+        public System.Windows.Forms.TextBox txtAlumnoSiendoEvaluado;
         public System.Windows.Forms.TextBox txtDocente;
     }
 }

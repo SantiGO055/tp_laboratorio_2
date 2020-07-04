@@ -28,7 +28,7 @@ namespace FormJardin
         Random evaluarRandom;
         BindingSource bs;
         event Evaluar proximoAEvaluar;
-        Alumno alumnoAEvaluar;
+        Alumno proximoALlamar;
 
         FormEvaluaciones formEvaluaciones;
         public FormAlumnos()
@@ -46,14 +46,14 @@ namespace FormJardin
             listaAlumnos = new List<Alumno>();
             bs = new BindingSource();
             formEvaluaciones = new FormEvaluaciones();
-            alumnoAEvaluar = new Alumno();
+            proximoALlamar = new Alumno();
 
             proximoAEvaluar += Proximo;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
             LeerXmlDocentes();
             GuardarDocenteEnSQL();
             LeerAlumnosSql();
@@ -115,11 +115,6 @@ namespace FormJardin
 
         }
 
-        public void GuardarListaAlumnos()
-        {
-
-        }
-
         public void GuardarXmlDocentes()
         {
             xmlDocente.Guardar(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
@@ -146,63 +141,73 @@ namespace FormJardin
         }
         private void ProximoAlumnoASerLlamado()
         {
-            int alumnoAEvaluarRandom;
-            alumnoAEvaluarRandom = evaluarRandom.Next(1, dataGridAlumnos.Rows.Count);
+
             try
             {
                 if (dataGridAlumnos.Rows.Count > 0)
                 {
                     foreach (DataGridViewRow item in dataGridAlumnos.Rows)
                     {
-                        if (!(item is null))
+                        if (!(item is null) && !(item.Cells[item.Index].Value is null))
                         {
-                            //verificar que el id de alumno de la primera datagrid sea distinto a la de la segunda
-                            //&& dataGridProximo.Rows[item.Index].Cells["idAlumnos"] != item.Cells["idAlumnos"].Value
-                            if (item.Cells["idAlumnos"].Value.ToString() == alumnoAEvaluarRandom.ToString())
+
+
+                            #region ParaUsarDataGridDelProximo
+                            //object[] values = {
+                            //          item.Cells["idAlumnos"].Value,
+                            //          item.Cells["Nombre"].Value,
+                            //          item.Cells["Apellido"].Value,
+                            //          item.Cells["Edad"].Value,
+                            //          item.Cells["Dni"].Value,
+                            //          item.Cells["Direccion"].Value,
+                            //          item.Cells["Responsable"].Value
+                            //};
+                            //dataGridProximo.ColumnCount = 7;
+                            //dataGridProximo.Columns[0].Name = "idAlumnos";
+                            //dataGridProximo.Columns[1].Name = "Nombre";
+                            //dataGridProximo.Columns[2].Name = "Apellido";
+                            //dataGridProximo.Columns[3].Name = "Edad";
+                            //dataGridProximo.Columns[4].Name = "Dni";
+                            //dataGridProximo.Columns[5].Name = "Direccion";
+                            //dataGridProximo.Columns[6].Name = "Responsable";
+                            //DataGridViewRow row = new DataGridViewRow();
+                            //row.CreateCells(dataGridProximo, values);
+                            //dataGridProximo.Rows.Add(row);
+                            #endregion
+
+                            proximoALlamar.ID = (int)(item.Cells[0].Value);
+                            proximoALlamar.Nombre = (item.Cells[1].Value.ToString());
+                            proximoALlamar.Apellido = (item.Cells[2].Value.ToString());
+                            proximoALlamar.Edad = (int)(item.Cells[3].Value);
+                            proximoALlamar.Dni = (int)(item.Cells[4].Value);
+                            proximoALlamar.Direccion = (item.Cells[5].Value.ToString());
+                            proximoALlamar.Responsable = (item.Cells[6].Value.ToString());
+
+                            StringBuilder sb = new StringBuilder();
+                            sb.Append(proximoALlamar.Nombre + " " + proximoALlamar.Apellido);
+                            //sb.Append(item.Cells[1].Value.ToString() + " " +  item.Cells[2].Value.ToString());
+
+                            dataGridAlumnos.Rows.RemoveAt(item.Index);
+
+                            if (txtProximoAlumno.InvokeRequired)
                             {
-
-                                #region ParaUsarDataGridDelProximo
-                                //object[] values = {
-                                //          item.Cells["idAlumnos"].Value,
-                                //          item.Cells["Nombre"].Value,
-                                //          item.Cells["Apellido"].Value,
-                                //          item.Cells["Edad"].Value,
-                                //          item.Cells["Dni"].Value,
-                                //          item.Cells["Direccion"].Value,
-                                //          item.Cells["Responsable"].Value
-                                //};
-                                //dataGridProximo.ColumnCount = 7;
-                                //dataGridProximo.Columns[0].Name = "idAlumnos";
-                                //dataGridProximo.Columns[1].Name = "Nombre";
-                                //dataGridProximo.Columns[2].Name = "Apellido";
-                                //dataGridProximo.Columns[3].Name = "Edad";
-                                //dataGridProximo.Columns[4].Name = "Dni";
-                                //dataGridProximo.Columns[5].Name = "Direccion";
-                                //dataGridProximo.Columns[6].Name = "Responsable";
-                                //DataGridViewRow row = new DataGridViewRow();
-                                //row.CreateCells(dataGridProximo, values);
-                                //dataGridProximo.Rows.Add(row);
-                                #endregion
-
-                                alumnoAEvaluar.ID = (int)(item.Cells[0].Value);
-                                alumnoAEvaluar.Nombre = (item.Cells[1].Value.ToString());
-                                alumnoAEvaluar.Apellido = (item.Cells[2].Value.ToString());
-                                alumnoAEvaluar.Edad = (int)(item.Cells[3].Value);
-                                alumnoAEvaluar.Dni = (int)(item.Cells[4].Value);
-                                alumnoAEvaluar.Direccion = (item.Cells[5].Value.ToString());
-                                alumnoAEvaluar.Responsable = (item.Cells[6].Value.ToString());
-                                
-                                StringBuilder sb = new StringBuilder();
-                                sb.Append(alumnoAEvaluar.Nombre + " " + alumnoAEvaluar.Apellido);
-                                //sb.Append(item.Cells[1].Value.ToString() + " " +  item.Cells[2].Value.ToString());
-                                txtProximoAlumno.Text = sb.ToString();
-                                dataGridAlumnos.Rows.RemoveAt(item.Index);
-                                //Evaluar();
-                                CantidadAlumnos();
-                                break;
+                                txtProximoAlumno.BeginInvoke((MethodInvoker)delegate
+                                {
+                                    txtProximoAlumno.Text = sb.ToString();
+                                        //ProximoAlumnoASerLlamado();
+                                    });
                             }
+                            else
+                                txtProximoAlumno.Text = sb.ToString();
+
+                            //Evaluar();
+                            CantidadAlumnos();
+                            break;
+
                         }
                     }
+
+
                 }
             }
             catch (Exception ex)
@@ -216,13 +221,22 @@ namespace FormJardin
         {
             ProximoAlumnoASerLlamado();
 
-            Evaluar(alumnoAEvaluar, (TextBox)o);
+            Evaluar(proximoALlamar, (TextBox)o);
+        }
+        public void Evaluar(Alumno alumnoSiendoEvaluado, TextBox txt)
+        {
+            MostrarAlumnoSiendoEvaluado(alumnoSiendoEvaluado.ToString(), txt);
+            Thread.Sleep(4000);
+
+            //lanzo el evento que llame al proximo
+            proximoAEvaluar(txt);
         }
         public void MostrarAlumnoSiendoEvaluado(string nombreYApellido, TextBox txt)
         {
-            if (formEvaluaciones.txtAlumno.InvokeRequired)
+
+            if (formEvaluaciones.txtAlumnoSiendoEvaluado.InvokeRequired)
             {
-                formEvaluaciones.txtAlumno.BeginInvoke((MethodInvoker)delegate
+                formEvaluaciones.txtAlumnoSiendoEvaluado.BeginInvoke((MethodInvoker)delegate
                 {
                     txt.Text = nombreYApellido;
                     //ProximoAlumnoASerLlamado();
@@ -230,20 +244,33 @@ namespace FormJardin
             }
             else
             {
+                txt.Text = nombreYApellido;
+
+                #region Comentarios
                 //formEvaluaciones.txtAlumno.Text = dataGridProximo.CurrentRow.Cells[0].Value.ToString();
                 //dataGridProximo.CurrentRow.Cells.RemoveAt(item.Index);
-                txt.Text = nombreYApellido;
                 //txtProximoAlumno.Text = "";
                 //ProximoAlumnoASerLlamado();
+                #endregion
             }
         }
-        public void Evaluar(Alumno alumnoSiendoEvaluado, TextBox txt)
+        public void QuitarAlumnoDeEspera()
         {
-            MostrarAlumnoSiendoEvaluado(alumnoSiendoEvaluado.ToString(),txt);
-            Thread.Sleep(4000);
-            //lanzo el evento que llame al proximo
-            proximoAEvaluar(txt);
+            if (txtProximoAlumno.InvokeRequired)
+            {
+                txtProximoAlumno.BeginInvoke((MethodInvoker)delegate
+                {
+                    txtProximoAlumno.Text = "";
+                    //ProximoAlumnoASerLlamado();
+                });
+            }
+            else
+            {
+                txtProximoAlumno.Text = "";
+
+            }
         }
+        
 
 
         private void btnLlamar_Click(object sender, EventArgs e)
@@ -266,13 +293,13 @@ namespace FormJardin
             }
             if (!hilos[0].IsAlive)
             {
-                
+
                 hilos[0].Start();
             }
             if (!hilos[1].IsAlive)
             {
                 hilos[1] = new Thread(new ParameterizedThreadStart(Proximo));
-                hilos[1].Start(formEvaluaciones.txtAlumno);
+                hilos[1].Start(formEvaluaciones.txtAlumnoSiendoEvaluado);
             }
             //if (!hilos[1].IsAlive)
             //{
