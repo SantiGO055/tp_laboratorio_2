@@ -24,3 +24,4 @@ C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\Fo
 C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\FormJardin\bin\Debug\Entidades.dll
 C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\FormJardin\bin\Debug\Entidades.pdb
 C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\FormJardin\obj\Debug\FormJardin.csproj.CopyComplete
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\Gonzalez.Santiago.2DParcial2\FormJardin\obj\Debug\FormJardin.FormEvaluaciones.resources

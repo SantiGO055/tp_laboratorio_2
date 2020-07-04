@@ -78,7 +78,6 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Nombre: " + this.Nombre);
             sb.AppendLine(". Apellido: " + this.Apellido);
-            sb.AppendLine(". Dni: " + this.Dni);
 
             return sb.ToString();
         }

@@ -13,7 +13,7 @@ using System.Windows.Forms;
 using Entidades;
 namespace FormJardin
 {
-    public delegate void Evaluar();
+    public delegate void Evaluar(object o);
     public partial class FormAlumnos : Form
     {
         Docente docente;
@@ -23,11 +23,14 @@ namespace FormJardin
         public List<Aula> listaAulas;
         Texto texto;
         List<Thread> hilos;
+        Thread hilosForm;
         DataTable dataTable;
         Random evaluarRandom;
         BindingSource bs;
-        public event Evaluar proximoAEvaluar;
+        event Evaluar proximoAEvaluar;
+        Alumno alumnoAEvaluar;
 
+        FormEvaluaciones formEvaluaciones;
         public FormAlumnos()
         {
             InitializeComponent();
@@ -36,21 +39,28 @@ namespace FormJardin
             xmlDocente = new Xml<List<Docente>>();
             texto = new Texto();
             hilos = new List<Thread>();
+            hilosForm = new Thread(new ThreadStart(startForm2));
             listaAulas = new List<Aula>();
             dataTable = new DataTable();
             evaluarRandom = new Random();
             listaAlumnos = new List<Alumno>();
             bs = new BindingSource();
-            //proximoAEvaluar += ProximoAlumnoASerLlamado();
+            formEvaluaciones = new FormEvaluaciones();
+            alumnoAEvaluar = new Alumno();
+
+            proximoAEvaluar += Proximo;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
             LeerXmlDocentes();
             GuardarDocenteEnSQL();
             LeerAlumnosSql();
             LeerAulaSql();
             CargarDataGridAlumno();
+            CantidadAlumnos();
+            IniciarHilos();
         }
         public void LeerXmlDocentes()
         {
@@ -60,15 +70,17 @@ namespace FormJardin
 
         public void LeerAulaSql()
         {
-            listaAulas = SQL.LeerAulas("select * from aulas");
-            
+            listaAulas = SQL.LeerAulas();
+
         }
 
         public void CargarDataGridAlumno()
         {
 
             dataGridAlumnos.DataSource = dataTable;
-            //bs.DataSource = SQL.LeerAlumnosALista("select * from Alumnos");
+
+            #region Comentarios
+            //bs.DataSource = SQL.LeerAlumnosALista();
             //dataGridAlumnos.DataSource = bs.DataSource;
             //for (int i = 1; i < dataTable.Rows.Count; i++)
             //{
@@ -82,7 +94,7 @@ namespace FormJardin
             //    alumnoAux.Responsable = dataTable.Rows[i]["Responsable"].ToString();
             //    listaAlumnos.Add(alumnoAux);
             //}
-
+            #endregion
 
         }
 
@@ -95,12 +107,11 @@ namespace FormJardin
                     SQL.InsertarDocente(item);
                 }
             }
-
         }
 
         public void LeerAlumnosSql()
         {
-            dataTable = SQL.LeerAlumnosDataTable("select * from Alumnos");
+            dataTable = SQL.LeerAlumnosDataTable();
 
         }
 
@@ -115,30 +126,28 @@ namespace FormJardin
                 "\\SegundoParcialUtn\\JardinUtn\\Docentes\\PepitoPruebas\\", "Docentes.xml", listaDocentes);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            GuardarXmlDocentes();
-        }
-
-        /// <summary>
-        /// Metodo que guarda un archivo log de errores en la ruta especificada
-        /// </summary>
-        public void GuardarTexto()
-        {
-            texto.Guardar(ConstantePath.PATHLOG, "logs.txt", "aca va lo que deseo guardar como txt, esto es una prueba");
-        }
-
         public void CantidadAlumnos()
         {
-            foreach (var item in collection)
+            if (dataGridAlumnos.InvokeRequired)
             {
-
+                dataGridAlumnos.BeginInvoke((MethodInvoker)delegate
+                {
+                    dataGridAlumnos.DataSource = null;
+                    dataGridAlumnos.DataSource = dataTable;
+                    lblEspera.Text = "Cantidad de alumnos en espera:  " + dataGridAlumnos.Rows.Count.ToString();
+                });
+            }
+            else
+            {
+                dataGridAlumnos.DataSource = null;
+                dataGridAlumnos.DataSource = dataTable;
+                lblEspera.Text = "Cantidad de alumnos en espera:  " + dataGridAlumnos.Rows.Count.ToString();
             }
         }
-        public void ProximoAlumnoASerLlamado()
+        private void ProximoAlumnoASerLlamado()
         {
-            int alumnoAEvaluar;
-            alumnoAEvaluar = evaluarRandom.Next(1, 30);
+            int alumnoAEvaluarRandom;
+            alumnoAEvaluarRandom = evaluarRandom.Next(1, dataGridAlumnos.Rows.Count);
             try
             {
                 if (dataGridAlumnos.Rows.Count > 0)
@@ -147,16 +156,51 @@ namespace FormJardin
                     {
                         if (!(item is null))
                         {
-                            if (item.Cells["idAlumnos"].Value.ToString() == alumnoAEvaluar.ToString())
+                            //verificar que el id de alumno de la primera datagrid sea distinto a la de la segunda
+                            //&& dataGridProximo.Rows[item.Index].Cells["idAlumnos"] != item.Cells["idAlumnos"].Value
+                            if (item.Cells["idAlumnos"].Value.ToString() == alumnoAEvaluarRandom.ToString())
                             {
-                                //bs.RemoveAt(item.Index);
-                                //dataGridAlumnos.Rows.RemoveAt(item.Index);
-                                //bs.Clear();
+
+                                #region ParaUsarDataGridDelProximo
+                                //object[] values = {
+                                //          item.Cells["idAlumnos"].Value,
+                                //          item.Cells["Nombre"].Value,
+                                //          item.Cells["Apellido"].Value,
+                                //          item.Cells["Edad"].Value,
+                                //          item.Cells["Dni"].Value,
+                                //          item.Cells["Direccion"].Value,
+                                //          item.Cells["Responsable"].Value
+                                //};
+                                //dataGridProximo.ColumnCount = 7;
+                                //dataGridProximo.Columns[0].Name = "idAlumnos";
+                                //dataGridProximo.Columns[1].Name = "Nombre";
+                                //dataGridProximo.Columns[2].Name = "Apellido";
+                                //dataGridProximo.Columns[3].Name = "Edad";
+                                //dataGridProximo.Columns[4].Name = "Dni";
+                                //dataGridProximo.Columns[5].Name = "Direccion";
+                                //dataGridProximo.Columns[6].Name = "Responsable";
+                                //DataGridViewRow row = new DataGridViewRow();
+                                //row.CreateCells(dataGridProximo, values);
+                                //dataGridProximo.Rows.Add(row);
+                                #endregion
+
+                                alumnoAEvaluar.ID = (int)(item.Cells[0].Value);
+                                alumnoAEvaluar.Nombre = (item.Cells[1].Value.ToString());
+                                alumnoAEvaluar.Apellido = (item.Cells[2].Value.ToString());
+                                alumnoAEvaluar.Edad = (int)(item.Cells[3].Value);
+                                alumnoAEvaluar.Dni = (int)(item.Cells[4].Value);
+                                alumnoAEvaluar.Direccion = (item.Cells[5].Value.ToString());
+                                alumnoAEvaluar.Responsable = (item.Cells[6].Value.ToString());
+                                
+                                StringBuilder sb = new StringBuilder();
+                                sb.Append(alumnoAEvaluar.Nombre + " " + alumnoAEvaluar.Apellido);
+                                //sb.Append(item.Cells[1].Value.ToString() + " " +  item.Cells[2].Value.ToString());
+                                txtProximoAlumno.Text = sb.ToString();
                                 dataGridAlumnos.Rows.RemoveAt(item.Index);
-                                dataGridProximo.Rows.Add(item);
+                                //Evaluar();
+                                CantidadAlumnos();
                                 break;
                             }
-
                         }
                     }
                 }
@@ -164,45 +208,97 @@ namespace FormJardin
             catch (Exception ex)
             {
                 texto.Guardar(ConstantePath.PATHLOG, "logs.txt", ex.Message);
-                
             }
-            
 
         }
+
+        public void Proximo(object o)
+        {
+            ProximoAlumnoASerLlamado();
+
+            Evaluar(alumnoAEvaluar, (TextBox)o);
+        }
+        public void MostrarAlumnoSiendoEvaluado(string nombreYApellido, TextBox txt)
+        {
+            if (formEvaluaciones.txtAlumno.InvokeRequired)
+            {
+                formEvaluaciones.txtAlumno.BeginInvoke((MethodInvoker)delegate
+                {
+                    txt.Text = nombreYApellido;
+                    //ProximoAlumnoASerLlamado();
+                });
+            }
+            else
+            {
+                //formEvaluaciones.txtAlumno.Text = dataGridProximo.CurrentRow.Cells[0].Value.ToString();
+                //dataGridProximo.CurrentRow.Cells.RemoveAt(item.Index);
+                txt.Text = nombreYApellido;
+                //txtProximoAlumno.Text = "";
+                //ProximoAlumnoASerLlamado();
+            }
+        }
+        public void Evaluar(Alumno alumnoSiendoEvaluado, TextBox txt)
+        {
+            MostrarAlumnoSiendoEvaluado(alumnoSiendoEvaluado.ToString(),txt);
+            Thread.Sleep(4000);
+            //lanzo el evento que llame al proximo
+            proximoAEvaluar(txt);
+        }
+
 
         private void btnLlamar_Click(object sender, EventArgs e)
         {
-            ProximoAlumnoASerLlamado();
+
         }
 
-        //public void IniciarHilos()
-        //{
-        //    if (!hilos[0].IsAlive)
-        //    {
-        //        hilos[0] = new Thread(new ParameterizedThreadStart(ProximoAlumnoASerLlamado));
-        //        hilos[0].Start(lstProximo);
-        //    }
-        //    if (!hilos[1].IsAlive)
-        //    {
-        //        hilos[1] = new Thread(new ParameterizedThreadStart(ProximoAlumnoASerLlamado));
-        //        hilos[1].Start(lstProximo);
-        //    }
-        //    if (!hilos[2].IsAlive)
-        //    {
-        //        hilos[2] = new Thread(new ParameterizedThreadStart(ProximoAlumnoASerLlamado));
-        //        hilos[2].Start(lstProximo);
-        //    }
-        //    if (!hilos[3].IsAlive)
-        //    {
-        //        hilos[3] = new Thread(new ParameterizedThreadStart(ProximoAlumnoASerLlamado));
-        //        hilos[3].Start(lstProximo);
-        //    }
-        //    if (!hilos[4].IsAlive)
-        //    {
-        //        hilos[4] = new Thread(new ParameterizedThreadStart(ProximoAlumnoASerLlamado));
-        //        hilos[4].Start(lstProximo);
-        //    }
-        //}
+        public void startForm2()
+        {
+            Thread.Sleep(1500);
+            Application.Run(formEvaluaciones);
+        }
+
+        public void IniciarHilos()
+        {
+            if (hilos.Count != 5)
+            {
+                hilos.Add(new Thread(new ThreadStart(startForm2)));
+                hilos.Add(new Thread(new ParameterizedThreadStart(Proximo)));
+            }
+            if (!hilos[0].IsAlive)
+            {
+                
+                hilos[0].Start();
+            }
+            if (!hilos[1].IsAlive)
+            {
+                hilos[1] = new Thread(new ParameterizedThreadStart(Proximo));
+                hilos[1].Start(formEvaluaciones.txtAlumno);
+            }
+            //if (!hilos[1].IsAlive)
+            //{
+            //    hilos[1].Start(txtProximoAlumno);
+            //}
+            //if (!hilos[1].IsAlive)
+            //{
+            //    hilos[1] = new Thread(new ParameterizedThreadStart(ProximoAlumnoASerLlamado));
+            //    hilos[1].Start(lstProximo);
+            //}
+            //if (!hilos[2].IsAlive)
+            //{
+            //    hilos[2] = new Thread(new ParameterizedThreadStart(ProximoAlumnoASerLlamado));
+            //    hilos[2].Start(lstProximo);
+            //}
+            //if (!hilos[3].IsAlive)
+            //{
+            //    hilos[3] = new Thread(new ParameterizedThreadStart(ProximoAlumnoASerLlamado));
+            //    hilos[3].Start(lstProximo);
+            //}
+            //if (!hilos[4].IsAlive)
+            //{
+            //    hilos[4] = new Thread(new ParameterizedThreadStart(ProximoAlumnoASerLlamado));
+            //    hilos[4].Start(lstProximo);
+            //}
+        }
 
     }
 }
