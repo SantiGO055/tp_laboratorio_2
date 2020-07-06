@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace FormJardin
         public List<Alumno> listaAlumnos;
         public Xml<List<Docente>> xmlDocente;
         public List<Aula> listaAulas;
+        public List<Alumno> alumnosEnRecreo;
         public Aula aula;
         private Texto texto;
         private List<Thread> hilos;
@@ -33,7 +35,7 @@ namespace FormJardin
         private Alumno alumnoEvaluando;
         public bool aprobado = false;
         private Evaluaciones evaluaciones = new Evaluaciones();
-
+        Stopwatch stopwatch;
         FormEvaluaciones formEvaluaciones;
         public FormAlumnos()
         {
@@ -47,10 +49,14 @@ namespace FormJardin
             dataTableAlumnos = new DataTable();
             evaluarRandom = new Random();
             listaAlumnos = new List<Alumno>();
+            alumnosEnRecreo = new List<Alumno>();
             formEvaluaciones = new FormEvaluaciones();
             proximoALlamar = new Alumno();
             alumnoEvaluando = new Alumno();
+            stopwatch = new Stopwatch();
+
             proximoAEvaluar += ProximoAlumno;
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -205,15 +211,17 @@ namespace FormJardin
                             proximoALlamar.Direccion = (item.Cells[5].Value.ToString());
                             proximoALlamar.Responsable = (item.Cells[6].Value.ToString());
 
-                            //prueba
+                            #region prueba para que no repita alumno en txt proximo y en evaluando...
+                            ////prueba
 
-                            alumnoEvaluando.Id = proximoALlamar.Id;
-                            alumnoEvaluando.Nombre = proximoALlamar.Nombre;
-                            alumnoEvaluando.Apellido = proximoALlamar.Apellido;
-                            alumnoEvaluando.Edad = proximoALlamar.Edad;
-                            alumnoEvaluando.Dni = proximoALlamar.Dni;
-                            alumnoEvaluando.Direccion = proximoALlamar.Direccion;
-                            alumnoEvaluando.Responsable = proximoALlamar.Responsable;
+                            //alumnoEvaluando.Id = proximoALlamar.Id;
+                            //alumnoEvaluando.Nombre = proximoALlamar.Nombre;
+                            //alumnoEvaluando.Apellido = proximoALlamar.Apellido;
+                            //alumnoEvaluando.Edad = proximoALlamar.Edad;
+                            //alumnoEvaluando.Dni = proximoALlamar.Dni;
+                            //alumnoEvaluando.Direccion = proximoALlamar.Direccion;
+                            //alumnoEvaluando.Responsable = proximoALlamar.Responsable;
+                            #endregion
 
                             StringBuilder sb = new StringBuilder();
                             sb.Append(proximoALlamar.Nombre + " " + proximoALlamar.Apellido);
@@ -263,9 +271,10 @@ namespace FormJardin
         /// <param name="o"></param>
         public void ProximoAlumno(object o)
         {
+
             ProximoAlumnoASerLlamado();
 
-            Evaluar(alumnoEvaluando, (TextBox)o);
+            Evaluar(proximoALlamar, (TextBox)o);
         }
 
         /// <summary>
@@ -275,7 +284,7 @@ namespace FormJardin
         /// <param name="txt"></param>
         public void Evaluar(Alumno alumnoSiendoEvaluado, TextBox txt)
         {
-
+            stopwatch.Start();
             MostrarAlumnoSiendoEvaluado(alumnoSiendoEvaluado.ToString(), txt);
             docente = GenerarDocenteRandom();
             evaluaciones.Alumno = alumnoSiendoEvaluado;
@@ -295,10 +304,28 @@ namespace FormJardin
 
             alumnoSiendoEvaluado.AlumnoEvaluado(aprobado);
             Thread.Sleep(8000);
+            alumnosEnRecreo.Add(alumnoSiendoEvaluado);
 
+            prueba(stopwatch);
 
             //lanzo el evento que llame al proximo
             proximoAEvaluar(txt);
+
+        }
+
+        public void prueba(Stopwatch stopwatch1)
+        {
+            if (formEvaluaciones.lblTiempoTranscurrido.InvokeRequired)
+            {
+                formEvaluaciones.lblTiempoTranscurrido.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    formEvaluaciones.lblTiempoTranscurrido.Text = stopwatch1.Elapsed.ToString("ss");
+                });
+            }
+            else
+            {
+                formEvaluaciones.lblTiempoTranscurrido.Text = stopwatch1.Elapsed.ToString("ss");
+            }
 
         }
 
@@ -310,30 +337,56 @@ namespace FormJardin
         {
             DateTime dt = new DateTime();
             int segundos = (int)segundosObj; //casteo objeto a int
-            while (true)
-            {
-                //verifico si el hilo donde se esta evaluando el alumno se le realizo Thread.Sleep
-                //verificar ya que sigue contando el tiempo y no se renueva
-                while (hilos[1].ThreadState is ThreadState.WaitSleepJoin)
-                {
 
-                    if (formEvaluaciones.lblTiempoTranscurrido.InvokeRequired)
-                    {
-                        formEvaluaciones.lblTiempoTranscurrido.BeginInvoke((MethodInvoker)delegate ()
-                        {
-                            formEvaluaciones.lblTiempoTranscurrido.Text = dt.AddSeconds(segundos).ToString("ss");
-                        });
-                    }
-                    else
-                    {
-                        formEvaluaciones.lblTiempoTranscurrido.Text = dt.AddSeconds(segundos).ToString("ss");
-                    }
-                    segundos++;
-                    Thread.Sleep(1000);
 
-                }
-                segundos = 1;
-            }
+
+
+            //while (true)
+            //{
+            //    //verifico si el hilo donde se esta evaluando el alumno se le realizo Thread.Sleep
+            //    //verificar ya que sigue contando el tiempo y no se renueva
+
+            //    while (alumnosEnRecreo.Count != 1)
+            //    {
+            //        if (formEvaluaciones.lblTiempoTranscurrido.InvokeRequired)
+            //        {
+            //            formEvaluaciones.lblTiempoTranscurrido.BeginInvoke((MethodInvoker)delegate ()
+            //            {
+            //                formEvaluaciones.lblTiempoTranscurrido.Text = dt.AddSeconds(segundos).ToString("ss");
+            //            });
+            //        }
+            //        else
+            //        {
+            //            formEvaluaciones.lblTiempoTranscurrido.Text = dt.AddSeconds(segundos).ToString("ss");
+            //        }
+            //        segundos++;
+            //    }
+            //    alumnosEnRecreo.RemoveAt(0);
+            //    segundos = 0;
+            //    break;
+
+
+
+            //while (hilos[1].ThreadState is ThreadState.WaitSleepJoin)
+            //{
+
+            //    if (formEvaluaciones.lblTiempoTranscurrido.InvokeRequired)
+            //    {
+            //        formEvaluaciones.lblTiempoTranscurrido.BeginInvoke((MethodInvoker)delegate ()
+            //        {
+            //            formEvaluaciones.lblTiempoTranscurrido.Text = dt.AddSeconds(segundos).ToString("ss");
+            //        });
+            //    }
+            //    else
+            //    {
+            //        formEvaluaciones.lblTiempoTranscurrido.Text = dt.AddSeconds(segundos).ToString("ss");
+            //    }
+            //    segundos++;
+            //    Thread.Sleep(1000);
+
+            //}
+            //segundos = 1;
+
         }
 
         /// <summary>
