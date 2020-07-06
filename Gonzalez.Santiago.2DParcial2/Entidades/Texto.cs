@@ -53,6 +53,7 @@ namespace Entidades
             catch (ArchivosException ex)
             {
                 Guardar(ConstantePath.PATHLOG, archivo,ex.ToString());
+                throw new ArchivosException(ex);
                 return false;
             }
         }

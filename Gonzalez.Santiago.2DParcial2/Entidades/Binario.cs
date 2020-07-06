@@ -72,13 +72,13 @@ namespace Entidades
                     }
                 }
                 else
-                    throw new ArchivosException("Ruta del archivo inexistente, se creo la ruta: " + archivo);
+                    throw new ArchivosException("No se encontro el archivo: " + archivo);
             }
-            catch (ArchivosException e)
+            catch (ArchivosException ex)
             {
-                texto.Guardar(ConstantePath.PATHBINARY, archivo, e.ToString());
+                texto.Guardar(ConstantePath.PATHLOG, "logs.txt", ex.ToString());
                 datos = default(T);
-                return false;
+                throw;
             }
         }
     }

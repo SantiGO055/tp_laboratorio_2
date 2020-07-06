@@ -75,8 +75,7 @@ namespace FormJardin
         /// </summary>
         public void LeerDocentesXml()
         {
-            xmlDocente.Leer(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
-                "\\SegundoParcialUtn\\JardinUtn\\Docentes\\Docentes.xml", out listaDocentes);
+            xmlDocente.Leer(ConstantePath.PATHSER + "Docentes\\Docentes.xml", out listaDocentes);
         }
 
         /// <summary>

@@ -8,6 +8,35 @@ namespace UnitTestJardin
     [TestClass]
     public class TestSerializaciones
     {
+        /// <summary>
+        /// Prueba para leer archivo binario y esperar que se ejecute
+        /// la exepcion ArchivosException ya que no encuentra el archivo
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(ArchivosException))]
+        public void TestDeserializacionBinariaSiElArchivoNoExiste()
+        {
+            Binario<List<Alumno>> binario = new Binario<List<Alumno>>();
+            List<Alumno> listaAlumnos = new List<Alumno>();
+
+            binario.Leer(ConstantePath.PATHSER + "Serializaciones\\UnitTest\\Binario\\Alumno.dat", out listaAlumnos);
+            
+        }
+        /// <summary>
+        /// Prueba para deserializar un archivo binario si este archivo existe
+        /// </summary>
+        [TestMethod]
+        public void TestDeserializacionBinariaSiElArchivoExiste()
+        {
+            Binario<List<Alumno>> binario = new Binario<List<Alumno>>();
+            List<Alumno> listaAlumnos = new List<Alumno>();
+
+            binario.Leer(ConstantePath.PATHSER + "Serializaciones\\UnitTest\\Binario\\Alumno.dat", out listaAlumnos);
+
+        }
+        /// <summary>
+        /// Prueba para realizar serializacion binaria
+        /// </summary>
         [TestMethod]
         public void TestSerializacionBinaria()
         {
@@ -30,28 +59,49 @@ namespace UnitTestJardin
             listaAlumnos.Add(new Alumno("Vitoria", "Birckmann", 4, 3755354, "36 Rigney Place", 14, "666"));
 
 
-            binario.Guardar(ConstantePath.PATHBINARY, "\\Alumno.dat", listaAlumnos);
+            binario.Guardar(ConstantePath.PATHSER + "Serializaciones\\UnitTest\\Binario\\", "Alumno.dat", listaAlumnos);
 
         }
-        [TestMethod]
-        public void TestDeserializacionBinaria()
-        {
-            Binario<List<Alumno>> binario = new Binario<List<Alumno>>();
-            List<Alumno> listaAlumnos = new List<Alumno>();
-
-            binario.Leer(ConstantePath.PATHBINARY +"\\Alumno.dat", out listaAlumnos);
-        }
+        
+        /// <summary>
+        /// Prueba para realizar serializacion xml
+        /// </summary>
         [TestMethod]
         public void TestSerializacionXml()
         {
-            Binario<List<Alumno>> binario = new Binario<List<Alumno>>();
-            List<Alumno> listaDocentes = new List<Alumno>();
-            listaDocentes.Add()
+            Xml<List<Docente>> xmlDocente = new Xml<List<Docente>>();
+            List<Docente> listaDocentes = new List<Docente>();
 
-            xmlDocente.Leer(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
-                "\\SegundoParcialUtn\\JardinUtn\\Docentes\\Docentes.xml", out listaDocentes);
+            //(string nombre, string apellido, int edad, int dni, string direccion,  int id, string sexo, string email)
+            listaDocentes.Add(new Docente("Pepe", "Ruiz", 4, 78456123, "1907 Parkside Pass", 1, "masculino", "prueba@gmail.com"));
+            listaDocentes.Add(new Docente("Wilie", "Mensler", 5, 3395354, "1907 Parkside Pass", 2, "masculino", "prueba@gmail.com"));
+            listaDocentes.Add(new Docente("Joshua", "Leasor", 6, 9289354, "15 Jay Street", 3, "masculino", "prueba@gmail.com"));
+            listaDocentes.Add(new Docente("Jacintha", "Findlow", 2, 5044354, "67632 Laurel Drive", 4, "masculino", "prueba@gmail.com"));
+            listaDocentes.Add(new Docente("Jervis", "Cusworth", 3, 3972354, "10 Warbler Park", 5, "masculino", "prueba@gmail.com"));
+            listaDocentes.Add(new Docente("Julina", "Mather", 4, 7875354, "7 Warner Parkway", 6, "masculino", "prueba@gmail.com"));
+            listaDocentes.Add(new Docente("Morganica", "Benard", 4, 1847354, "1 Merrick Road", 7, "masculino", "prueba@gmail.com"));
+            listaDocentes.Add(new Docente("Gale", "Antrag", 7, 3956354, "37503 Steensland Trail", 8, "masculino", "prueba@gmail.com"));
+            listaDocentes.Add(new Docente("Perri", "Orrin", 8, 1295354, "59 Magdeline Center", 9, "masculino", "prueba@gmail.com"));
+            listaDocentes.Add(new Docente("Maris", "Skippen", 4, 7832354, "03270 Mockingbird Plaza", 10, "masculino", "prueba@gmail.com"));
+            listaDocentes.Add(new Docente("Olva", "Dearnly", 2, 9894354, "7 Morrow Road", 11, "masculino", "prueba@gmail.com"));
+            listaDocentes.Add(new Docente("Loretta", "Kuhnel", 3, 2048354, "63427 Eggendart Point", 12, "masculino", "prueba@gmail.com"));
+            listaDocentes.Add(new Docente("Debra", "Shouler", 2, 1658354, "4862 Columbus Avenue", 13, "masculino", "prueba@gmail.com"));
+            listaDocentes.Add(new Docente("Vitoria", "Birckmann", 4, 3755354, "36 Rigney Place", 14, "masculino", "prueba@gmail.com"));
+
+            xmlDocente.Guardar(ConstantePath.PATHSER + "Serializaciones\\UnitTest\\Xml\\", "Docentes.xml", listaDocentes);
         }
+        /// <summary>
+        /// Prueba para deserializar archivo xml
+        /// </summary>
+        [TestMethod]
+        public void TestDeserializacionXml()
+        {
+            Xml<List<Docente>> xmlDocente = new Xml<List<Docente>>();
+            List<Docente> listaDocentes = new List<Docente>();
 
+            xmlDocente.Leer(ConstantePath.PATHSER + "Serializaciones\\UnitTest\\Xml\\Docentes.xml", out listaDocentes);
+
+        }
 
     }
 }

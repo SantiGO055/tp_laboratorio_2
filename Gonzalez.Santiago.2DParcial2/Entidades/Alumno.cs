@@ -57,11 +57,11 @@ namespace Entidades
             string nombreArchivo = this.Apellido + "_" + this.Nombre + "_" + fechaHora.ToString("dd'_'MM'_'yyyy") + ".xml";
             if (aprobado)
             {
-                xmlAlumno.Guardar(ConstantePath.PATHXML + "APROBADOS\\",nombreArchivo,this);
+                xmlAlumno.Guardar(ConstantePath.PATHSER + "APROBADOS\\",nombreArchivo,this);
             }
             else
             {
-                xmlAlumno.Guardar(ConstantePath.PATHXML + "DESAPROBADOS\\", nombreArchivo, this);
+                xmlAlumno.Guardar(ConstantePath.PATHSER + "DESAPROBADOS\\", nombreArchivo, this);
             }
         }
 }
