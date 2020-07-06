@@ -43,11 +43,12 @@
   <ItemGroup>
     <Compile Include="Alumno.cs" />
     <Compile Include="Aula.cs" />
+    <Compile Include="Binario.cs" />
     <Compile Include="ConstantePath.cs" />
     <Compile Include="Evaluaciones.cs" />
     <Compile Include="ArchivosException.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Docente.cs" />
+    <Compile Include="MetodoExtension.cs" />
     <Compile Include="IArchivo.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

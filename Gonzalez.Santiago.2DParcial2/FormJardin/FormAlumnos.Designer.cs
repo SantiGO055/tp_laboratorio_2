@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             this.dataGridAlumnos = new System.Windows.Forms.DataGridView();
-            this.btnLlamar = new System.Windows.Forms.Button();
-            this.dataGridProximo = new System.Windows.Forms.DataGridView();
-            this.lblEspera = new System.Windows.Forms.Label();
             this.txtProximoAlumno = new System.Windows.Forms.TextBox();
+            this.lblProximo = new System.Windows.Forms.Label();
+            this.lblCantidadFijo = new System.Windows.Forms.Label();
+            this.lblCantidad = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAlumnos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridProximo)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridAlumnos
@@ -53,47 +52,42 @@
             this.dataGridAlumnos.Size = new System.Drawing.Size(559, 230);
             this.dataGridAlumnos.TabIndex = 0;
             // 
-            // btnLlamar
-            // 
-            this.btnLlamar.Location = new System.Drawing.Point(359, 258);
-            this.btnLlamar.Name = "btnLlamar";
-            this.btnLlamar.Size = new System.Drawing.Size(75, 23);
-            this.btnLlamar.TabIndex = 2;
-            this.btnLlamar.Text = "button1";
-            this.btnLlamar.UseVisualStyleBackColor = true;
-            this.btnLlamar.Click += new System.EventHandler(this.btnLlamar_Click);
-            // 
-            // dataGridProximo
-            // 
-            this.dataGridProximo.AllowUserToAddRows = false;
-            this.dataGridProximo.AllowUserToDeleteRows = false;
-            this.dataGridProximo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridProximo.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridProximo.BackgroundColor = System.Drawing.Color.PaleGreen;
-            this.dataGridProximo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridProximo.Location = new System.Drawing.Point(12, 306);
-            this.dataGridProximo.MultiSelect = false;
-            this.dataGridProximo.Name = "dataGridProximo";
-            this.dataGridProximo.ReadOnly = true;
-            this.dataGridProximo.RowHeadersVisible = false;
-            this.dataGridProximo.Size = new System.Drawing.Size(560, 110);
-            this.dataGridProximo.TabIndex = 3;
-            // 
-            // lblEspera
-            // 
-            this.lblEspera.AutoSize = true;
-            this.lblEspera.Location = new System.Drawing.Point(23, 258);
-            this.lblEspera.Name = "lblEspera";
-            this.lblEspera.Size = new System.Drawing.Size(162, 13);
-            this.lblEspera.TabIndex = 4;
-            this.lblEspera.Text = "Cantidad de alumnos en espera: ";
-            // 
             // txtProximoAlumno
             // 
-            this.txtProximoAlumno.Location = new System.Drawing.Point(48, 429);
+            this.txtProximoAlumno.Location = new System.Drawing.Point(26, 362);
             this.txtProximoAlumno.Name = "txtProximoAlumno";
             this.txtProximoAlumno.Size = new System.Drawing.Size(501, 20);
             this.txtProximoAlumno.TabIndex = 5;
+            // 
+            // lblProximo
+            // 
+            this.lblProximo.AutoSize = true;
+            this.lblProximo.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProximo.Location = new System.Drawing.Point(23, 334);
+            this.lblProximo.Name = "lblProximo";
+            this.lblProximo.Size = new System.Drawing.Size(175, 14);
+            this.lblProximo.TabIndex = 6;
+            this.lblProximo.Text = "Proximo alumno a evaluar:";
+            // 
+            // lblCantidadFijo
+            // 
+            this.lblCantidadFijo.AutoSize = true;
+            this.lblCantidadFijo.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidadFijo.Location = new System.Drawing.Point(23, 262);
+            this.lblCantidadFijo.Name = "lblCantidadFijo";
+            this.lblCantidadFijo.Size = new System.Drawing.Size(214, 14);
+            this.lblCantidadFijo.TabIndex = 7;
+            this.lblCantidadFijo.Text = "Cantidad de alumnos en espera:";
+            // 
+            // lblCantidad
+            // 
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidad.ForeColor = System.Drawing.Color.Red;
+            this.lblCantidad.Location = new System.Drawing.Point(243, 262);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(0, 14);
+            this.lblCantidad.TabIndex = 9;
             // 
             // FormAlumnos
             // 
@@ -101,16 +95,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.BlanchedAlmond;
             this.ClientSize = new System.Drawing.Size(611, 461);
+            this.Controls.Add(this.lblCantidad);
+            this.Controls.Add(this.lblCantidadFijo);
+            this.Controls.Add(this.lblProximo);
             this.Controls.Add(this.txtProximoAlumno);
-            this.Controls.Add(this.lblEspera);
-            this.Controls.Add(this.dataGridProximo);
-            this.Controls.Add(this.btnLlamar);
             this.Controls.Add(this.dataGridAlumnos);
+            this.Location = new System.Drawing.Point(1, 1);
             this.Name = "FormAlumnos";
             this.Text = "Alumnos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAlumnos_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAlumnos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridProximo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,10 +114,10 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridAlumnos;
-        private System.Windows.Forms.Button btnLlamar;
-        private System.Windows.Forms.DataGridView dataGridProximo;
-        private System.Windows.Forms.Label lblEspera;
         private System.Windows.Forms.TextBox txtProximoAlumno;
+        private System.Windows.Forms.Label lblProximo;
+        private System.Windows.Forms.Label lblCantidadFijo;
+        private System.Windows.Forms.Label lblCantidad;
     }
 }
 

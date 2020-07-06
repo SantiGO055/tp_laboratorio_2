@@ -9,8 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using Entidades;
+
 namespace FormJardin
 {
     public delegate void Evaluar(object o);
@@ -21,14 +23,16 @@ namespace FormJardin
         public List<Alumno> listaAlumnos;
         public Xml<List<Docente>> xmlDocente;
         public List<Aula> listaAulas;
-        Texto texto;
-        List<Thread> hilos;
-        Thread hilosForm;
-        DataTable dataTable;
-        Random evaluarRandom;
-        BindingSource bs;
-        event Evaluar proximoAEvaluar;
-        Alumno proximoALlamar;
+        public Aula aula;
+        private Texto texto;
+        private List<Thread> hilos;
+        private DataTable dataTableAlumnos;
+        private Random evaluarRandom;
+        public event Evaluar proximoAEvaluar;
+        private Alumno proximoALlamar;
+        private Alumno alumnoEvaluando;
+        public bool aprobado = false;
+        private Evaluaciones evaluaciones = new Evaluaciones();
 
         FormEvaluaciones formEvaluaciones;
         public FormAlumnos()
@@ -39,46 +43,51 @@ namespace FormJardin
             xmlDocente = new Xml<List<Docente>>();
             texto = new Texto();
             hilos = new List<Thread>();
-            hilosForm = new Thread(new ThreadStart(startForm2));
             listaAulas = new List<Aula>();
-            dataTable = new DataTable();
+            dataTableAlumnos = new DataTable();
             evaluarRandom = new Random();
             listaAlumnos = new List<Alumno>();
-            bs = new BindingSource();
             formEvaluaciones = new FormEvaluaciones();
             proximoALlamar = new Alumno();
-
-            proximoAEvaluar += Proximo;
+            alumnoEvaluando = new Alumno();
+            proximoAEvaluar += ProximoAlumno;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            LeerXmlDocentes();
-            GuardarDocenteEnSQL();
+            LeerDocentesXml();
+            GuardarDocenteSQL();
             LeerAlumnosSql();
             LeerAulaSql();
             CargarDataGridAlumno();
             CantidadAlumnos();
             IniciarHilos();
         }
-        public void LeerXmlDocentes()
+
+        /// <summary>
+        /// Lee los docentes del archivo xml y lo almacena en una lista de docentes
+        /// </summary>
+        public void LeerDocentesXml()
         {
             xmlDocente.Leer(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
                 "\\SegundoParcialUtn\\JardinUtn\\Docentes\\Docentes.xml", out listaDocentes);
         }
 
+        /// <summary>
+        /// Levanta las aulas de la base de datos y las almacena en una lista de aulas
+        /// </summary>
         public void LeerAulaSql()
         {
             listaAulas = SQL.LeerAulas();
 
         }
 
+        /// <summary>
+        /// Carga el dataTable que contiene la tabla de la base de datos en el dataGridView alumnos
+        /// </summary>
         public void CargarDataGridAlumno()
         {
-
-            dataGridAlumnos.DataSource = dataTable;
-
+            dataGridAlumnos.DataSource = dataTableAlumnos;
             #region Comentarios
             //bs.DataSource = SQL.LeerAlumnosALista();
             //dataGridAlumnos.DataSource = bs.DataSource;
@@ -95,10 +104,12 @@ namespace FormJardin
             //    listaAlumnos.Add(alumnoAux);
             //}
             #endregion
-
         }
 
-        public void GuardarDocenteEnSQL()
+        /// <summary>
+        /// Inserta la lista de docentes en la base de datos
+        /// </summary>
+        public void GuardarDocenteSQL()
         {
             if (!(listaDocentes is null))
             {
@@ -109,39 +120,52 @@ namespace FormJardin
             }
         }
 
+        /// <summary>
+        /// Levanta los alumnos de la base de datos y lo almacena en un objeto DataTable
+        /// </summary>
         public void LeerAlumnosSql()
         {
-            dataTable = SQL.LeerAlumnosDataTable();
+            dataTableAlumnos = SQL.LeerAlumnosDataTable();
 
         }
 
+        /// <summary>
+        /// Metodo que guarda los docentes en un archivo xml
+        /// </summary>
         public void GuardarXmlDocentes()
         {
             xmlDocente.Guardar(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
                 "\\SegundoParcialUtn\\JardinUtn\\Docentes\\PepitoPruebas\\", "Docentes.xml", listaDocentes);
         }
 
+        /// <summary>
+        /// Metodo que cuenta la cantidad de alumnos pendientes de evaluar y los muestra en label
+        /// </summary>
         public void CantidadAlumnos()
         {
+            Label aux = new Label();
             if (dataGridAlumnos.InvokeRequired)
             {
                 dataGridAlumnos.BeginInvoke((MethodInvoker)delegate
                 {
                     dataGridAlumnos.DataSource = null;
-                    dataGridAlumnos.DataSource = dataTable;
-                    lblEspera.Text = "Cantidad de alumnos en espera:  " + dataGridAlumnos.Rows.Count.ToString();
+                    dataGridAlumnos.DataSource = dataTableAlumnos;
+                    lblCantidad.Text = dataGridAlumnos.Rows.Count.ToString();
                 });
             }
             else
             {
                 dataGridAlumnos.DataSource = null;
-                dataGridAlumnos.DataSource = dataTable;
-                lblEspera.Text = "Cantidad de alumnos en espera:  " + dataGridAlumnos.Rows.Count.ToString();
+                dataGridAlumnos.DataSource = dataTableAlumnos;
+                lblCantidad.Text = dataGridAlumnos.Rows.Count.ToString();
             }
         }
+
+        /// <summary>
+        /// Metodo que elige un alumno del data grid view, lo elimina y lo almacena en un textbox
+        /// </summary>
         private void ProximoAlumnoASerLlamado()
         {
-
             try
             {
                 if (dataGridAlumnos.Rows.Count > 0)
@@ -150,9 +174,7 @@ namespace FormJardin
                     {
                         if (!(item is null) && !(item.Cells[item.Index].Value is null))
                         {
-
-
-                            #region ParaUsarDataGridDelProximo
+                            #region Por si quiero usar datagrid para proximos alumnos a ser llamados
                             //object[] values = {
                             //          item.Cells["idAlumnos"].Value,
                             //          item.Cells["Nombre"].Value,
@@ -175,7 +197,7 @@ namespace FormJardin
                             //dataGridProximo.Rows.Add(row);
                             #endregion
 
-                            proximoALlamar.ID = (int)(item.Cells[0].Value);
+                            proximoALlamar.Id = (int)(item.Cells[0].Value);
                             proximoALlamar.Nombre = (item.Cells[1].Value.ToString());
                             proximoALlamar.Apellido = (item.Cells[2].Value.ToString());
                             proximoALlamar.Edad = (int)(item.Cells[3].Value);
@@ -183,10 +205,18 @@ namespace FormJardin
                             proximoALlamar.Direccion = (item.Cells[5].Value.ToString());
                             proximoALlamar.Responsable = (item.Cells[6].Value.ToString());
 
+                            //prueba
+
+                            alumnoEvaluando.Id = proximoALlamar.Id;
+                            alumnoEvaluando.Nombre = proximoALlamar.Nombre;
+                            alumnoEvaluando.Apellido = proximoALlamar.Apellido;
+                            alumnoEvaluando.Edad = proximoALlamar.Edad;
+                            alumnoEvaluando.Dni = proximoALlamar.Dni;
+                            alumnoEvaluando.Direccion = proximoALlamar.Direccion;
+                            alumnoEvaluando.Responsable = proximoALlamar.Responsable;
+
                             StringBuilder sb = new StringBuilder();
                             sb.Append(proximoALlamar.Nombre + " " + proximoALlamar.Apellido);
-                            //sb.Append(item.Cells[1].Value.ToString() + " " +  item.Cells[2].Value.ToString());
-
                             dataGridAlumnos.Rows.RemoveAt(item.Index);
 
                             if (txtProximoAlumno.InvokeRequired)
@@ -194,49 +224,187 @@ namespace FormJardin
                                 txtProximoAlumno.BeginInvoke((MethodInvoker)delegate
                                 {
                                     txtProximoAlumno.Text = sb.ToString();
-                                        //ProximoAlumnoASerLlamado();
-                                    });
+                                });
                             }
                             else
                                 txtProximoAlumno.Text = sb.ToString();
-
                             //Evaluar();
                             CantidadAlumnos();
                             break;
-
                         }
                     }
-
-
+                }
+                else
+                {
+                    MessageBox.Show("Se evaluaron todos los alumnos");
+                    Application.Exit();
                 }
             }
             catch (Exception ex)
             {
                 texto.Guardar(ConstantePath.PATHLOG, "logs.txt", ex.Message);
             }
-
         }
 
-        public void Proximo(object o)
+        private void FinalizarHilos()
+        {
+            foreach (var item in hilos)
+            {
+                if (item.IsAlive)
+                {
+                    item.Abort();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Metodo que llama al proximo alumno y luego ejecuta el metodo Evaluar
+        /// </summary>
+        /// <param name="o"></param>
+        public void ProximoAlumno(object o)
         {
             ProximoAlumnoASerLlamado();
 
-            Evaluar(proximoALlamar, (TextBox)o);
+            Evaluar(alumnoEvaluando, (TextBox)o);
         }
+
+        /// <summary>
+        /// Evalua el alumno mostrandolo en textbox, genera docente, aula y nota random y luego lanza evento para llamar al proximo alumno
+        /// </summary>
+        /// <param name="alumnoSiendoEvaluado"></param>
+        /// <param name="txt"></param>
         public void Evaluar(Alumno alumnoSiendoEvaluado, TextBox txt)
         {
+
             MostrarAlumnoSiendoEvaluado(alumnoSiendoEvaluado.ToString(), txt);
-            Thread.Sleep(4000);
+            docente = GenerarDocenteRandom();
+            evaluaciones.Alumno = alumnoSiendoEvaluado;
+            evaluaciones.Docente = docente;
+            alumnoSiendoEvaluado.Nota = evaluaciones.GenerarNotaRandom();
+            evaluaciones.Aula = GenerarAulaRandom();
+            evaluaciones.GenerarObservacionRandom();
+            evaluaciones.InsertarASql();
+            if (alumnoSiendoEvaluado.Nota >= 6)
+            {
+                aprobado = true;
+            }
+            else
+            {
+                aprobado = false;
+            }
+
+            alumnoSiendoEvaluado.AlumnoEvaluado(aprobado);
+            Thread.Sleep(8000);
+
 
             //lanzo el evento que llame al proximo
             proximoAEvaluar(txt);
+
         }
-        public void MostrarAlumnoSiendoEvaluado(string nombreYApellido, TextBox txt)
+
+        /// <summary>
+        /// Muestro tiempo transcurrido desde que se comenzo a evaluar el alumno
+        /// </summary>
+        /// <param name="segundosObj"></param>
+        public void MostrarTiempoTranscurrido(object segundosObj)
+        {
+            DateTime dt = new DateTime();
+            int segundos = (int)segundosObj; //casteo objeto a int
+            while (true)
+            {
+                //verifico si el hilo donde se esta evaluando el alumno se le realizo Thread.Sleep
+                //verificar ya que sigue contando el tiempo y no se renueva
+                while (hilos[1].ThreadState is ThreadState.WaitSleepJoin)
+                {
+
+                    if (formEvaluaciones.lblTiempoTranscurrido.InvokeRequired)
+                    {
+                        formEvaluaciones.lblTiempoTranscurrido.BeginInvoke((MethodInvoker)delegate ()
+                        {
+                            formEvaluaciones.lblTiempoTranscurrido.Text = dt.AddSeconds(segundos).ToString("ss");
+                        });
+                    }
+                    else
+                    {
+                        formEvaluaciones.lblTiempoTranscurrido.Text = dt.AddSeconds(segundos).ToString("ss");
+                    }
+                    segundos++;
+                    Thread.Sleep(1000);
+
+                }
+                segundos = 1;
+            }
+        }
+
+        /// <summary>
+        /// Genera un aula al azar
+        /// </summary>
+        /// <returns>Aula al azar</returns>
+        public Aula GenerarAulaRandom()
         {
 
-            if (formEvaluaciones.txtAlumnoSiendoEvaluado.InvokeRequired)
+            return aula = MetodoExtension.GenerarAulaRandom(listaAulas);
+
+            #region Comentario
+            //comento para ver si sale el metodo de extension
+
+            //Aula aulaAux = new Aula();
+            //int aulaRandom = evaluarRandom.Next(1, listaAulas.Count);
+            //foreach (var item in listaAulas)
+            //{
+            //    if (item.Id == aulaRandom)
+            //    {
+            //        aulaAux = item;
+            //    }
+            //}
+            //return aulaAux;
+            #endregion
+        }
+
+        /// <summary>
+        /// Genera un docente al azar
+        /// </summary>
+        /// <returns>Docente al azar</returns>
+        public Docente GenerarDocenteRandom()
+        {
+            Docente docente = new Docente();
+            int evaluoRandom;
+            //pongo el random en este rango por que lo carga a la base con este ese rango de id
+            evaluoRandom = evaluarRandom.Next(1, listaDocentes.Count);
+            foreach (var item in listaDocentes)
             {
-                formEvaluaciones.txtAlumnoSiendoEvaluado.BeginInvoke((MethodInvoker)delegate
+                if (item.Id == evaluoRandom)
+                {
+                    if (formEvaluaciones.txtDocente.InvokeRequired)
+                    {
+                        formEvaluaciones.txtDocente.BeginInvoke((MethodInvoker)delegate
+                        {
+                            formEvaluaciones.txtDocente.Text = item.ToString();
+                            docente = item;
+                            //ProximoAlumnoASerLlamado();
+                        });
+                    }
+                    else
+                    {
+                        formEvaluaciones.txtDocente.Text = item.ToString();
+                        docente = item;
+                    }
+                }
+
+            }
+            return docente;
+        }
+
+        /// <summary>
+        /// Muestra al alumno siendo evaluado en el FormEvaluaciones
+        /// </summary>
+        /// <param name="nombreYApellido">Nombre y apellido del alumno a mostrar</param>
+        /// <param name="txt">Objeto de tipo textbox para cargar el alumno</param>
+        public void MostrarAlumnoSiendoEvaluado(string nombreYApellido, TextBox txt)
+        {
+            if (txt.InvokeRequired)
+            {
+                txt.BeginInvoke((MethodInvoker)delegate
                 {
                     txt.Text = nombreYApellido;
                     //ProximoAlumnoASerLlamado();
@@ -254,78 +422,46 @@ namespace FormJardin
                 #endregion
             }
         }
-        public void QuitarAlumnoDeEspera()
+        /// <summary>
+        /// Espero 0,5 segundos para iniciar el formulario evaluaciones
+        /// </summary>
+        public void IniciarFormEvaluaciones()
         {
-            if (txtProximoAlumno.InvokeRequired)
-            {
-                txtProximoAlumno.BeginInvoke((MethodInvoker)delegate
-                {
-                    txtProximoAlumno.Text = "";
-                    //ProximoAlumnoASerLlamado();
-                });
-            }
-            else
-            {
-                txtProximoAlumno.Text = "";
-
-            }
-        }
-        
-
-
-        private void btnLlamar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        public void startForm2()
-        {
-            Thread.Sleep(1500);
+            Thread.Sleep(500);
             Application.Run(formEvaluaciones);
         }
 
+        /// <summary>
+        /// Inicio los hilos
+        /// </summary>
         public void IniciarHilos()
         {
             if (hilos.Count != 5)
             {
-                hilos.Add(new Thread(new ThreadStart(startForm2)));
-                hilos.Add(new Thread(new ParameterizedThreadStart(Proximo)));
+                hilos.Add(new Thread(new ThreadStart(IniciarFormEvaluaciones)));
+                hilos.Add(new Thread(new ParameterizedThreadStart(ProximoAlumno)));
+                hilos.Add(new Thread(new ParameterizedThreadStart(MostrarTiempoTranscurrido)));
+
             }
             if (!hilos[0].IsAlive)
             {
-
                 hilos[0].Start();
             }
             if (!hilos[1].IsAlive)
             {
-                hilos[1] = new Thread(new ParameterizedThreadStart(Proximo));
+                hilos[1] = new Thread(new ParameterizedThreadStart(ProximoAlumno));
                 hilos[1].Start(formEvaluaciones.txtAlumnoSiendoEvaluado);
             }
-            //if (!hilos[1].IsAlive)
-            //{
-            //    hilos[1].Start(txtProximoAlumno);
-            //}
-            //if (!hilos[1].IsAlive)
-            //{
-            //    hilos[1] = new Thread(new ParameterizedThreadStart(ProximoAlumnoASerLlamado));
-            //    hilos[1].Start(lstProximo);
-            //}
-            //if (!hilos[2].IsAlive)
-            //{
-            //    hilos[2] = new Thread(new ParameterizedThreadStart(ProximoAlumnoASerLlamado));
-            //    hilos[2].Start(lstProximo);
-            //}
-            //if (!hilos[3].IsAlive)
-            //{
-            //    hilos[3] = new Thread(new ParameterizedThreadStart(ProximoAlumnoASerLlamado));
-            //    hilos[3].Start(lstProximo);
-            //}
-            //if (!hilos[4].IsAlive)
-            //{
-            //    hilos[4] = new Thread(new ParameterizedThreadStart(ProximoAlumnoASerLlamado));
-            //    hilos[4].Start(lstProximo);
-            //}
+            if (!hilos[2].IsAlive)
+            {
+                hilos[2] = new Thread(new ParameterizedThreadStart(MostrarTiempoTranscurrido));
+                hilos[2].Start(1);
+            }
         }
 
+        private void FormAlumnos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FinalizarHilos();
+        }
     }
 }

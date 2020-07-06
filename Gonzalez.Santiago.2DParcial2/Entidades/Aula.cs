@@ -10,16 +10,20 @@ namespace Entidades
     {
         protected int id;
         protected string salita;
+        public Aula()
+        {
+
+        }
         public Aula(int id, string salita)
         {
-            this.ID = id;
+            this.Id = id;
             this.Salita = salita;
         }
 
 
         #region Propiedades
 
-        public int ID
+        public int Id
         {
             get { return id; }
             set { id = value; }
@@ -33,12 +37,17 @@ namespace Entidades
 
         #endregion
 
+        /// <summary>
+        /// Sobrecarga del metodo ToString, publica los datos del aula
+        /// </summary>
+        /// <returns>Datos del aula</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("ID: " + this.ID);
+            sb.AppendLine("ID: " + this.Id);
             sb.AppendLine(". Salita: " + this.Salita);
             return sb.ToString();
         }
+
     }
 }

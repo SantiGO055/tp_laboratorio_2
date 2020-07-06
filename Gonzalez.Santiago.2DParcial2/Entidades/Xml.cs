@@ -57,8 +57,8 @@ namespace Entidades
         /// <summary>
         /// Lee el archivo xml con los datos del objeto que recibe por parametro
         /// </summary>
-        /// <param name="archivo"></param>
-        /// <param name="datos"></param>
+        /// <param name="archivo">Ruta del archivo a leer</param>
+        /// <param name="datos">Variable donde almacena los datos segun el tipo de dato que fue declarada la instancia de la clase</param>
         /// <returns></returns>
         public bool Leer(string archivo, out T datos)
         {

@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    [Serializable]
     public class Alumno : Persona
     {
 
         protected string responsable;
+        protected int nota;
         public Alumno()
         {
 
@@ -18,7 +20,15 @@ namespace Entidades
         public Alumno(string nombre, string apellido, int edad, int dni, string direccion, int id, string responsable) :
             base(nombre, apellido, edad, dni, direccion, id)
         {
+            this.Nota = nota;
             this.Responsable = responsable;
+        }
+
+
+        public int Nota
+        {
+            get { return nota; }
+            set { nota = value; }
         }
 
         public string Responsable
@@ -44,14 +54,14 @@ namespace Entidades
             //que no, DESAPROBADOS.
             DateTime fechaHora = new DateTime();
             fechaHora = DateTime.Now;
-            string nombreArchivo = this.Apellido + this.Nombre + fechaHora.ToString("dd'_'MM'_'yyyy") + ".xml";
+            string nombreArchivo = this.Apellido + "_" + this.Nombre + "_" + fechaHora.ToString("dd'_'MM'_'yyyy") + ".xml";
             if (aprobado)
             {
-                xmlAlumno.Guardar(ConstantePath.PATHXML + "APROBADOS",nombreArchivo,this);
+                xmlAlumno.Guardar(ConstantePath.PATHXML + "APROBADOS\\",nombreArchivo,this);
             }
             else
             {
-                xmlAlumno.Guardar(ConstantePath.PATHXML + "DESAPROBADOS", nombreArchivo, this);
+                xmlAlumno.Guardar(ConstantePath.PATHXML + "DESAPROBADOS\\", nombreArchivo, this);
             }
         }
 }

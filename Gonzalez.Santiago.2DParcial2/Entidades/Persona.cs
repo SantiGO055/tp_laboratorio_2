@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    [Serializable]
     public abstract class Persona
     {
         #region "Atributos"
@@ -35,7 +36,7 @@ namespace Entidades
             set { this.dni = value; }
         }
 
-        public int ID
+        public int Id
         {
             get { return this.id; }
             set { this.id = value; }
@@ -65,7 +66,7 @@ namespace Entidades
             this.Nombre = nombre;
             this.Apellido = apellido;
             this.Dni = dni;
-            this.ID = id;
+            this.Id = id;
             this.Edad = edad;
             this.Direccion = direccion;
         }
@@ -73,6 +74,10 @@ namespace Entidades
         #endregion
 
         #region "Metodos"
+        /// <summary>
+        /// Publica los datos de la persona
+        /// </summary>
+        /// <returns>Retorna StringBuilder con todos los datos</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
