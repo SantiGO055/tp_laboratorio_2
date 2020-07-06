@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace UnitTestJardin
 {
     [TestClass]
-    public class UnitTest1
+    public class TestSerializaciones
     {
         [TestMethod]
         public void TestSerializacionBinaria()
@@ -45,9 +45,11 @@ namespace UnitTestJardin
         public void TestSerializacionXml()
         {
             Binario<List<Alumno>> binario = new Binario<List<Alumno>>();
-            List<Alumno> listaAlumnos = new List<Alumno>();
+            List<Alumno> listaDocentes = new List<Alumno>();
+            listaDocentes.Add()
 
-            binario.Leer(ConstantePath.PATHBINARY +"\\Alumno.dat", out listaAlumnos);
+            xmlDocente.Leer(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
+                "\\SegundoParcialUtn\\JardinUtn\\Docentes\\Docentes.xml", out listaDocentes);
         }
 
 
