@@ -33,11 +33,8 @@
             this.txtAlumnoSiendoEvaluado = new System.Windows.Forms.TextBox();
             this.txtDocente = new System.Windows.Forms.TextBox();
             this.lblDocente = new System.Windows.Forms.Label();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timerTranscurrido = new System.Windows.Forms.Timer(this.components);
             this.lblTiempoTranscurrido = new System.Windows.Forms.Label();
-            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblAlumno
@@ -74,22 +71,10 @@
             this.lblDocente.TabIndex = 3;
             this.lblDocente.Text = "Evaluado por docente: ";
             // 
-            // statusStrip1
+            // timerTranscurrido
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 252);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(569, 22);
-            this.statusStrip1.TabIndex = 4;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.BackColor = System.Drawing.Color.NavajoWhite;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            this.timerTranscurrido.Interval = 1000;
+            this.timerTranscurrido.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // lblTiempoTranscurrido
             // 
@@ -107,17 +92,15 @@
             this.BackColor = System.Drawing.Color.LightSalmon;
             this.ClientSize = new System.Drawing.Size(569, 274);
             this.Controls.Add(this.lblTiempoTranscurrido);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.lblDocente);
             this.Controls.Add(this.txtDocente);
             this.Controls.Add(this.txtAlumnoSiendoEvaluado);
             this.Controls.Add(this.lblAlumno);
+            this.Location = new System.Drawing.Point(900, 200);
             this.Name = "FormEvaluaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Evaluacion del alumno";
             this.Load += new System.EventHandler(this.FormEvaluaciones_Load);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,9 +112,7 @@
         private System.Windows.Forms.Label lblDocente;
         public System.Windows.Forms.TextBox txtAlumnoSiendoEvaluado;
         public System.Windows.Forms.TextBox txtDocente;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        public System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.Timer timerTranscurrido;
         public System.Windows.Forms.Label lblTiempoTranscurrido;
     }
 }

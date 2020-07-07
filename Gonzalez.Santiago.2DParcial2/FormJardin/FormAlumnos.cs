@@ -27,7 +27,7 @@ namespace FormJardin
         public List<Alumno> alumnosEnRecreo;
         public Aula aula;
         private Texto texto;
-        private List<Thread> hilos;
+        public List<Thread> hilos;
         private DataTable dataTableAlumnos;
         private Random evaluarRandom;
         public event Evaluar proximoAEvaluar;
@@ -305,28 +305,12 @@ namespace FormJardin
             Thread.Sleep(8000);
             alumnosEnRecreo.Add(alumnoSiendoEvaluado);
 
-            prueba(stopwatch);
 
             //lanzo el evento que llame al proximo
             proximoAEvaluar(txt);
 
         }
 
-        public void prueba(Stopwatch stopwatch1)
-        {
-            if (formEvaluaciones.lblTiempoTranscurrido.InvokeRequired)
-            {
-                formEvaluaciones.lblTiempoTranscurrido.BeginInvoke((MethodInvoker)delegate ()
-                {
-                    formEvaluaciones.lblTiempoTranscurrido.Text = stopwatch1.Elapsed.ToString("ss");
-                });
-            }
-            else
-            {
-                formEvaluaciones.lblTiempoTranscurrido.Text = stopwatch1.Elapsed.ToString("ss");
-            }
-
-        }
 
         /// <summary>
         /// Muestro tiempo transcurrido desde que se comenzo a evaluar el alumno
@@ -336,10 +320,23 @@ namespace FormJardin
         {
             DateTime dt = new DateTime();
             int segundos = (int)segundosObj; //casteo objeto a int
+            segundos = 0;
 
 
-
-
+            
+                if (formEvaluaciones.lblTiempoTranscurrido.InvokeRequired)
+                {
+                    formEvaluaciones.lblTiempoTranscurrido.BeginInvoke((MethodInvoker)delegate ()
+                    {
+                        formEvaluaciones.lblTiempoTranscurrido.Text = dt.AddSeconds(segundos).ToString("ss");
+                    });
+                }
+                else
+                {
+                    formEvaluaciones.lblTiempoTranscurrido.Text = dt.AddSeconds(segundos).ToString("ss");
+                }
+                segundos++;
+            
             //while (true)
             //{
             //    //verifico si el hilo donde se esta evaluando el alumno se le realizo Thread.Sleep
@@ -347,18 +344,7 @@ namespace FormJardin
 
             //    while (alumnosEnRecreo.Count != 1)
             //    {
-            //        if (formEvaluaciones.lblTiempoTranscurrido.InvokeRequired)
-            //        {
-            //            formEvaluaciones.lblTiempoTranscurrido.BeginInvoke((MethodInvoker)delegate ()
-            //            {
-            //                formEvaluaciones.lblTiempoTranscurrido.Text = dt.AddSeconds(segundos).ToString("ss");
-            //            });
-            //        }
-            //        else
-            //        {
-            //            formEvaluaciones.lblTiempoTranscurrido.Text = dt.AddSeconds(segundos).ToString("ss");
-            //        }
-            //        segundos++;
+            //        
             //    }
             //    alumnosEnRecreo.RemoveAt(0);
             //    segundos = 0;
@@ -479,7 +465,6 @@ namespace FormJardin
         /// </summary>
         public void IniciarFormEvaluaciones()
         {
-            Thread.Sleep(500);
             Application.Run(formEvaluaciones);
         }
 
@@ -492,7 +477,7 @@ namespace FormJardin
             {
                 hilos.Add(new Thread(new ThreadStart(IniciarFormEvaluaciones)));
                 hilos.Add(new Thread(new ParameterizedThreadStart(ProximoAlumno)));
-                hilos.Add(new Thread(new ParameterizedThreadStart(MostrarTiempoTranscurrido)));
+                hilos.Add(new Thread(MostrarTiempoTranscurrido));
 
             }
             if (!hilos[0].IsAlive)
@@ -504,11 +489,11 @@ namespace FormJardin
                 hilos[1] = new Thread(new ParameterizedThreadStart(ProximoAlumno));
                 hilos[1].Start(formEvaluaciones.txtAlumnoSiendoEvaluado);
             }
-            if (!hilos[2].IsAlive)
-            {
-                hilos[2] = new Thread(new ParameterizedThreadStart(MostrarTiempoTranscurrido));
-                hilos[2].Start(1);
-            }
+            //if (!hilos[2].IsAlive)
+            //{
+            //    hilos[2] = new Thread();
+            //    hilos[2].Start(-3);
+            //}
         }
 
         private void FormAlumnos_FormClosing(object sender, FormClosingEventArgs e)

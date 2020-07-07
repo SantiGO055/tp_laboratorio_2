@@ -100,7 +100,7 @@
             this.Controls.Add(this.lblProximo);
             this.Controls.Add(this.txtProximoAlumno);
             this.Controls.Add(this.dataGridAlumnos);
-            this.Location = new System.Drawing.Point(1, 1);
+            this.Location = new System.Drawing.Point(50, 50);
             this.Name = "FormAlumnos";
             this.Text = "Alumnos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAlumnos_FormClosing);
