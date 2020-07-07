@@ -17,6 +17,7 @@ using Entidades;
 namespace FormJardin
 {
     public delegate void Evaluar(object o);
+    public delegate void ProximoAEvaluar(Alumno p);
     public partial class FormAlumnos : Form
     {
         Docente docente;
@@ -31,13 +32,11 @@ namespace FormJardin
         private DataTable dataTableAlumnos;
         private Random evaluarRandom;
         public event Evaluar proximoAEvaluar;
+        public event ProximoAEvaluar pasoAlProximo;
         private Alumno proximoALlamar;
-        private Alumno alumnoEvaluando;
         public bool aprobado = false;
         private Evaluaciones evaluaciones = new Evaluaciones();
-        Stopwatch stopwatch;
         FormEvaluaciones formEvaluaciones;
-        bool flagRecreo;
         int cont = 0;
 
         public FormAlumnos()
@@ -55,11 +54,10 @@ namespace FormJardin
             alumnosEnRecreo = new List<Alumno>();
             formEvaluaciones = new FormEvaluaciones();
             proximoALlamar = new Alumno();
-            alumnoEvaluando = new Alumno();
-            stopwatch = new Stopwatch();
+
+            
 
             proximoAEvaluar += ProximoAlumno;
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -227,19 +225,10 @@ namespace FormJardin
                             //alumnoEvaluando.Responsable = proximoALlamar.Responsable;
                             #endregion
 
-                            StringBuilder sb = new StringBuilder();
-                            sb.Append(proximoALlamar.Nombre + " " + proximoALlamar.Apellido);
+                            Alumno alumnoSiendoEvaluado = proximoALlamar;
                             dataGridAlumnos.Rows.RemoveAt(item.Index);
+                            MostrarProximoAlumno(proximoALlamar);
 
-                            if (txtProximoAlumno.InvokeRequired)
-                            {
-                                txtProximoAlumno.BeginInvoke((MethodInvoker)delegate
-                                {
-                                    txtProximoAlumno.Text = sb.ToString();
-                                });
-                            }
-                            else
-                                txtProximoAlumno.Text = sb.ToString();
                             //Evaluar();
                             CantidadAlumnos();
                             break;
@@ -249,6 +238,7 @@ namespace FormJardin
                 else
                 {
                     MessageBox.Show("Se evaluaron todos los alumnos");
+                    FinalizarHilos();
                     Application.Exit();
                 }
             }
@@ -269,6 +259,23 @@ namespace FormJardin
             }
         }
 
+        private void MostrarProximoAlumno(Alumno alumno)
+        {
+            //StringBuilder sb = new StringBuilder();
+            //sb.Append(alumno.Nombre + " " + alumno.Apellido);
+            
+
+            if (txtProximoAlumno.InvokeRequired)
+            {
+                txtProximoAlumno.BeginInvoke((MethodInvoker)delegate
+                {
+                    txtProximoAlumno.Text = alumno.ToString();
+                });
+            }
+            else
+                txtProximoAlumno.Text = alumno.ToString();
+        }
+
         /// <summary>
         /// Metodo que llama al proximo alumno y luego ejecuta el metodo Evaluar
         /// </summary>
@@ -277,7 +284,7 @@ namespace FormJardin
         {
 
             ProximoAlumnoASerLlamado();
-
+            
             Evaluar(proximoALlamar, (TextBox)o);
         }
 
@@ -288,7 +295,7 @@ namespace FormJardin
         /// <param name="txt"></param>
         public void Evaluar(Alumno alumnoSiendoEvaluado, TextBox txt)
         {
-            
+
             MostrarAlumnoSiendoEvaluado(alumnoSiendoEvaluado.ToString(), txt);
             docente = GenerarDocenteRandom();
             evaluaciones.Alumno = alumnoSiendoEvaluado;
@@ -409,7 +416,6 @@ namespace FormJardin
                         {
                             formEvaluaciones.txtDocente.Text = item.ToString();
                             docente = item;
-                            //ProximoAlumnoASerLlamado();
                         });
                     }
                     else
@@ -435,19 +441,12 @@ namespace FormJardin
                 txt.BeginInvoke((MethodInvoker)delegate
                 {
                     txt.Text = nombreYApellido;
-                    //ProximoAlumnoASerLlamado();
                 });
             }
             else
             {
                 txt.Text = nombreYApellido;
 
-                #region Comentarios
-                //formEvaluaciones.txtAlumno.Text = dataGridProximo.CurrentRow.Cells[0].Value.ToString();
-                //dataGridProximo.CurrentRow.Cells.RemoveAt(item.Index);
-                //txtProximoAlumno.Text = "";
-                //ProximoAlumnoASerLlamado();
-                #endregion
             }
         }
         /// <summary>
@@ -494,7 +493,10 @@ namespace FormJardin
             FinalizarHilos();
         }
 
-
+        /// <summary>
+        /// Muestro mensaje que comenzo el recreo en tool strip status
+        /// </summary>
+        /// <returns></returns>
         private string MostrarToolStripRecreo()
         {
             string retorno = "";
@@ -511,6 +513,10 @@ namespace FormJardin
             }
             return retorno;
         }
+        /// <summary>
+        /// Muestro mensaje que termino el recreo en tool strip status
+        /// </summary>
+        /// <returns></returns>
         private string MostrarToolStripSinRecreo()
         {
             string retorno = "";
@@ -528,6 +534,9 @@ namespace FormJardin
             return retorno;
         }
 
+        /// <summary>
+        /// Elimino el texto de tool strip status
+        /// </summary>
         private void LimpioToolStrip()
         {
             if (formEvaluaciones.toolStripRecreo.GetCurrentParent().InvokeRequired)
@@ -546,50 +555,20 @@ namespace FormJardin
         private void timerEvaluacion_Tick(object sender, EventArgs e)
         {
             cont++;
+            bool flagMinuto = false;
             if (cont == 59)
             {
+                flagMinuto = true;
                 cont = 0;
             }
-            if (cont == 20 || cont == 40)
+            if (cont == 20 || cont == 40 || flagMinuto == true)
             {
                 MostrarToolStripRecreo();
-
                 Thread.Sleep(5000);
                 MostrarToolStripSinRecreo();
                 Thread.Sleep(1500);
                 LimpioToolStrip();
             }
-            //seg += 1;
-            //string segundos = seg.ToString();
-            //string minutos = min.ToString();
-
-            //if (seg == 59)
-            //{
-            //    min += 1;
-            //    seg = 0;
-            //}
-            //if (seg < 10)
-            //{
-            //    segundos = "0" + seg.ToString();
-            //}
-            //if (min < 10)
-            //{
-            //    minutos = "0" + min.ToString();
-            //}
-            //MostrarTiempo("Tiempo transcurrido: " + minutos + ":" + segundos);
-
-
-            //if (seg == 20 || seg == 40)
-            //{
-            //    MessageBox.Show("Ringggggg, Recreooooo");
-
-            //    Thread.Sleep(2000);
-            //}
-            //if (min >= 1 && seg == 0)
-            //{
-            //    MessageBox.Show("Ringggggg, Recreooooo");
-            //    Thread.Sleep(5000);
-            //}
         }
     }
 }
