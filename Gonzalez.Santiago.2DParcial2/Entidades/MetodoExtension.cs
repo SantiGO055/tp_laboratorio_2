@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    /// <summary>
+    /// Extiende la clase Aula para generar un aula random
+    /// </summary>
     public static class MetodoExtension
     {
         public static Aula GenerarAulaRandom(this List<Aula> listaAulas)

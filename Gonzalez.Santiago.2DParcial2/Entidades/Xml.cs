@@ -43,7 +43,7 @@ namespace Entidades
                     }
                     //llamar a guardar de txt
                     
-                    throw new ArchivosException("Ruta del archivo inexistente, se creo la ruta: " + path + archivo);
+                    throw new ArchivosException("Ruta del archivo inexistente, se creo la ruta: " + path);
                 }
                 return true;
             }
