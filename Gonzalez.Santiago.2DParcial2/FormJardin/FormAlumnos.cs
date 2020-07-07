@@ -37,6 +37,9 @@ namespace FormJardin
         private Evaluaciones evaluaciones = new Evaluaciones();
         Stopwatch stopwatch;
         FormEvaluaciones formEvaluaciones;
+        bool flagRecreo;
+        int cont = 0;
+
         public FormAlumnos()
         {
             InitializeComponent();
@@ -61,6 +64,8 @@ namespace FormJardin
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //formEvaluaciones.timerTranscurrido.Enabled = true;
+            timerEvaluacion.Start();
             LeerDocentesXml();
             GuardarDocenteSQL();
             LeerAlumnosSql();
@@ -283,7 +288,7 @@ namespace FormJardin
         /// <param name="txt"></param>
         public void Evaluar(Alumno alumnoSiendoEvaluado, TextBox txt)
         {
-            stopwatch.Start();
+            
             MostrarAlumnoSiendoEvaluado(alumnoSiendoEvaluado.ToString(), txt);
             docente = GenerarDocenteRandom();
             evaluaciones.Alumno = alumnoSiendoEvaluado;
@@ -318,25 +323,9 @@ namespace FormJardin
         /// <param name="segundosObj"></param>
         public void MostrarTiempoTranscurrido(object segundosObj)
         {
-            DateTime dt = new DateTime();
-            int segundos = (int)segundosObj; //casteo objeto a int
-            segundos = 0;
 
 
-            
-                if (formEvaluaciones.lblTiempoTranscurrido.InvokeRequired)
-                {
-                    formEvaluaciones.lblTiempoTranscurrido.BeginInvoke((MethodInvoker)delegate ()
-                    {
-                        formEvaluaciones.lblTiempoTranscurrido.Text = dt.AddSeconds(segundos).ToString("ss");
-                    });
-                }
-                else
-                {
-                    formEvaluaciones.lblTiempoTranscurrido.Text = dt.AddSeconds(segundos).ToString("ss");
-                }
-                segundos++;
-            
+            #region Comentarios
             //while (true)
             //{
             //    //verifico si el hilo donde se esta evaluando el alumno se le realizo Thread.Sleep
@@ -371,7 +360,7 @@ namespace FormJardin
 
             //}
             //segundos = 1;
-
+            #endregion
         }
 
         /// <summary>
@@ -407,6 +396,7 @@ namespace FormJardin
         {
             Docente docente = new Docente();
             int evaluoRandom;
+            
             //pongo el random en este rango por que lo carga a la base con este ese rango de id
             evaluoRandom = evaluarRandom.Next(1, listaDocentes.Count);
             foreach (var item in listaDocentes)
@@ -468,6 +458,9 @@ namespace FormJardin
             Application.Run(formEvaluaciones);
         }
 
+
+
+
         /// <summary>
         /// Inicio los hilos
         /// </summary>
@@ -477,7 +470,7 @@ namespace FormJardin
             {
                 hilos.Add(new Thread(new ThreadStart(IniciarFormEvaluaciones)));
                 hilos.Add(new Thread(new ParameterizedThreadStart(ProximoAlumno)));
-                hilos.Add(new Thread(MostrarTiempoTranscurrido));
+                //hilos.Add(new Thread(new ParameterizedThreadStart(MostrarTiempo)));
 
             }
             if (!hilos[0].IsAlive)
@@ -491,14 +484,112 @@ namespace FormJardin
             }
             //if (!hilos[2].IsAlive)
             //{
-            //    hilos[2] = new Thread();
-            //    hilos[2].Start(-3);
+            //    hilos[2] = new Thread(MostrarTiempo);
+            //    hilos[2].Start(formEvaluaciones.timerTranscurrido);
             //}
         }
 
         private void FormAlumnos_FormClosing(object sender, FormClosingEventArgs e)
         {
             FinalizarHilos();
+        }
+
+
+        private string MostrarToolStripRecreo()
+        {
+            string retorno = "";
+            if (formEvaluaciones.toolStripRecreo.GetCurrentParent().InvokeRequired)
+            {
+                formEvaluaciones.toolStripRecreo.GetCurrentParent().BeginInvoke((MethodInvoker)delegate
+                {
+                    retorno = formEvaluaciones.toolStripRecreo.Text = "Alumnos en recreo";
+                });
+            }
+            else
+            {
+                retorno = formEvaluaciones.toolStripRecreo.Text = "Alumnos en recreo";
+            }
+            return retorno;
+        }
+        private string MostrarToolStripSinRecreo()
+        {
+            string retorno = "";
+            if (formEvaluaciones.toolStripRecreo.GetCurrentParent().InvokeRequired)
+            {
+                formEvaluaciones.toolStripRecreo.GetCurrentParent().BeginInvoke((MethodInvoker)delegate
+                {
+                    retorno = formEvaluaciones.toolStripRecreo.Text = "Finalizo el recreo";
+                });
+            }
+            else
+            {
+                retorno = formEvaluaciones.toolStripRecreo.Text = "Finalizo el recreo";
+            }
+            return retorno;
+        }
+
+        private void LimpioToolStrip()
+        {
+            if (formEvaluaciones.toolStripRecreo.GetCurrentParent().InvokeRequired)
+            {
+                formEvaluaciones.toolStripRecreo.GetCurrentParent().BeginInvoke((MethodInvoker)delegate
+                {
+                    formEvaluaciones.toolStripRecreo.Text = "";
+                });
+            }
+            else
+            {
+                formEvaluaciones.toolStripRecreo.Text = "";
+            }
+        }
+
+        private void timerEvaluacion_Tick(object sender, EventArgs e)
+        {
+            cont++;
+            if (cont == 59)
+            {
+                cont = 0;
+            }
+            if (cont == 20 || cont == 40)
+            {
+                MostrarToolStripRecreo();
+
+                Thread.Sleep(5000);
+                MostrarToolStripSinRecreo();
+                Thread.Sleep(1500);
+                LimpioToolStrip();
+            }
+            //seg += 1;
+            //string segundos = seg.ToString();
+            //string minutos = min.ToString();
+
+            //if (seg == 59)
+            //{
+            //    min += 1;
+            //    seg = 0;
+            //}
+            //if (seg < 10)
+            //{
+            //    segundos = "0" + seg.ToString();
+            //}
+            //if (min < 10)
+            //{
+            //    minutos = "0" + min.ToString();
+            //}
+            //MostrarTiempo("Tiempo transcurrido: " + minutos + ":" + segundos);
+
+
+            //if (seg == 20 || seg == 40)
+            //{
+            //    MessageBox.Show("Ringggggg, Recreooooo");
+
+            //    Thread.Sleep(2000);
+            //}
+            //if (min >= 1 && seg == 0)
+            //{
+            //    MessageBox.Show("Ringggggg, Recreooooo");
+            //    Thread.Sleep(5000);
+            //}
         }
     }
 }

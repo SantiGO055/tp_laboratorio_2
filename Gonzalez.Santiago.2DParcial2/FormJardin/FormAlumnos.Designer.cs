@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridAlumnos = new System.Windows.Forms.DataGridView();
             this.txtProximoAlumno = new System.Windows.Forms.TextBox();
             this.lblProximo = new System.Windows.Forms.Label();
             this.lblCantidadFijo = new System.Windows.Forms.Label();
             this.lblCantidad = new System.Windows.Forms.Label();
+            this.timerEvaluacion = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAlumnos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,6 +91,11 @@
             this.lblCantidad.Size = new System.Drawing.Size(0, 14);
             this.lblCantidad.TabIndex = 9;
             // 
+            // timerEvaluacion
+            // 
+            this.timerEvaluacion.Interval = 1000;
+            this.timerEvaluacion.Tick += new System.EventHandler(this.timerEvaluacion_Tick);
+            // 
             // FormAlumnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -118,6 +125,7 @@
         private System.Windows.Forms.Label lblProximo;
         private System.Windows.Forms.Label lblCantidadFijo;
         private System.Windows.Forms.Label lblCantidad;
+        private System.Windows.Forms.Timer timerEvaluacion;
     }
 }
 

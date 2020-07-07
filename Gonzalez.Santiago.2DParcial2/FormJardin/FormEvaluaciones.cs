@@ -21,13 +21,11 @@ namespace FormJardin
         public FormEvaluaciones()
         {
             InitializeComponent();
-            hilo = new Thread(Temporizador);
         }
 
         private void FormEvaluaciones_Load(object sender, EventArgs e)
         {
             timerTranscurrido.Start();
-
         }
 
         private void Temporizador()
@@ -58,17 +56,21 @@ namespace FormJardin
             }
             lblTiempoTranscurrido.Text = "Tiempo transcurrido: " + minutos + ":" + segundos;
 
-            if (seg == 20 || seg == 40)
-            {
-                MessageBox.Show("Ringggggg, Recreooooo");
-                
-                Thread.Sleep(2000);
-            }
-            if (min >= 1 && seg == 0)
-            {
-                MessageBox.Show("Ringggggg, Recreooooo");
-                Thread.Sleep(5000);
-            }
+            //if (seg == 20 || seg == 40)
+            //{
+            //    toolStripRecreo.Text = "Alumnos en recreo";
+
+            //    Thread.Sleep(5000);
+            //    toolStripRecreo.Text = "Finalizo el recreo";
+            //    Thread.Sleep(1500);
+            //}
+            //if (min >= 1 && seg == 0)
+            //{
+            //    toolStripRecreo.Text = "Alumnos en recreo";
+            //    Thread.Sleep(5000);
+            //    toolStripRecreo.Text = "Finalizo el recreo";
+            //    Thread.Sleep(1500);
+            //}
         }
     }
 }

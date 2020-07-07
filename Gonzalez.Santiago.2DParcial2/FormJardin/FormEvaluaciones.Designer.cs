@@ -35,6 +35,9 @@
             this.lblDocente = new System.Windows.Forms.Label();
             this.timerTranscurrido = new System.Windows.Forms.Timer(this.components);
             this.lblTiempoTranscurrido = new System.Windows.Forms.Label();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripRecreo = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblAlumno
@@ -85,12 +88,29 @@
             this.lblTiempoTranscurrido.TabIndex = 5;
             this.lblTiempoTranscurrido.Text = "Tiempo transcurrido: ";
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripRecreo});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 252);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(569, 22);
+            this.statusStrip1.TabIndex = 6;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripRecreo
+            // 
+            this.toolStripRecreo.BackColor = System.Drawing.Color.PeachPuff;
+            this.toolStripRecreo.Name = "toolStripRecreo";
+            this.toolStripRecreo.Size = new System.Drawing.Size(0, 17);
+            // 
             // FormEvaluaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
             this.ClientSize = new System.Drawing.Size(569, 274);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.lblTiempoTranscurrido);
             this.Controls.Add(this.lblDocente);
             this.Controls.Add(this.txtDocente);
@@ -101,6 +121,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Evaluacion del alumno";
             this.Load += new System.EventHandler(this.FormEvaluaciones_Load);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,5 +136,7 @@
         public System.Windows.Forms.TextBox txtDocente;
         public System.Windows.Forms.Timer timerTranscurrido;
         public System.Windows.Forms.Label lblTiempoTranscurrido;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripRecreo;
     }
 }
