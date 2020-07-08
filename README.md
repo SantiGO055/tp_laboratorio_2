@@ -1,2 +1,2 @@
-# tp_laboratorio_2
+# Trabajos practicos y parciales
 Repositorio donde subire TP's y Parciales
