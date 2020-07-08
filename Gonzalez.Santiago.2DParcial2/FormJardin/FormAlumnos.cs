@@ -239,7 +239,6 @@ namespace FormJardin
                 {
                     MessageBox.Show("Se evaluaron todos los alumnos");
                     FinalizarHilos();
-                    Application.Exit();
                 }
             }
             catch (Exception ex)
@@ -377,7 +376,8 @@ namespace FormJardin
         public Aula GenerarAulaRandom()
         {
 
-            return aula = MetodoExtension.GenerarAulaRandom(listaAulas);
+            //return aula = MetodoExtension.GenerarAulaRandom(listaAulas);
+            return aula = listaAulas.GenerarAulaRandom();
 
             #region Comentario
             //comento para ver si sale el metodo de extension

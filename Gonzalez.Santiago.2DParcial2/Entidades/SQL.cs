@@ -242,7 +242,6 @@ namespace Entidades
             {
                 conexion.Close();
             }
-
         }
 
     }

@@ -37,3 +37,16 @@ C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\RecuperatoriosTP\TP3\ClasesInst
 C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\RecuperatoriosTP\TP3\ClasesInstanciables\obj\Debug\ClasesInstanciables.csproj.CopyComplete
 C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\RecuperatoriosTP\TP3\ClasesInstanciables\obj\Debug\ClasesInstanciables.dll
 C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\RecuperatoriosTP\TP3\ClasesInstanciables\obj\Debug\ClasesInstanciables.pdb
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\RecuperatoriosTP\TP3\ClasesInstanciables\bin\Debug\ClasesInstanciables.dll
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\RecuperatoriosTP\TP3\ClasesInstanciables\bin\Debug\ClasesInstanciables.pdb
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\RecuperatoriosTP\TP3\ClasesInstanciables\bin\Debug\Archivos.dll
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\RecuperatoriosTP\TP3\ClasesInstanciables\bin\Debug\Entidades.dll
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\RecuperatoriosTP\TP3\ClasesInstanciables\bin\Debug\Excepciones.dll
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\RecuperatoriosTP\TP3\ClasesInstanciables\bin\Debug\Archivos.pdb
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\RecuperatoriosTP\TP3\ClasesInstanciables\bin\Debug\Entidades.pdb
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\RecuperatoriosTP\TP3\ClasesInstanciables\bin\Debug\Excepciones.pdb
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\RecuperatoriosTP\TP3\ClasesInstanciables\obj\Debug\ClasesInstanciables.csprojAssemblyReference.cache
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\RecuperatoriosTP\TP3\ClasesInstanciables\obj\Debug\ClasesInstanciables.csproj.CoreCompileInputs.cache
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\RecuperatoriosTP\TP3\ClasesInstanciables\obj\Debug\ClasesInstanciables.csproj.CopyComplete
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\RecuperatoriosTP\TP3\ClasesInstanciables\obj\Debug\ClasesInstanciables.dll
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\RecuperatoriosTP\TP3\ClasesInstanciables\obj\Debug\ClasesInstanciables.pdb

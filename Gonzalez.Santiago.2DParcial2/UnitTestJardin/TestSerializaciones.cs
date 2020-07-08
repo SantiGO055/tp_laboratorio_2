@@ -19,7 +19,7 @@ namespace UnitTestJardin
             Binario<List<Alumno>> binario = new Binario<List<Alumno>>();
             List<Alumno> listaAlumnos = new List<Alumno>();
 
-            binario.Leer(ConstantePath.PATHSER + "Serializaciones\\UnitTest\\Binario\\Alumno.dat", out listaAlumnos);
+            binario.Leer(ConstantePath.PATHSER + "Serializaciones\\UnitTest\\Binario\\Alumnoasd.dat", out listaAlumnos);
             
         }
         /// <summary>

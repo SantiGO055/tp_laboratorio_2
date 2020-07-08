@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "UkA/RcVCu73NQQRDdnLZhMDYsRJFkr3aD5ApnwuUoGTO/b3j8qwQnArMQWFffElCptHm+h0J6cos/oA6+0LTNw==",
+  "dgSpecHash": "VIqLe5+e67xhs4MlB1KR8smb9NANG2RO9qplm7hDQlOuktkjzCtU9AHllxo3DFeD5OjIIMeRntTXhEqgJ5pY0A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ins03\\Desktop\\prueba\\tp_laboratorio_2\\TP1_Calculadora\\Entidades\\Entidades.csproj",
+  "projectFilePath": "C:\\Users\\SantiGO\\Desktop\\Github\\tp_laboratorio_2\\TP1_Calculadora\\Entidades\\Entidades.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ins03\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\ins03\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\SantiGO\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\SantiGO\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
   "logs": []
 }

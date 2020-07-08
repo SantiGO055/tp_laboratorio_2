@@ -23,3 +23,9 @@ C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\TP-02\Entidades\obj\Debug\Entid
 C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\TP-02\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\TP-02\Entidades\obj\Debug\Entidades.dll
 C:\Users\ins03\Documents\GitHub\tp_laboratorio_2\TP-02\Entidades\obj\Debug\Entidades.pdb
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\RecuperatoriosTP\TP2\Entidades\bin\Debug\Entidades.dll
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\RecuperatoriosTP\TP2\Entidades\bin\Debug\Entidades.pdb
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\RecuperatoriosTP\TP2\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\RecuperatoriosTP\TP2\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\RecuperatoriosTP\TP2\Entidades\obj\Debug\Entidades.dll
+C:\Users\SantiGO\Desktop\Github\tp_laboratorio_2\RecuperatoriosTP\TP2\Entidades\obj\Debug\Entidades.pdb

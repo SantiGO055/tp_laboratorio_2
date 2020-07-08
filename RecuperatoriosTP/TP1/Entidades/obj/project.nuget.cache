@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "OMnPViO/JkbNXdKdrW084IWH+oHevhTuD6RhDR9mcV/yJ01Jhyr9ZQcJb51oqceCoO9zorFuImUjprabWvyFXQ==",
+  "dgSpecHash": "6LHm60PI1QDY7kxo5lt5PP/RINJSXqOuZ04o82F6cERM5pfmQ4M/RcCQzdNb7hI2jzqQXWvF8JA1mdVgxBkrFA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ins03\\Documents\\GitHub\\tp_laboratorio_2\\RecuperatoriosTP\\TP1\\Entidades\\Entidades.csproj",
+  "projectFilePath": "C:\\Users\\SantiGO\\Desktop\\Github\\tp_laboratorio_2\\RecuperatoriosTP\\TP1\\Entidades\\Entidades.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ins03\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\ins03\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\SantiGO\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\SantiGO\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
   "logs": []
 }

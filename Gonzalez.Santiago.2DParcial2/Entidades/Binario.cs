@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Binario<T> : IArchivo<T>
+    public class Binario<T> : IArchivo<T> 
+        //where T: new()
     {
         protected Texto texto = new Texto();
 
